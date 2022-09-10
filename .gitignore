@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# user addition
+.vs/*
+x64/*
+*.vcxproj.user
+assets/*
+Log.txt
+
