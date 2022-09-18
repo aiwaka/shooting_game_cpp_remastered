@@ -1,6 +1,7 @@
 #include "looper.hpp"
-#include "title_scene.hpp"
 #include "error.hpp"
+#include "title_scene.hpp"
+#include "game_scene.hpp"
 
 Looper::Looper() {
     SceneParameter param;
@@ -8,7 +9,6 @@ Looper::Looper() {
     // Looperはリスナー抽象クラスを継承しており, シーンのリスナーにはthisポインタを渡す.
     _scene_stack.push(std::make_shared<TitleScene>(this, param));
 }
-Looper::~Looper() {}
 
 /**
  * @brief スタックの一番上にあるシーンについて処理を行う
@@ -20,9 +20,26 @@ bool Looper::loop() const {
 }
 
 /**
- * @brief シーン変更（各シーンからコールバックされる）
- * @param scene 変更するシーンのenum
+ * @brief シーン変更（各シーンからコールバックとして呼び出される）
+ * @param scene 変更先のシーン
  * @param parameter 前のシーンから引き継ぐパラメータ
  * @param stackClear 現在のシーンのスタックをクリアするか
  */
-void Looper::on_scene_changed(const GameScene scene, const SceneParameter& param, const bool stack_clear) {}
+void Looper::on_scene_changed(const AppScenes scene, const SceneParameter& param, const bool stack_clear) {
+    if (stack_clear) {
+        while (!_scene_stack.empty()) {
+            _scene_stack.pop();
+        }
+    }
+    switch (scene)
+    {
+    case Title:
+        _scene_stack.push(std::make_shared<TitleScene>(this, param));
+        break;
+    case Game:
+        _scene_stack.push(std::make_shared<GameScene>(this, param));
+        break;
+    default:
+        break;
+    }
+}

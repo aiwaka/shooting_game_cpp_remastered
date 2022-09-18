@@ -8,9 +8,9 @@
 class Looper final : public IOnSceneChangedListener {
 public:
     Looper();
-    ~Looper();
+    ~Looper() = default;
     bool loop() const;
-    void on_scene_changed(const GameScene scene, const SceneParameter& param, const bool clear_stack) override;
+    void on_scene_changed(const AppScenes scene, const SceneParameter& param, const bool clear_stack) override;
 
 private:
     // シーンのスマートポインタをスタックすることでシーンスタックを表現する.

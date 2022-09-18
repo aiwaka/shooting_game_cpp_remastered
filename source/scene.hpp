@@ -1,6 +1,6 @@
 #pragma once
 
-enum GameScene {
+enum AppScenes {
     Title,
     Game
 };

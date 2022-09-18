@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="source\abstract_scene.cpp" />
     <ClCompile Include="source\error.cpp" />
+    <ClCompile Include="source\game_scene.cpp" />
     <ClCompile Include="source\global_define.cpp" />
     <ClCompile Include="source\i_on_changed_listener.cpp" />
     <ClCompile Include="source\looper.cpp" />
@@ -32,6 +33,7 @@
   <ItemGroup>
     <ClInclude Include="source\abstract_scene.hpp" />
     <ClInclude Include="source\error.hpp" />
+    <ClInclude Include="source\game_scene.hpp" />
     <ClInclude Include="source\global_define.hpp" />
     <ClInclude Include="source\game_system.hpp" />
     <ClInclude Include="source\i_on_changed_listener.hpp" />
