@@ -2,6 +2,7 @@
 #include "error.hpp"
 #include "title_scene.hpp"
 #include "game_scene.hpp"
+#include "macro.hpp"
 
 Looper::Looper() {
     SceneParameter param;
@@ -38,8 +39,9 @@ void Looper::on_scene_changed(const AppScenes scene, const SceneParameter& param
         break;
     case Game:
         _scene_stack.push(std::make_shared<GameScene>(this, param));
-        break;
+        //break;
     default:
+        APP_SYSTEM_ERROR("シーンエラー");
         break;
     }
 }

@@ -3,17 +3,11 @@
 #include "global_define.hpp"
 #include "error.hpp"
 
-using namespace std;
-
-void Error::finish(char* errorMessage, LPCTSTR lpszFuncName, int lineN)
+void Error::finish(std::string error_message, LPCTSTR lpsz_func_name, int line_num)
 {
-    char funcName[1024];
-    //sprintf(funcName, "%s", lpszFuncName);
-    printfDx("エラー\n%s\n%s(%d)"
-        , errorMessage
-        , funcName
-        , lineN
-    );
+    char func_name[1024];
+    sprintf_s(func_name, "%s", lpsz_func_name);
+    printfDx("システムエラー\n%s\n%s(%d)", error_message.c_str(), func_name, line_num);
     while (!ProcessMessage()) {
         ClearDrawScreen();
         ScreenFlip();

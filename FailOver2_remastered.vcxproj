@@ -38,6 +38,7 @@
     <ClInclude Include="source\game_system.hpp" />
     <ClInclude Include="source\i_on_changed_listener.hpp" />
     <ClInclude Include="source\looper.hpp" />
+    <ClInclude Include="source\macro.hpp" />
     <ClInclude Include="source\scene.hpp" />
     <ClInclude Include="source\scene_parameter.hpp" />
     <ClInclude Include="source\title_scene.hpp" />
