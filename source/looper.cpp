@@ -3,6 +3,8 @@
 #include "title_scene.hpp"
 #include "game_scene.hpp"
 #include "macro.hpp"
+#include "keyboard.hpp"
+#include "pad_input.hpp"
 
 Looper::Looper() {
     SceneParameter param;
@@ -15,6 +17,8 @@ Looper::Looper() {
  * @brief スタックの一番上にあるシーンについて処理を行う
  */
 bool Looper::loop() {
+    Keyboard::get_instance()->update();
+    PadInput::get_instance()->update();
     _scene_stack.top()->update();
     _scene_stack.top()->draw();
     _frm.draw();
