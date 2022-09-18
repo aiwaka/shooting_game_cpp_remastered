@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="source\abstract_scene.cpp" />
     <ClCompile Include="source\error.cpp" />
+    <ClCompile Include="source\frame_rate_manager.cpp" />
     <ClCompile Include="source\game_scene.cpp" />
     <ClCompile Include="source\global_define.cpp" />
     <ClCompile Include="source\i_on_changed_listener.cpp" />
@@ -29,10 +30,12 @@
     <ClCompile Include="source\game_system.cpp" />
     <ClCompile Include="source\scene_parameter.cpp" />
     <ClCompile Include="source\title_scene.cpp" />
+    <ClCompile Include="source\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\abstract_scene.hpp" />
     <ClInclude Include="source\error.hpp" />
+    <ClInclude Include="source\frame_rate_manager.hpp" />
     <ClInclude Include="source\game_scene.hpp" />
     <ClInclude Include="source\global_define.hpp" />
     <ClInclude Include="source\game_system.hpp" />
@@ -42,6 +45,7 @@
     <ClInclude Include="source\scene.hpp" />
     <ClInclude Include="source\scene_parameter.hpp" />
     <ClInclude Include="source\title_scene.hpp" />
+    <ClInclude Include="source\utils.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
