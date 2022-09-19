@@ -2,6 +2,7 @@
 
 #include <DxLib.h>
 #include "frame_rate_manager.hpp"
+#include "global_define.hpp"
 #include "utils.hpp"
 
 // 無名名前空間で内部リンケージとする
@@ -28,7 +29,7 @@ void FrameRateManager::draw() const {
     if (_fps == 0) {
         return;
     }
-    DrawFormatString(0, 0, GetColor(255, 255, 255), "%04.1ffps", _fps);
+    DrawFormatString(0, GlobalValues::SCREEN_HEIGHT - 30, GetColor(255, 255, 255), "%04.1ffps", _fps);
 }
 
 void FrameRateManager::regist() {

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="source\abstract_scene.cpp" />
     <ClCompile Include="source\error.cpp" />
+    <ClCompile Include="source\euclid_vec.cpp" />
     <ClCompile Include="source\frame_rate_manager.cpp" />
     <ClCompile Include="source\game_scene.cpp" />
     <ClCompile Include="source\global_define.cpp" />
@@ -30,6 +31,7 @@
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\game_system.cpp" />
     <ClCompile Include="source\pad_input.cpp" />
+    <ClCompile Include="source\player.cpp" />
     <ClCompile Include="source\scene_parameter.cpp" />
     <ClCompile Include="source\title_scene.cpp" />
     <ClCompile Include="source\utils.cpp" />
@@ -37,6 +39,7 @@
   <ItemGroup>
     <ClInclude Include="source\abstract_scene.hpp" />
     <ClInclude Include="source\error.hpp" />
+    <ClInclude Include="source\euclid_vec.hpp" />
     <ClInclude Include="source\frame_rate_manager.hpp" />
     <ClInclude Include="source\game_scene.hpp" />
     <ClInclude Include="source\global_define.hpp" />
@@ -46,9 +49,11 @@
     <ClInclude Include="source\looper.hpp" />
     <ClInclude Include="source\macro.hpp" />
     <ClInclude Include="source\pad_input.hpp" />
+    <ClInclude Include="source\player.hpp" />
     <ClInclude Include="source\scene.hpp" />
     <ClInclude Include="source\scene_parameter.hpp" />
     <ClInclude Include="source\singleton.hpp" />
+    <ClInclude Include="source\task.hpp" />
     <ClInclude Include="source\title_scene.hpp" />
     <ClInclude Include="source\utils.hpp" />
   </ItemGroup>

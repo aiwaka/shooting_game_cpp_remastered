@@ -19,6 +19,12 @@
     <Filter Include="ヘッダー ファイル\scenes">
       <UniqueIdentifier>{50edf820-2bc1-4262-8982-2bcc5533efb0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\components">
+      <UniqueIdentifier>{15504a63-c86e-4500-9195-840c432739a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\components">
+      <UniqueIdentifier>{8c817f42-aa0d-4ba5-a284-23badbf0dceb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\game_system.cpp">
@@ -61,6 +67,12 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\pad_input.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\player.cpp">
+      <Filter>ソース ファイル\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\euclid_vec.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -111,6 +123,15 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\pad_input.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\task.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\player.hpp">
+      <Filter>ヘッダー ファイル\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\euclid_vec.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
