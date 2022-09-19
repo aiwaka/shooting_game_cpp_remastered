@@ -75,6 +75,9 @@
     <ClCompile Include="source\euclid_vec.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="source\image_manager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -132,6 +135,9 @@
       <Filter>ヘッダー ファイル\components</Filter>
     </ClInclude>
     <ClInclude Include="source\euclid_vec.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\image_manager.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

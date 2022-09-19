@@ -1,5 +1,6 @@
 #include "player.hpp"
 #include "pad_input.hpp"
+#include "image_manager.hpp"
 #include <DxLib.h>
 
 constexpr float SPEED = 9.0f;
@@ -13,7 +14,8 @@ bool Player::update() {
 }
 
 void Player::draw() const {
-    DrawRotaGraphF(_pos.x, _pos.y, 10.0, 0.0, _image, 1);
+    auto img_manager = ImageManager::get_instance();
+    DrawRotaGraphF(_pos.x, _pos.y, 10.0, 0.0, img_manager->get_player(), 1);
 }
 void Player::move()
 {

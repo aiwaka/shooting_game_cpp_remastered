@@ -5,8 +5,11 @@
 #include "macro.hpp"
 #include "keyboard.hpp"
 #include "pad_input.hpp"
+#include "image_manager.hpp"
 
 Looper::Looper() {
+    // アセットロード
+    ImageManager::get_instance()->load();
     SceneParameter param;
     // タイトルシーンを作成して追加し初期化
     // Looperはリスナー抽象クラスを継承しており, シーンのリスナーにはthisポインタを渡す.
