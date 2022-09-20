@@ -20,11 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\abstract_bg.cpp" />
+    <ClCompile Include="source\abstract_enemy.cpp" />
     <ClCompile Include="source\abstract_scene.cpp" />
     <ClCompile Include="source\background.cpp" />
     <ClCompile Include="source\board.cpp" />
-    <ClCompile Include="source\enemy.cpp" />
+    <ClCompile Include="source\enemy_a.cpp" />
+    <ClCompile Include="source\enemy_b.cpp" />
     <ClCompile Include="source\enemy_manager.cpp" />
+    <ClCompile Include="source\enemy_mover.cpp" />
     <ClCompile Include="source\error.cpp" />
     <ClCompile Include="source\euclid_vec.cpp" />
     <ClCompile Include="source\frame_rate_manager.cpp" />
@@ -44,11 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\abstract_bg.hpp" />
+    <ClInclude Include="source\abstract_enemy.hpp" />
     <ClInclude Include="source\abstract_scene.hpp" />
     <ClInclude Include="source\background.hpp" />
     <ClInclude Include="source\board.hpp" />
-    <ClInclude Include="source\enemy.hpp" />
+    <ClInclude Include="source\enemy_a.hpp" />
+    <ClInclude Include="source\enemy_b.hpp" />
     <ClInclude Include="source\enemy_manager.hpp" />
+    <ClInclude Include="source\enemy_mover.hpp" />
     <ClInclude Include="source\error.hpp" />
     <ClInclude Include="source\euclid_vec.hpp" />
     <ClInclude Include="source\frame_rate_manager.hpp" />

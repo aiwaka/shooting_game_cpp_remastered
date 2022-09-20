@@ -25,6 +25,12 @@
     <Filter Include="ソース ファイル\components">
       <UniqueIdentifier>{8c817f42-aa0d-4ba5-a284-23badbf0dceb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\components\enemies">
+      <UniqueIdentifier>{dfb7b172-cc4e-4f41-8a9f-5e43c2a3da7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\components\enemies">
+      <UniqueIdentifier>{2ccfea81-30b6-4902-afa0-600cc5ba46b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\game_system.cpp">
@@ -87,11 +93,20 @@
     <ClCompile Include="source\background.cpp">
       <Filter>ソース ファイル\components</Filter>
     </ClCompile>
-    <ClCompile Include="source\enemy.cpp">
-      <Filter>ソース ファイル\components</Filter>
-    </ClCompile>
     <ClCompile Include="source\enemy_manager.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\abstract_enemy.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\enemy_mover.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\enemy_a.cpp">
+      <Filter>ソース ファイル\components\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\enemy_b.cpp">
+      <Filter>ソース ファイル\components\enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -164,11 +179,20 @@
     <ClInclude Include="source\background.hpp">
       <Filter>ヘッダー ファイル\components</Filter>
     </ClInclude>
-    <ClInclude Include="source\enemy.hpp">
-      <Filter>ヘッダー ファイル\components</Filter>
-    </ClInclude>
     <ClInclude Include="source\enemy_manager.hpp">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\abstract_enemy.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\enemy_mover.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\enemy_a.hpp">
+      <Filter>ヘッダー ファイル\components\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="source\enemy_b.hpp">
+      <Filter>ヘッダー ファイル\components\enemies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

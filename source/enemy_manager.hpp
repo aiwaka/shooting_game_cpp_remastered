@@ -2,8 +2,8 @@
 
 #include <memory>
 #include <list>
+#include "abstract_enemy.hpp"
 #include "task.hpp"
-#include "enemy.hpp"
 
 class EnemyManager : public Task {
 public:
@@ -13,6 +13,6 @@ public:
     void draw() const override;
 
 private:
-    std::list<std::shared_ptr<Enemy>> _list;
+    std::list<std::shared_ptr<AbstractEnemy>> _list;
 };
 

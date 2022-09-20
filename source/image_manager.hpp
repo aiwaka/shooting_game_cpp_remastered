@@ -13,11 +13,11 @@ public:
     void load();
     void release();
 
-    int get_player() const;
     const int* get_player_a() const;
     std::array<int, 4> get_board() const;
     int get_background() const;
     const int* get_enemy_a() const;
+    const int* get_enemy_b() const;
 
 private:
     /**
@@ -34,9 +34,9 @@ private:
     //! @brief 画像ハンドルを並べて格納する配列. 一括開放を可能にする.
     std::vector<int> _images;
 
-    int _player;
     int _player_a[6];
     int _board[4];
     int _background;
     int _enemy_a[3];
+    int _enemy_b[3];
 };

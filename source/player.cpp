@@ -9,12 +9,12 @@ constexpr float SPEED = 6.0f;
 
 Player::Player() :
     _pos(Vec2{ static_cast<float>(GlobalValues::CENTER_X), static_cast<float>(GlobalValues::OUT_HEIGHT) * 0.8f }),
-    _count(0),
+    _counter(0),
     _move_dir(Vec2{})
 {}
 
 bool Player::update() {
-    ++_count;
+    ++_counter;
     move();
     return true;
 }
@@ -25,7 +25,7 @@ void Player::draw() const {
     size_t idx = 0;
     if (_move_dir.x > 0.0) idx = 2;
     if (_move_dir.x < 0.0) idx = 4;
-    idx += (_count / 15) % 2 == 0 ? 0 : 1;
+    idx += (_counter / 15) % 2 == 0 ? 0 : 1;
     DrawRotaGraphF(_pos.x, _pos.y, 1.0, 0.0, img_manager->get_player_a()[idx], 1);
 }
 void Player::move()

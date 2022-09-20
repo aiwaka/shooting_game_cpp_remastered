@@ -1,7 +1,6 @@
 #include "image_manager.hpp"
 
 ImageManager::ImageManager() {
-    _player = app_load_graph("./dat/img/atari.png");
     _board[0] = app_load_graph("./dat/img/10.png");
     _board[1] = app_load_graph("./dat/img/11.png");
     _board[2] = app_load_graph("./dat/img/12.png");
@@ -13,6 +12,7 @@ ImageManager::ImageManager() {
 
     // “G‰æ‘œ
     app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemy_a);
+    app_load_div_graph("./dat/img/enemy_b.png", 3, 3, 1, 30, 40, _enemy_b);
 }
 
 // ‚ ‚Æ‚Å‘‚­
@@ -26,9 +26,6 @@ void ImageManager::release() {
     _images.clear();
 }
 
-int ImageManager::get_player() const {
-    return _player;
-}
 const int* ImageManager::get_player_a() const {
     return _player_a;
 }
@@ -40,6 +37,9 @@ int ImageManager::get_background() const {
 }
 const int* ImageManager::get_enemy_a() const {
     return _enemy_a;
+}
+const int* ImageManager::get_enemy_b() const {
+    return _enemy_b;
 }
 
 int ImageManager::app_load_graph(std::string filename) {
