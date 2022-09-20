@@ -6,6 +6,7 @@
 #include "board.hpp"
 #include "abstract_bg.hpp"
 #include "background.hpp"
+#include "enemy_manager.hpp"
 
 class GameScene : public AbstractScene {
 public:
@@ -24,4 +25,5 @@ private:
     std::shared_ptr<Player> _player;
     std::shared_ptr<Board> _board;
     std::shared_ptr<AbstractBackground> _background;
+    std::shared_ptr<EnemyManager> _enemy_manager;
 };

@@ -10,11 +10,13 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     //_level = param.get_param(this->param_tag_level);
     _player = std::make_shared<Player>();
     _board = std::make_shared<Board>();
+    _enemy_manager = std::make_shared<EnemyManager>();
 }
 
 void GameScene::update() {
     _background->update();
     _player->update();
+    _enemy_manager->update();
     _board->update();
 }
 
@@ -22,6 +24,7 @@ void GameScene::draw() const {
     // ‚±‚±‚Å‚Ì‡”Ô‚ª•`‰æ‡‚É‚È‚é.
     _background->draw();
     _player->draw();
+    _enemy_manager->draw();
     _board->draw();
     //DrawFormatString(100, 100, GetColor(255, 255, 255), "level %d", _level);
 }

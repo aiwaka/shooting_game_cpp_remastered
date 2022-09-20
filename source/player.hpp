@@ -14,4 +14,7 @@ private:
     void move();
 
     Vec2 _pos;
+    int _count;
+    //! @brief ‚±‚ÌƒtƒŒ[ƒ€‚Å‚ÌˆÚ“®•ûŒü.
+    Vec2 _move_dir;
 };

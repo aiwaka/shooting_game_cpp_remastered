@@ -14,8 +14,10 @@ public:
     void release();
 
     int get_player() const;
+    const int* get_player_a() const;
     std::array<int, 4> get_board() const;
     int get_background() const;
+    const int* get_enemy_a() const;
 
 private:
     /**
@@ -33,6 +35,8 @@ private:
     std::vector<int> _images;
 
     int _player;
+    int _player_a[6];
     int _board[4];
     int _background;
+    int _enemy_a[3];
 };

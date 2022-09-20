@@ -7,6 +7,12 @@ ImageManager::ImageManager() {
     _board[2] = app_load_graph("./dat/img/12.png");
     _board[3] = app_load_graph("./dat/img/20.png");
     _background = app_load_graph("./dat/img/backg_2.png");
+
+    // ©‹@‰æ‘œ
+    app_load_div_graph("./dat/img/player1.png", 6, 2, 3, 70, 60, _player_a);
+
+    // “G‰æ‘œ
+    app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemy_a);
 }
 
 // ‚ ‚Æ‚Å‘‚­
@@ -23,11 +29,17 @@ void ImageManager::release() {
 int ImageManager::get_player() const {
     return _player;
 }
+const int* ImageManager::get_player_a() const {
+    return _player_a;
+}
 std::array<int, 4> ImageManager::get_board() const {
     return std::array<int, 4>{_board[0], _board[1], _board[2], _board[3]};
 }
 int ImageManager::get_background() const {
     return _background;
+}
+const int* ImageManager::get_enemy_a() const {
+    return _enemy_a;
 }
 
 int ImageManager::app_load_graph(std::string filename) {

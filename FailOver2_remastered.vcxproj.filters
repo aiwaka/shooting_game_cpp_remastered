@@ -87,6 +87,12 @@
     <ClCompile Include="source\background.cpp">
       <Filter>ソース ファイル\components</Filter>
     </ClCompile>
+    <ClCompile Include="source\enemy.cpp">
+      <Filter>ソース ファイル\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\enemy_manager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -157,6 +163,12 @@
     </ClInclude>
     <ClInclude Include="source\background.hpp">
       <Filter>ヘッダー ファイル\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\enemy.hpp">
+      <Filter>ヘッダー ファイル\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\enemy_manager.hpp">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
