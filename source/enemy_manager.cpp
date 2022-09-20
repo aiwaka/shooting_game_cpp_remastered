@@ -1,6 +1,7 @@
 #include <DxLib.h>
 #include "enemy_manager.hpp"
 #include "global_define.hpp"
+#include "game_scene.hpp"
 #include "enemy_a.hpp"
 #include "macro.hpp"
 
@@ -57,7 +58,8 @@ void EnemyManager::load_enemy_story(std::string filename) {
     }
 }
 
-EnemyManager::EnemyManager() {
+EnemyManager::EnemyManager(GameScene* scene) {
+    _game_scene = scene;
     _counter = 0;
 
     // csv‚©‚ç“Gî•ñ‚ğ“Ç‚İ‚İ
@@ -73,7 +75,7 @@ bool EnemyManager::update() {
     ++_counter;
     for (auto& enemy_info : _enemy_info_list) {
         if (enemy_info.spawn_count == _counter) {
-            _list.emplace_back(std::make_shared<EnemyA>(enemy_info));
+            _list.emplace_back(std::make_shared<EnemyA>(enemy_info, this));
         }
     }
     for (auto iter = _list.begin(); iter != _list.end();) {
@@ -95,4 +97,8 @@ void EnemyManager::draw() const {
     for (const auto enemy : _list) {
         enemy->draw();
     }
+}
+
+Vec2 EnemyManager::get_player_pos() const {
+    return _game_scene->get_player_pos();
 }

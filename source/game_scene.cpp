@@ -10,7 +10,7 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     //_level = param.get_param(this->param_tag_level);
     _player = std::make_shared<Player>();
     _board = std::make_shared<Board>();
-    _enemy_manager = std::make_shared<EnemyManager>();
+    _enemy_manager = std::make_shared<EnemyManager>(this);
 }
 
 void GameScene::update() {
@@ -30,3 +30,6 @@ void GameScene::draw() const {
 }
 
 
+Vec2 GameScene::get_player_pos() const {
+    return _player->get_pos();
+}

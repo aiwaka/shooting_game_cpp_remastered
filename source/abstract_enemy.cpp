@@ -5,7 +5,7 @@
 #include "image_manager.hpp"
 
 
-AbstractEnemy::AbstractEnemy(const EnemyInfo& info) :
+AbstractEnemy::AbstractEnemy(const EnemyInfo& info, EnemyManager* manager) :
     _pos(Vec2{ info.x, info.y }),
     _speed(Vec2{}),
     _counter(0),
@@ -20,7 +20,9 @@ AbstractEnemy::AbstractEnemy(const EnemyInfo& info) :
     _bullet_color(info.bullet_color),
     _wait_time(info.wait_time),
     _item_slot{ info.item }
-{}
+{
+    _manager = manager;
+}
 
 void AbstractEnemy::initialize() {
     set_size();
@@ -43,3 +45,5 @@ bool AbstractEnemy::is_inside_field() const
     }
     return true;
 }
+
+Vec2 AbstractEnemy::get_player_pos() const { return _manager->get_player_pos(); }

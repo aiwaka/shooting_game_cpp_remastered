@@ -10,6 +10,8 @@ public:
     bool update() override;
     void draw() const override;
 
+    Vec2 get_pos() const;
+
 private:
     void move();
 
@@ -18,3 +20,5 @@ private:
     //! @brief ‚±‚ÌƒtƒŒ[ƒ€‚Å‚ÌˆÚ“®•ûŒü.
     Vec2 _move_dir;
 };
+
+inline Vec2 Player::get_pos() const { return _pos; }

@@ -70,6 +70,15 @@ void EnemyMover::move_pattern_09(AbstractEnemy* enemy) {
 // 自機の位置を取得できるようにしたときに実装
 void EnemyMover::move_pattern_11(AbstractEnemy* enemy) {
     int count = enemy->get_counter();
+    if (count < 60) {
+        // 敵から自機へのベクトル
+        Vec2 diff_vec = enemy->get_player_pos() - enemy->get_pos();
+        Vec2 next_speed = Vec2{ 0.0, 2.0f };
+        if (diff_vec.length_square() > 0.0001f) {
+            next_speed = 2.0f * diff_vec.normalized();
+        }
+        enemy->set_speed(next_speed);
+    }
 }
 void EnemyMover::move_pattern_12(AbstractEnemy* enemy) {
     const int count = enemy->get_counter();

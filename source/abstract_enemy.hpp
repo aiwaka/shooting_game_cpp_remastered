@@ -6,12 +6,12 @@
 #include "enemy_mover.hpp"
 
 class EnemyMover;
-
+class EnemyManager;
 struct EnemyInfo;
 
 class AbstractEnemy : public Task {
 public:
-    AbstractEnemy(const EnemyInfo& info);
+    AbstractEnemy(const EnemyInfo& info, EnemyManager* manager);
     virtual ~AbstractEnemy() = default;
     void initialize();
     bool update() override;
@@ -31,6 +31,8 @@ public:
     int get_bullet_color() const;
     std::array<int, 6> get_item_id() const;
 
+    // 敵管理クラスへのポインタを通じて自機の情報を得られるようにする
+    Vec2 get_player_pos() const;
 
 protected:
     virtual void set_size() = 0;
@@ -40,6 +42,8 @@ protected:
     bool is_inside_field() const;
 
     EnemyMover _mover;
+    // 自分を管理するマネージャへの問い合わせ用ポインタ
+    EnemyManager* _manager;
 
     int _counter;
     int _move_pattern_id;

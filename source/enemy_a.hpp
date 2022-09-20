@@ -5,7 +5,7 @@
 
 class EnemyA final : public AbstractEnemy {
 public:
-    EnemyA(EnemyInfo& info);
+    EnemyA(EnemyInfo& info, EnemyManager* manager);
     ~EnemyA() = default;
     void draw() const override;
 

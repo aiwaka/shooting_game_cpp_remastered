@@ -4,7 +4,7 @@
 #include "global_define.hpp"
 #include "utils.hpp"
 
-EnemyA::EnemyA(EnemyInfo& info) : AbstractEnemy(info) {
+EnemyA::EnemyA(EnemyInfo& info, EnemyManager* manager) : AbstractEnemy(info, manager) {
     //_move_pattern_id = 0;
 }
 

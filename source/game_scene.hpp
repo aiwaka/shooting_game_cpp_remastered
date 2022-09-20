@@ -19,6 +19,8 @@ public:
     void update() override;
     void draw() const override;
 
+    // 自機の位置を問い合わせられるようにする
+    Vec2 get_player_pos() const;
 private:
     //int _level;
     // ここでシーン内で動かすものへのポインタを保持しておき, updateやdrawを適用することで更新を行っていく.

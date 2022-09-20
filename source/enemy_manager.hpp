@@ -7,6 +7,9 @@
 #include "abstract_enemy.hpp"
 #include "task.hpp"
 
+// 循環参照回避用の宣言
+class GameScene;
+
 /**
  * @brief 敵の出現や移動・攻撃等の情報を格納する構造体. ファイルから読み込んで作成し, 実体の生成に使う
  */
@@ -19,12 +22,16 @@ struct EnemyInfo {
 
 class EnemyManager : public Task {
 public:
-    EnemyManager();
+    EnemyManager(GameScene* scene);
     virtual ~EnemyManager() = default;
     bool update() override;
     void draw() const override;
 
+    Vec2 get_player_pos() const;
+
 private:
+    //! @brief 敵管理クラスはゲームシーンへのポインタを持つ. これにより公開された情報に限って敵管理クラスが様々な情報にアクセスできる.
+    GameScene* _game_scene;
     int _counter;
     /**
      * @brief 敵の出現情報をcsvファイルから読み込んで格納する.
