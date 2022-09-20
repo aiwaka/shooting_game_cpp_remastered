@@ -5,8 +5,19 @@
 
 EnemyMover::EnemyMover() {
     _move_pattern.push_back(&EnemyMover::move_pattern_00);
-    _move_pattern.push_back(&EnemyMover::move_pattern_01);
-    _move_pattern.push_back(&EnemyMover::move_pattern_02);
+    _move_pattern.push_back(&EnemyMover::move_pattern_dummy);
+    _move_pattern.push_back(&EnemyMover::move_pattern_dummy);
+    _move_pattern.push_back(&EnemyMover::move_pattern_dummy);
+    _move_pattern.push_back(&EnemyMover::move_pattern_dummy);
+    _move_pattern.push_back(&EnemyMover::move_pattern_05);
+    _move_pattern.push_back(&EnemyMover::move_pattern_06);
+    _move_pattern.push_back(&EnemyMover::move_pattern_dummy);
+    _move_pattern.push_back(&EnemyMover::move_pattern_dummy);
+    _move_pattern.push_back(&EnemyMover::move_pattern_09);
+    _move_pattern.push_back(&EnemyMover::move_pattern_dummy);
+    _move_pattern.push_back(&EnemyMover::move_pattern_11);
+    _move_pattern.push_back(&EnemyMover::move_pattern_12);
+    _move_pattern.push_back(&EnemyMover::move_pattern_13);
 }
 
 void EnemyMover::move(AbstractEnemy* enemy)
@@ -19,6 +30,8 @@ void EnemyMover::move(AbstractEnemy* enemy)
     enemy->set_pos(enemy->get_pos() + enemy->get_speed());
 }
 
+
+void EnemyMover::move_pattern_dummy(AbstractEnemy* enemy) {}
 
 void EnemyMover::move_pattern_00(AbstractEnemy* enemy) {
     const int count = enemy->get_counter();
@@ -36,15 +49,55 @@ void EnemyMover::move_pattern_00(AbstractEnemy* enemy) {
     }
 }
 
-void EnemyMover::move_pattern_01(AbstractEnemy* enemy) {
+void EnemyMover::move_pattern_05(AbstractEnemy* enemy) {
     int count = enemy->get_counter();
     if (count == 0) {
-        enemy->set_speed(Vec2{ -4.0f, 4.0f });
+        enemy->set_speed(Vec2{ -1.0f, 2.0f });
     }
 }
-void EnemyMover::move_pattern_02(AbstractEnemy* enemy) {
+void EnemyMover::move_pattern_06(AbstractEnemy* enemy) {
     int count = enemy->get_counter();
     if (count == 0) {
-        enemy->set_speed(Vec2{ 4.0f, 4.0f });
+        enemy->set_speed(Vec2{ 1.0f, 2.0f });
+    }
+}
+void EnemyMover::move_pattern_09(AbstractEnemy* enemy) {
+    int count = enemy->get_counter();
+    if (count == 360) {
+        enemy->set_speed(Vec2{ 0.0f, -3.0f });
+    }
+}
+// 自機の位置を取得できるようにしたときに実装
+void EnemyMover::move_pattern_11(AbstractEnemy* enemy) {
+    int count = enemy->get_counter();
+}
+void EnemyMover::move_pattern_12(AbstractEnemy* enemy) {
+    const int count = enemy->get_counter();
+    const int wait = 20;
+    if (count == 0) {
+        enemy->set_speed(Vec2{ 3.0f, 0.0f });
+    }
+    // 50カウントで停止
+    if (count == 50) {
+        enemy->set_speed(Vec2{});
+    }
+    // 70カウントで再び移動開始
+    if (count == 50 + wait) {
+        enemy->set_speed(Vec2{ 3.0f, 0.0f });
+    }
+}
+void EnemyMover::move_pattern_13(AbstractEnemy* enemy) {
+    const int count = enemy->get_counter();
+    const int wait = 20;
+    if (count == 0) {
+        enemy->set_speed(Vec2{ -3.0f, 0.0f });
+    }
+    // 50カウントで停止
+    if (count == 50) {
+        enemy->set_speed(Vec2{});
+    }
+    // 70カウントで再び移動開始
+    if (count == 50 + wait) {
+        enemy->set_speed(Vec2{ -3.0f, 0.0f });
     }
 }

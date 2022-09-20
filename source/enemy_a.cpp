@@ -5,7 +5,7 @@
 #include "utils.hpp"
 
 EnemyA::EnemyA(EnemyInfo& info) : AbstractEnemy(info) {
-    _move_pattern_id = 0;
+    //_move_pattern_id = 0;
 }
 
 void EnemyA::draw() const {
