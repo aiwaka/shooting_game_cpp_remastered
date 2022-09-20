@@ -1,6 +1,11 @@
 #include "image_manager.hpp"
 
 ImageManager::ImageManager() {
+    load();
+}
+
+// ‚ ‚Æ‚Å‘‚­
+void ImageManager::load() {
     _board[0] = app_load_graph("./dat/img/10.png");
     _board[1] = app_load_graph("./dat/img/11.png");
     _board[2] = app_load_graph("./dat/img/12.png");
@@ -14,9 +19,6 @@ ImageManager::ImageManager() {
     app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemy_a);
     app_load_div_graph("./dat/img/enemy_b.png", 3, 3, 1, 30, 40, _enemy_b);
 }
-
-// ‚ ‚Æ‚Å‘‚­
-void ImageManager::load() {}
 
 void ImageManager::release() {
     const size_t size = _images.size();

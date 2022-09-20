@@ -29,15 +29,26 @@ protected:
 
     EnemyMover _mover;
 
+    int _counter;
+    int _move_pattern_id;
+    int _enemy_type_id;
     Vec2 _pos;
     Vec2 _speed;
+    //! @brief 弾幕を撃ち始めるカウント
+    int _start_fire_count;
+    int _fire_pattern_id;
+    int hp;
+    int _bullet_id;
+    int _bullet_color;
+    //! @brief 移動で使う、待機時間
+    int _wait_time;
+    //! @brief アイテムidを6個まで入れられる.
+    int _item_slot[6];
 
-    int _counter;
     //! @brief テクスチャの大きさ
     int _texture_width;
     int _texture_height;
 
-    int _move_pattern_id;
 };
 
 inline Vec2 AbstractEnemy::get_pos() const { return _pos; }

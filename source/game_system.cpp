@@ -19,6 +19,8 @@ bool GameSystem::initialize() const {
     SetWindowText("GameTitle");
     //ウィンドウモードに変更
     ChangeWindowMode(TRUE);
+    // フォントサイズ変更
+    SetFontSize(16);
     //ウィンドウサイズを変更したい時はここに倍率を指定する
     //	SetWindowSizeExtendRate(1.0);
     //色のbit数。通常32で良いが軽くするなら16にする
@@ -27,6 +29,17 @@ bool GameSystem::initialize() const {
     SetGraphMode(GlobalValues::SCREEN_WIDTH, GlobalValues::SCREEN_HEIGHT, COLOR_BIT);
     // 初期化失敗したら終了する
     if (DxLib_Init()) return false;
+    /*
+    デバッグ用　コンソール出力
+    */
+    FILE* dummy;
+    AllocConsole();
+    freopen_s(&dummy, "CONOUT$", "w", stdout);
+    // デバッグコンソールがアクティブウィンドウになるので
+    // ゲーム本体のウィンドウをアクティブにする
+    SetForegroundWindow(GetMainWindowHandle());
+    /*ここまで*/
+
     //裏画面処理を設定する
     SetDrawScreen(DX_SCREEN_BACK);
     return true;
@@ -34,6 +47,8 @@ bool GameSystem::initialize() const {
 
 void GameSystem::finalize() const {
     DxLib_End();
+    /*デバッグ*/
+    FreeConsole();
 }
 
 void GameSystem::main() const {

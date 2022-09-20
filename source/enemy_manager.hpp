@@ -2,8 +2,19 @@
 
 #include <memory>
 #include <list>
+#include <string>
 #include "abstract_enemy.hpp"
 #include "task.hpp"
+
+/**
+ * @brief 敵の出現や移動・攻撃等の情報を格納する構造体. ファイルから読み込んで作成し, 実体の生成に使う
+ */
+struct EnemyInfo {
+    // _speedは不要と思われるので後で消す
+    int spawn_count, move_pattern, enemy_type, start_fire_count, fire_pattern, bullet_id, bullet_color, hp, wait_time;
+    float x, y, _speed;
+    int item[6];
+};
 
 class EnemyManager : public Task {
 public:
@@ -13,6 +24,13 @@ public:
     void draw() const override;
 
 private:
+    /**
+     * @brief 敵の出現情報をcsvファイルから読み込んで格納する.
+     * @brief csvの書式はデータファイル自体を参照のこと.
+     */
+    void load_enemy_story(std::string filename);
     std::list<std::shared_ptr<AbstractEnemy>> _list;
+    std::list<EnemyInfo> _enemy_info_list;
+
 };
 
