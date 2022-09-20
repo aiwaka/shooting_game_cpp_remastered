@@ -13,3 +13,6 @@ Vec2 Vec2::rotate(float angle) const {
     float sinAngle = std::sin(angle);
     return Vec2{ cosAngle * this->x - sinAngle * this->y, sinAngle * this->x + cosAngle * this->x };
 }
+Vec2 Vec2::clamp(const Vec2 min, const Vec2 max) const {
+    return Vec2{ utils::clamp(x, min.x, max.x), utils::clamp(y, min.y, max.y) };
+}

@@ -14,5 +14,4 @@ private:
     void move();
 
     Vec2 _pos;
-    int _image;
 };

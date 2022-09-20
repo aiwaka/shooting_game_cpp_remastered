@@ -7,3 +7,9 @@ float utils::round_point(float val, int point) {
     ret = static_cast<float>(static_cast<int>(ret + 0.5f));
     return ret * std::pow(10.0f, -point + 1);
 }
+
+float utils::clamp(const float val, const float min, const float max) {
+    if (val > max) return max;
+    if (val < min) return min;
+    return val;
+}

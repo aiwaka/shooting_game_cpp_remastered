@@ -78,6 +78,15 @@
     <ClCompile Include="source\image_manager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="source\board.cpp">
+      <Filter>ソース ファイル\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\abstract_bg.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\background.cpp">
+      <Filter>ソース ファイル\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -139,6 +148,15 @@
     </ClInclude>
     <ClInclude Include="source\image_manager.hpp">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\board.hpp">
+      <Filter>ヘッダー ファイル\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\abstract_bg.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\background.hpp">
+      <Filter>ヘッダー ファイル\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,7 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\abstract_bg.cpp" />
     <ClCompile Include="source\abstract_scene.cpp" />
+    <ClCompile Include="source\background.cpp" />
+    <ClCompile Include="source\board.cpp" />
     <ClCompile Include="source\error.cpp" />
     <ClCompile Include="source\euclid_vec.cpp" />
     <ClCompile Include="source\frame_rate_manager.cpp" />
@@ -38,7 +41,10 @@
     <ClCompile Include="source\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\abstract_bg.hpp" />
     <ClInclude Include="source\abstract_scene.hpp" />
+    <ClInclude Include="source\background.hpp" />
+    <ClInclude Include="source\board.hpp" />
     <ClInclude Include="source\error.hpp" />
     <ClInclude Include="source\euclid_vec.hpp" />
     <ClInclude Include="source\frame_rate_manager.hpp" />

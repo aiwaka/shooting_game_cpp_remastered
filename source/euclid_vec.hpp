@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include "utils.hpp"
 
 struct Vec2
 {
@@ -40,8 +41,10 @@ struct Vec2
     Vec2 rotate(const float angle) const;
     //! @brief 正規化したベクトルを返す.
     Vec2 normalized() const;
+    //! @brief minベクトルとmaxベクトルによる矩形の範囲に収めたベクトルを返す
+    Vec2 clamp(const Vec2 min, const Vec2 max) const;
 
-    /// 演算子オーバーロード
+    //! 演算子オーバーロード
     // unary plus は自身のインスタンスの値を返せばよい（コピーされる？）
     constexpr Vec2 operator +() const {
         return *this;

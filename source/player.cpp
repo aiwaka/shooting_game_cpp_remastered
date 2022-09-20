@@ -1,13 +1,14 @@
+#include <DxLib.h>
+
+#include "global_define.hpp"
 #include "player.hpp"
 #include "pad_input.hpp"
 #include "image_manager.hpp"
-#include <DxLib.h>
 
 constexpr float SPEED = 9.0f;
 
-Player::Player() : _pos(Vec2{ 100.0f, 100.0f }) {
-    _image = LoadGraph("./dat/img/atari.png");
-}
+Player::Player() : _pos(Vec2{ static_cast<float>(GlobalValues::CENTER_X), static_cast<float>(GlobalValues::OUT_HEIGHT) * 0.8f }) {}
+
 bool Player::update() {
     move();
     return true;
@@ -44,4 +45,10 @@ void Player::move()
     }
     _pos.x += moveX;
     _pos.y += moveY;
+    // ÉQÅ[ÉÄç¿ïWÇÃè„â∫îΩì]Ç…ãCÇÇ¬ÇØÇÈ
+    const float IN_TOP_LEFT_X = GlobalValues::IN_TOP_LEFT_X;
+    const float IN_TOP_LEFT_Y = GlobalValues::IN_TOP_LEFT_Y;
+    const float IN_BOTTOM_RIGHT_X = GlobalValues::IN_TOP_LEFT_X + GlobalValues::IN_WIDTH;
+    const float IN_BOTTOM_RIGHT_Y = GlobalValues::IN_TOP_LEFT_Y + GlobalValues::IN_HEIGHT;
+    _pos = _pos.clamp(Vec2{ IN_TOP_LEFT_X, IN_TOP_LEFT_Y }, Vec2{ IN_BOTTOM_RIGHT_X, IN_BOTTOM_RIGHT_Y });
 }
