@@ -12,12 +12,23 @@ void ImageManager::load() {
     _board[3] = app_load_graph("./dat/img/20.png");
     _background = app_load_graph("./dat/img/backg_2.png");
 
+    // ƒ|[ƒY‰æ‘œ‚ğ“Ç‚İ‚İ
+    _pause_bg = LoadPauseGraph("./dat/img/pause.png");
+
     // ©‹@‰æ‘œ
     app_load_div_graph("./dat/img/player1.png", 6, 2, 3, 70, 60, _player_a);
 
     // “G‰æ‘œ
     app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemy_a);
     app_load_div_graph("./dat/img/enemy_b.png", 3, 3, 1, 30, 40, _enemy_b);
+
+    // “G’e‰æ‘œ
+    app_load_div_graph("dat/img/bullet_0.png", 6, 6, 1, 64, 64, _enemy_bullet[0]);//Œõ’e
+    app_load_div_graph("dat/img/bullet_1.png", 6, 6, 1, 60, 28, _enemy_bullet[1]);//•Ä—±’e
+    app_load_div_graph("dat/img/bullet_2.png", 6, 6, 1, 60, 28, _enemy_bullet[2]);//•Ä—±’eF”½“]
+    app_load_div_graph("dat/img/bullet_3.png", 6, 6, 1, 25, 20, _enemy_bullet[3]);//D’e
+    app_load_div_graph("dat/img/bullet_4.png", 6, 6, 1, 60, 60, _enemy_bullet[4]);//’†’e
+    app_load_div_graph("dat/img/bullet_5.png", 6, 6, 1, 80, 80, _enemy_bullet[5]);//¶’e
 }
 
 void ImageManager::release() {
@@ -42,6 +53,9 @@ const int* ImageManager::get_enemy_a() const {
 }
 const int* ImageManager::get_enemy_b() const {
     return _enemy_b;
+}
+const int ImageManager::get_enemy_bullet(int type, int color) const {
+    return _enemy_bullet[type][color];
 }
 
 int ImageManager::app_load_graph(std::string filename) {

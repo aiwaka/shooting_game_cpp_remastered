@@ -26,7 +26,9 @@ void EnemyMover::move(AbstractEnemy* enemy)
     if (pattern_id >= _move_pattern.size()) {
         APP_SYSTEM_ERROR("move_pattern_idが不正です");
     }
+    // ここで位置や速度を書き換える. enemyのポインタ渡しによってAbstractEnemyのpublicメソッドを自由に使える.
     (this->*_move_pattern[pattern_id])(enemy);
+    // 変更された速度による位置変化を反映する.
     enemy->set_pos(enemy->get_pos() + enemy->get_speed());
 }
 

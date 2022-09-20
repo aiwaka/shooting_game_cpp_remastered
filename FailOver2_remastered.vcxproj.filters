@@ -31,6 +31,18 @@
     <Filter Include="ソース ファイル\components\enemies">
       <UniqueIdentifier>{2ccfea81-30b6-4902-afa0-600cc5ba46b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\assets">
+      <UniqueIdentifier>{ea3eece4-891c-408c-b479-71b39431349e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\assets">
+      <UniqueIdentifier>{84702469-010d-4b13-b440-805640582cea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\components\enemy_attack">
+      <UniqueIdentifier>{d7d2e033-6031-4a6a-9e44-3f3ebe6b06f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\components\enemy_attack">
+      <UniqueIdentifier>{605eb99f-986b-4b43-ad9d-fc5a5a6b6fe9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\game_system.cpp">
@@ -47,9 +59,6 @@
     </ClCompile>
     <ClCompile Include="source\title_scene.cpp">
       <Filter>ソース ファイル\scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="source\abstract_scene.cpp">
-      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\i_on_changed_listener.cpp">
       <Filter>ソース ファイル</Filter>
@@ -81,28 +90,40 @@
     <ClCompile Include="source\euclid_vec.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="source\image_manager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="source\board.cpp">
       <Filter>ソース ファイル\components</Filter>
-    </ClCompile>
-    <ClCompile Include="source\abstract_bg.cpp">
-      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\background.cpp">
       <Filter>ソース ファイル\components</Filter>
     </ClCompile>
-    <ClCompile Include="source\enemy_manager.cpp">
+    <ClCompile Include="source\enemy_a.cpp">
+      <Filter>ソース ファイル\components\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\image_manager.cpp">
+      <Filter>ソース ファイル\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="source\abstract_bg.cpp">
+      <Filter>ソース ファイル\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\abstract_scene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="source\abstract_enemy.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="source\enemy_manager.cpp">
+      <Filter>ソース ファイル\components\enemies</Filter>
     </ClCompile>
     <ClCompile Include="source\enemy_mover.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\components\enemies</Filter>
     </ClCompile>
-    <ClCompile Include="source\enemy_a.cpp">
+    <ClCompile Include="source\enemy_bullet.cpp">
+      <Filter>ソース ファイル\components\enemy_attack</Filter>
+    </ClCompile>
+    <ClCompile Include="source\enemy_bullet_manager.cpp">
+      <Filter>ソース ファイル\components\enemy_attack</Filter>
+    </ClCompile>
+    <ClCompile Include="source\enemy_attack.cpp">
+      <Filter>ソース ファイル\components\enemy_attack</Filter>
+    </ClCompile>
+    <ClCompile Include="source\abstract_enemy.cpp">
       <Filter>ソース ファイル\components\enemies</Filter>
     </ClCompile>
   </ItemGroup>
@@ -118,9 +139,6 @@
     </ClInclude>
     <ClInclude Include="source\title_scene.hpp">
       <Filter>ヘッダー ファイル\scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="source\abstract_scene.hpp">
-      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\i_on_changed_listener.hpp">
       <Filter>ヘッダー ファイル</Filter>
@@ -164,28 +182,40 @@
     <ClInclude Include="source\euclid_vec.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="source\image_manager.hpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="source\board.hpp">
       <Filter>ヘッダー ファイル\components</Filter>
-    </ClInclude>
-    <ClInclude Include="source\abstract_bg.hpp">
-      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\background.hpp">
       <Filter>ヘッダー ファイル\components</Filter>
     </ClInclude>
-    <ClInclude Include="source\enemy_manager.hpp">
+    <ClInclude Include="source\enemy_a.hpp">
+      <Filter>ヘッダー ファイル\components\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="source\image_manager.hpp">
+      <Filter>ヘッダー ファイル\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="source\abstract_bg.hpp">
+      <Filter>ヘッダー ファイル\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\abstract_scene.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="source\abstract_enemy.hpp">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="source\enemy_manager.hpp">
+      <Filter>ヘッダー ファイル\components\enemies</Filter>
     </ClInclude>
     <ClInclude Include="source\enemy_mover.hpp">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\components\enemies</Filter>
     </ClInclude>
-    <ClInclude Include="source\enemy_a.hpp">
+    <ClInclude Include="source\enemy_bullet.hpp">
+      <Filter>ヘッダー ファイル\components\enemy_attack</Filter>
+    </ClInclude>
+    <ClInclude Include="source\enemy_bullet_manager.hpp">
+      <Filter>ヘッダー ファイル\components\enemy_attack</Filter>
+    </ClInclude>
+    <ClInclude Include="source\enemy_attack.hpp">
+      <Filter>ヘッダー ファイル\components\enemy_attack</Filter>
+    </ClInclude>
+    <ClInclude Include="source\abstract_enemy.hpp">
       <Filter>ヘッダー ファイル\components\enemies</Filter>
     </ClInclude>
   </ItemGroup>

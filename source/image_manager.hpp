@@ -19,6 +19,9 @@ public:
     const int* get_enemy_a() const;
     const int* get_enemy_b() const;
 
+    const int get_enemy_bullet(int type, int color) const;
+
+
 private:
     /**
      * @brief 画像を読み込み, そのデータへのハンドル整数を返す.
@@ -36,7 +39,12 @@ private:
 
     int _player_a[6];
     int _board[4];
+    //! @brief ポーズ状態の画像
+    int _pause_bg;
     int _background;
     int _enemy_a[3];
     int _enemy_b[3];
+
+    //! @brief 6種類x6色の配列とするが, 欠けている色もある.（ただの透過画像となるので表示されない）
+    int _enemy_bullet[6][6];
 };

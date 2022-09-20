@@ -1,11 +1,14 @@
 #pragma once
 
 #include <array>
+#include <memory>
+#include <list>
 #include "task.hpp"
 #include "euclid_vec.hpp"
 #include "enemy_mover.hpp"
+#include "enemy_attack.hpp"
+#include "enemy_bullet.hpp"
 
-class EnemyMover;
 class EnemyManager;
 struct EnemyInfo;
 
@@ -23,8 +26,8 @@ public:
     void set_speed(Vec2 speed);
     int get_move_pattern() const;
     int get_enemy_type_id() const;
-    int get_start_fire_count() const;
-    int get_fire_pattern_id() const;
+    int get_start_attack_count() const;
+    int get_attack_pattern_id() const;
     int get_hp() const;
     void modify_hp(int delta);
     int get_bullet_id() const;
@@ -34,6 +37,8 @@ public:
     // 敵管理クラスへのポインタを通じて自機の情報を得られるようにする
     Vec2 get_player_pos() const;
 
+    void push_bullet(std::shared_ptr<EnemyBullet> bullet);
+
 protected:
     virtual void set_size() = 0;
     /**
@@ -42,6 +47,9 @@ protected:
     bool is_inside_field() const;
 
     EnemyMover _mover;
+    EnemyAttack _attack;
+    //! @brief この敵が撃った弾のポインタリスト
+    std::list<std::shared_ptr<EnemyBullet>> _bullet_list;
     // 自分を管理するマネージャへの問い合わせ用ポインタ
     EnemyManager* _manager;
 
@@ -51,8 +59,8 @@ protected:
     Vec2 _pos;
     Vec2 _speed;
     //! @brief 弾幕を撃ち始めるカウント
-    int _start_fire_count;
-    int _fire_pattern_id;
+    int _start_attack_count;
+    int _attack_pattern_id;
     int _hp;
     int _bullet_id;
     int _bullet_color;
@@ -74,8 +82,8 @@ inline Vec2 AbstractEnemy::get_speed() const { return _speed; }
 inline void AbstractEnemy::set_speed(Vec2 speed) { _speed = speed; }
 inline int AbstractEnemy::get_move_pattern() const { return _move_pattern_id; }
 inline int AbstractEnemy::get_enemy_type_id() const { return _enemy_type_id; }
-inline int AbstractEnemy::get_start_fire_count() const { return _start_fire_count; }
-inline int AbstractEnemy::get_fire_pattern_id() const { return _fire_pattern_id; }
+inline int AbstractEnemy::get_start_attack_count() const { return _start_attack_count; }
+inline int AbstractEnemy::get_attack_pattern_id() const { return _attack_pattern_id; }
 inline int AbstractEnemy::get_hp() const { return _hp; }
 inline void AbstractEnemy::modify_hp(int delta) { _hp += delta; }
 inline int AbstractEnemy::get_bullet_id() const { return _bullet_id; }

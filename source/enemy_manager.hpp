@@ -4,6 +4,7 @@
 #include <list>
 #include <string>
 #include <array>
+#include "enemy_bullet.hpp"
 #include "abstract_enemy.hpp"
 #include "task.hpp"
 
@@ -15,7 +16,7 @@ class GameScene;
  */
 struct EnemyInfo {
     // _speed, wait_timeは不要と思われるので後で消す
-    int spawn_count, move_pattern, enemy_type, start_fire_count, fire_pattern, bullet_id, bullet_color, hp, wait_time;
+    int spawn_count, move_pattern, enemy_type, start_attack_count, attack_pattern, bullet_id, bullet_color, hp, wait_time;
     float x, y, _speed;
     std::array<int, 6> item;
 };
@@ -39,6 +40,11 @@ private:
      */
     void load_enemy_story(std::string filename);
     std::list<std::shared_ptr<AbstractEnemy>> _list;
+    /**
+     * @brief 敵情報を一括で保存しておくためのリスト.
+     * @brief これを毎フレーム読んで, 定刻に登録を行う.
+     * @brief TODO: カウントがソートされている保証があれば速い実装に変更できる
+     */
     std::list<EnemyInfo> _enemy_info_list;
 
 };

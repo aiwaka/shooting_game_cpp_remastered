@@ -38,8 +38,8 @@ void EnemyManager::load_enemy_story(std::string filename) {
             case 3: new_enemy_info.x = stof(data_buf); break;
             case 4: new_enemy_info.y = stof(data_buf); break;
             case 5: new_enemy_info._speed = stof(data_buf); break;
-            case 6: new_enemy_info.start_fire_count = stoi(data_buf); break;
-            case 7: new_enemy_info.fire_pattern = stoi(data_buf); break;
+            case 6: new_enemy_info.start_attack_count = stoi(data_buf); break;
+            case 7: new_enemy_info.attack_pattern = stoi(data_buf); break;
             case 8: new_enemy_info.bullet_color = stoi(data_buf); break;
             case 9: new_enemy_info.hp = stoi(data_buf); break;
             case 10:new_enemy_info.bullet_id = stoi(data_buf); break;
@@ -72,7 +72,6 @@ EnemyManager::EnemyManager(GameScene* scene) {
 }
 
 bool EnemyManager::update() {
-    ++_counter;
     for (auto& enemy_info : _enemy_info_list) {
         if (enemy_info.spawn_count == _counter) {
             _list.emplace_back(std::make_shared<EnemyA>(enemy_info, this));
@@ -89,6 +88,7 @@ bool EnemyManager::update() {
     }
     clsDx();
     printfDx("count : %d\n", _counter);
+    ++_counter;
     return true;
 }
 
@@ -102,3 +102,4 @@ void EnemyManager::draw() const {
 Vec2 EnemyManager::get_player_pos() const {
     return _game_scene->get_player_pos();
 }
+

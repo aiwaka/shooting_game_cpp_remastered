@@ -21,10 +21,13 @@
   <ItemGroup>
     <ClCompile Include="source\abstract_bg.cpp" />
     <ClCompile Include="source\abstract_enemy.cpp" />
+    <ClCompile Include="source\enemy_attack.cpp" />
+    <ClCompile Include="source\enemy_bullet.cpp" />
     <ClCompile Include="source\abstract_scene.cpp" />
     <ClCompile Include="source\background.cpp" />
     <ClCompile Include="source\board.cpp" />
     <ClCompile Include="source\enemy_a.cpp" />
+    <ClCompile Include="source\enemy_bullet_manager.cpp" />
     <ClCompile Include="source\enemy_manager.cpp" />
     <ClCompile Include="source\enemy_mover.cpp" />
     <ClCompile Include="source\error.cpp" />
@@ -47,10 +50,13 @@
   <ItemGroup>
     <ClInclude Include="source\abstract_bg.hpp" />
     <ClInclude Include="source\abstract_enemy.hpp" />
+    <ClInclude Include="source\enemy_attack.hpp" />
+    <ClInclude Include="source\enemy_bullet.hpp" />
     <ClInclude Include="source\abstract_scene.hpp" />
     <ClInclude Include="source\background.hpp" />
     <ClInclude Include="source\board.hpp" />
     <ClInclude Include="source\enemy_a.hpp" />
+    <ClInclude Include="source\enemy_bullet_manager.hpp" />
     <ClInclude Include="source\enemy_manager.hpp" />
     <ClInclude Include="source\enemy_mover.hpp" />
     <ClInclude Include="source\error.hpp" />

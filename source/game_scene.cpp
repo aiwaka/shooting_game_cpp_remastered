@@ -33,3 +33,4 @@ void GameScene::draw() const {
 Vec2 GameScene::get_player_pos() const {
     return _player->get_pos();
 }
+

@@ -7,6 +7,8 @@
 #include "abstract_bg.hpp"
 #include "background.hpp"
 #include "enemy_manager.hpp"
+#include "enemy_bullet.hpp"
+#include "enemy_bullet_manager.hpp"
 
 class GameScene : public AbstractScene {
 public:
