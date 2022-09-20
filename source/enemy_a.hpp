@@ -1,10 +1,11 @@
 #pragma once
 
+#include "enemy_manager.hpp"
 #include "abstract_enemy.hpp"
 
 class EnemyA final : public AbstractEnemy {
 public:
-    EnemyA(float x, float y);
+    EnemyA(EnemyInfo& info);
     ~EnemyA() = default;
     void draw() const override;
 

@@ -2,7 +2,6 @@
 #include "enemy_manager.hpp"
 #include "global_define.hpp"
 #include "enemy_a.hpp"
-#include "enemy_b.hpp"
 #include "macro.hpp"
 
 #include <fstream>
@@ -59,11 +58,11 @@ void EnemyManager::load_enemy_story(std::string filename) {
 }
 
 EnemyManager::EnemyManager() {
-    load_enemy_story("./dat/csv/storyH0.csv");
-    //_list.emplace_back(std::make_shared<EnemyA>(GlobalValues::CENTER_X, 100.0));
-    //_list.emplace_back(std::make_shared<EnemyB>(GlobalValues::CENTER_X - 100.0, 100.0));
+    _counter = 0;
 
     // csvから敵情報を読み込み
+    load_enemy_story("./dat/csv/storyH0.csv");
+    //_list.emplace_back(std::make_shared<EnemyA>(GlobalValues::CENTER_X, 100.0));
 
     for (auto enemy : _list) {
         enemy->initialize();
@@ -71,6 +70,12 @@ EnemyManager::EnemyManager() {
 }
 
 bool EnemyManager::update() {
+    ++_counter;
+    for (auto& enemy_info : _enemy_info_list) {
+        if (enemy_info.spawn_count == _counter) {
+            _list.emplace_back(std::make_shared<EnemyA>(enemy_info));
+        }
+    }
     for (auto iter = _list.begin(); iter != _list.end();) {
         if (!((*iter)->update())) {
             // イテレータを用いてループして, updateがfalseになったものが取り除かれるように
@@ -80,6 +85,8 @@ bool EnemyManager::update() {
             ++iter;
         }
     }
+    clsDx();
+    printfDx("count : %d\n", _counter);
     return true;
 }
 

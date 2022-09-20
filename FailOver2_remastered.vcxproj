@@ -25,7 +25,6 @@
     <ClCompile Include="source\background.cpp" />
     <ClCompile Include="source\board.cpp" />
     <ClCompile Include="source\enemy_a.cpp" />
-    <ClCompile Include="source\enemy_b.cpp" />
     <ClCompile Include="source\enemy_manager.cpp" />
     <ClCompile Include="source\enemy_mover.cpp" />
     <ClCompile Include="source\error.cpp" />
@@ -52,7 +51,6 @@
     <ClInclude Include="source\background.hpp" />
     <ClInclude Include="source\board.hpp" />
     <ClInclude Include="source\enemy_a.hpp" />
-    <ClInclude Include="source\enemy_b.hpp" />
     <ClInclude Include="source\enemy_manager.hpp" />
     <ClInclude Include="source\enemy_mover.hpp" />
     <ClInclude Include="source\error.hpp" />

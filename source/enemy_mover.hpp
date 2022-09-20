@@ -22,5 +22,33 @@ private:
     void move_pattern_01(AbstractEnemy* enemy);
     //! @brief 右下へ移動
     void move_pattern_02(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_03(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_04(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_05(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_06(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_07(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_08(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_09(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_10(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_11(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_12(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_13(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_14(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_15(AbstractEnemy* enemy);
+    //! @brief 右下へ移動
+    void move_pattern_16(AbstractEnemy* enemy);
 };
 

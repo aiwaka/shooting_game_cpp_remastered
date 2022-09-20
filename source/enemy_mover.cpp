@@ -26,11 +26,13 @@ void EnemyMover::move_pattern_00(AbstractEnemy* enemy) {
     if (count == 0) {
         enemy->set_speed(Vec2{ 0.0f, 3.0f });
     }
-    if (60 < count && count <= 90) {
-        enemy->set_speed(enemy->get_speed() - Vec2{ 0.0f, 0.1f });
+    // 40カウントまでに停止
+    if (30 < count && count <= 40) {
+        enemy->set_speed(enemy->get_speed() - Vec2{ 0.0f, 0.3f });
     }
-    if (90 + wait < count && count <= 90 + wait + 30) {
-        enemy->set_speed(enemy->get_speed() + Vec2{ 0.0f, 0.1f });
+    // 180カウント待機してから20カウントかけて加速して上昇
+    if (40 + wait < count && count <= 40 + wait + 20) {
+        enemy->set_speed(enemy->get_speed() - Vec2{ 0.0f, 0.15f });
     }
 }
 

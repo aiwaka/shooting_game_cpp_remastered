@@ -4,6 +4,7 @@
 #include "player.hpp"
 #include "pad_input.hpp"
 #include "image_manager.hpp"
+#include "utils.hpp"
 
 constexpr float SPEED = 6.0f;
 
@@ -26,7 +27,7 @@ void Player::draw() const {
     if (_move_dir.x > 0.0) idx = 2;
     if (_move_dir.x < 0.0) idx = 4;
     idx += (_counter / 15) % 2 == 0 ? 0 : 1;
-    DrawRotaGraphF(_pos.x, _pos.y, 1.0, 0.0, img_manager->get_player_a()[idx], 1);
+    utils::DrawRotaGraphF_Screen(_pos.x, _pos.y, 1.0, 0.0, img_manager->get_player_a()[idx], 1);
 }
 void Player::move()
 {

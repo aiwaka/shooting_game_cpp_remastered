@@ -105,9 +105,6 @@
     <ClCompile Include="source\enemy_a.cpp">
       <Filter>ソース ファイル\components\enemies</Filter>
     </ClCompile>
-    <ClCompile Include="source\enemy_b.cpp">
-      <Filter>ソース ファイル\components\enemies</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -189,9 +186,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\enemy_a.hpp">
-      <Filter>ヘッダー ファイル\components\enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="source\enemy_b.hpp">
       <Filter>ヘッダー ファイル\components\enemies</Filter>
     </ClInclude>
   </ItemGroup>
