@@ -11,12 +11,12 @@ EnemyBulletManager::EnemyBulletManager(GameScene* scene) {
 
 bool EnemyBulletManager::update() {
     for (auto iter = _bullet_list.begin(); iter != _bullet_list.end();) {
-        if (!((*iter)->update())) {
-            // イテレータを用いてループして, updateがfalseになったものが取り除かれるように
-            iter = _bullet_list.erase(iter);
+        if ((*iter)->update()) {
+            ++iter;
         }
         else {
-            ++iter;
+            // イテレータを用いてループして, updateがfalseになったものが取り除かれるように
+            iter = _bullet_list.erase(iter);
         }
     }
     ++_counter;

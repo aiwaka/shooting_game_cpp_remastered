@@ -13,11 +13,11 @@ bool PlayerBulletManager::update() {
     collision_against_enemies();
     // ‘S’e‚ğXV, update‚ªfalse‚Å•Ô‚Á‚Ä‚«‚½‚à‚Ì‚ÍÁ‹‚·‚é
     for (auto iter = _bullet_list.begin(); iter != _bullet_list.end();) {
-        if (!((*iter)->update())) {
-            iter = _bullet_list.erase(iter);
+        if ((*iter)->update()) {
+            ++iter;
         }
         else {
-            ++iter;
+            iter = _bullet_list.erase(iter);
         }
     }
     ++_counter;

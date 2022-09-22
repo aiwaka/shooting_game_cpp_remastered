@@ -83,12 +83,12 @@ bool EnemyManager::update() {
         }
     }
     for (auto iter = _list.begin(); iter != _list.end();) {
-        if (!((*iter)->update())) {
-            // イテレータを用いてループして, updateがfalseになったものが取り除かれるように
-            iter = _list.erase(iter);
+        if ((*iter)->update()) {
+            ++iter;
         }
         else {
-            ++iter;
+            // イテレータを用いてループして, updateがfalseになったものが取り除かれるように
+            iter = _list.erase(iter);
         }
     }
     // 敵弾管理クラスも更新
