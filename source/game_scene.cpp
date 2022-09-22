@@ -11,6 +11,7 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     _board = std::make_shared<Board>();
     _enemy_manager = std::make_shared<EnemyManager>(this);
     _player_bullet_manager = std::make_shared<PlayerBulletManager>(this);
+    _effect_manager = std::make_shared<EffectManager>(this);
     _player = std::make_shared<Player>(_player_bullet_manager);
 }
 
@@ -19,6 +20,7 @@ void GameScene::update() {
     _player->update();
     _enemy_manager->update();
     _player_bullet_manager->update();
+    _effect_manager->update();
     _board->update();
 }
 
@@ -28,6 +30,7 @@ void GameScene::draw() const {
     _player->draw();
     _enemy_manager->draw();
     _player_bullet_manager->draw();
+    _effect_manager->draw();
     _board->draw();
     //DrawFormatString(100, 100, GetColor(255, 255, 255), "level %d", _level);
 }
@@ -38,4 +41,7 @@ Vec2 GameScene::get_player_pos() const {
 }
 std::list<std::shared_ptr<AbstractEnemy>> GameScene::get_all_enemies_iterator() const {
     return this->_enemy_manager->get_all_enemies_iterator();
+}
+void GameScene::set_effect(std::shared_ptr<AbstractEffect> effect) {
+    _effect_manager->push_effect(effect);
 }

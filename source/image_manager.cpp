@@ -33,6 +33,9 @@ void ImageManager::load() {
     app_load_div_graph("dat/img/bullet_3.png", 6, 6, 1, 25, 20, _enemy_bullet[3]);//ŽD’e
     app_load_div_graph("dat/img/bullet_4.png", 6, 6, 1, 60, 60, _enemy_bullet[4]);//’†’e
     app_load_div_graph("dat/img/bullet_5.png", 6, 6, 1, 80, 80, _enemy_bullet[5]);//ž¶’e
+
+    // “GŒ‚”jƒGƒtƒFƒNƒg
+    app_load_div_graph("./dat/img/hit_effect2.png", 5, 5, 1, 140, 140, _destroy_enemy_effect);
 }
 
 void ImageManager::release() {
@@ -64,6 +67,9 @@ const int ImageManager::get_enemy_bullet(int type, int color) const {
 
 const int ImageManager::get_player_shot(int type) const {
     return _player_shot[type];
+}
+const int ImageManager::get_destroy_enemy_effect(int color) const {
+    return _destroy_enemy_effect[color];
 }
 
 int ImageManager::app_load_graph(std::string filename) {

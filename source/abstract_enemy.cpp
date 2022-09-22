@@ -36,6 +36,7 @@ void AbstractEnemy::initialize() {
 
 bool AbstractEnemy::update() {
     if (_hp <= 0) {
+        _manager->set_destroy_effect(this->_pos, 0);
         // TODO: ここでアイテム出現処理等
         return false;
     }

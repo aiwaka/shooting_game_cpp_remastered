@@ -20,7 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\abstract_bg.cpp" />
+    <ClCompile Include="source\abstract_effect.cpp" />
     <ClCompile Include="source\abstract_enemy.cpp" />
+    <ClCompile Include="source\destroy_enemy_effect.cpp" />
+    <ClCompile Include="source\effect_manager.cpp" />
     <ClCompile Include="source\enemy_attack.cpp" />
     <ClCompile Include="source\enemy_bullet.cpp" />
     <ClCompile Include="source\abstract_scene.cpp" />
@@ -51,7 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\abstract_bg.hpp" />
+    <ClInclude Include="source\abstract_effect.hpp" />
     <ClInclude Include="source\abstract_enemy.hpp" />
+    <ClInclude Include="source\destroy_enemy_effect.hpp" />
+    <ClInclude Include="source\effect_manager.hpp" />
     <ClInclude Include="source\enemy_attack.hpp" />
     <ClInclude Include="source\enemy_bullet.hpp" />
     <ClInclude Include="source\abstract_scene.hpp" />

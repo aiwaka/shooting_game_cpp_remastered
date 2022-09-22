@@ -4,6 +4,7 @@
 #include "game_scene.hpp"
 #include "enemy_a.hpp"
 #include "macro.hpp"
+#include "destroy_enemy_effect.hpp"
 
 #include <fstream>
 #include <sstream>
@@ -113,4 +114,10 @@ Vec2 EnemyManager::get_player_pos() const {
 
 std::list<std::shared_ptr<AbstractEnemy>> EnemyManager::get_all_enemies_iterator() const {
     return this->_list;
+}
+
+
+void EnemyManager::set_destroy_effect(Vec2 pos, int color) {
+    auto effect = std::make_shared<DestroyEnemyEffect>(pos, color);
+    _game_scene->set_effect(effect);
 }

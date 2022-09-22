@@ -11,6 +11,8 @@
 #include "enemy_bullet_manager.hpp"
 #include "player_bullet.hpp"
 #include "player_bullet_manager.hpp"
+#include "abstract_effect.hpp"
+#include "effect_manager.hpp"
 
 class GameScene : public AbstractScene {
 public:
@@ -27,6 +29,9 @@ public:
     Vec2 get_player_pos() const;
     //! @brief 敵全体へのポインタを取得できる
     std::list<std::shared_ptr<AbstractEnemy>> get_all_enemies_iterator() const;
+
+    //! @brief エフェクトを登録する
+    void set_effect(std::shared_ptr<AbstractEffect> effect);
 private:
     //int _level;
     // ここでシーン内で動かすものへのポインタを保持しておき, updateやdrawを適用することで更新を行っていく.
@@ -35,4 +40,5 @@ private:
     std::shared_ptr<AbstractBackground> _background;
     std::shared_ptr<EnemyManager> _enemy_manager;
     std::shared_ptr<PlayerBulletManager> _player_bullet_manager;
+    std::shared_ptr<EffectManager> _effect_manager;
 };

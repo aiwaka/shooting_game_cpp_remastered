@@ -49,6 +49,12 @@
     <Filter Include="ヘッダー ファイル\collision">
       <UniqueIdentifier>{6cd24e2d-adf7-4653-bcec-dfa356305fd8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\components\effects">
+      <UniqueIdentifier>{f4468917-b6cd-4166-9244-d05aebff8714}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\components\effects">
+      <UniqueIdentifier>{ba0b5b1a-1ac4-4a02-acde-c6523a6ca935}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\game_system.cpp">
@@ -137,6 +143,15 @@
     </ClCompile>
     <ClCompile Include="source\player_bullet.cpp">
       <Filter>ソース ファイル\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\effect_manager.cpp">
+      <Filter>ソース ファイル\components\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\abstract_effect.cpp">
+      <Filter>ソース ファイル\components\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\destroy_enemy_effect.cpp">
+      <Filter>ソース ファイル\components\effects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +250,15 @@
     </ClInclude>
     <ClInclude Include="source\player_bullet.hpp">
       <Filter>ヘッダー ファイル\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\effect_manager.hpp">
+      <Filter>ヘッダー ファイル\components\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\abstract_effect.hpp">
+      <Filter>ヘッダー ファイル\components\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\destroy_enemy_effect.hpp">
+      <Filter>ヘッダー ファイル\components\effects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
