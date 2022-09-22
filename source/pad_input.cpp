@@ -7,7 +7,7 @@
 
 using std::max;
 
-PadInput::PadInput()
+PadInput::PadInput() : _pad_input{ std::array<int, PAD_KEY_NUM>{} }
 {
     _id_assign[PadInputType::Down] = 0;
     _id_assign[PadInputType::Left] = 1;
@@ -42,7 +42,7 @@ void PadInput::merge()
     _pad_input[_id_assign[PadInputType::Up]] = max(_pad_input[_id_assign[PadInputType::Up]], Keyboard::get_instance()->get_pressing_count(KEY_INPUT_UP));
     _pad_input[_id_assign[PadInputType::Right]] = max(_pad_input[_id_assign[PadInputType::Right]], Keyboard::get_instance()->get_pressing_count(KEY_INPUT_RIGHT));
     _pad_input[_id_assign[PadInputType::Down]] = max(_pad_input[_id_assign[PadInputType::Down]], Keyboard::get_instance()->get_pressing_count(KEY_INPUT_DOWN));
-    // shot‚ÍZ‚Å‚àEnter‚Å‚à“¯‚¶‚É‚È‚é‚æ‚¤‚É
+    // shot‚ÍZ‚Å‚àEnter‚Å‚à“¯‚¶“­‚«‚É‚È‚é‚æ‚¤‚É
     _pad_input[_id_assign[PadInputType::Shot]] = max(_pad_input[_id_assign[PadInputType::Shot]], Keyboard::get_instance()->get_pressing_count(KEY_INPUT_Z));
     _pad_input[_id_assign[PadInputType::Shot]] = max(_pad_input[_id_assign[PadInputType::Shot]], Keyboard::get_instance()->get_pressing_count(KEY_INPUT_RETURN));
     _pad_input[_id_assign[PadInputType::Bomb]] = max(_pad_input[_id_assign[PadInputType::Bomb]], Keyboard::get_instance()->get_pressing_count(KEY_INPUT_X));

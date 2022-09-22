@@ -3,20 +3,24 @@
 #include "global_define.hpp"
 #include "player.hpp"
 #include "pad_input.hpp"
+#include "player_bullet_manager.hpp"
 #include "image_manager.hpp"
 #include "utils.hpp"
 
 constexpr float SPEED = 6.0f;
 
-Player::Player() :
+Player::Player(std::shared_ptr<PlayerBulletManager> manager) :
     _pos(Vec2{ static_cast<float>(GlobalValues::CENTER_X), static_cast<float>(GlobalValues::OUT_HEIGHT) * 0.8f }),
     _counter(0),
     _move_dir(Vec2{})
-{}
+{
+    _bullet_manager = manager;
+}
 
 bool Player::update() {
     ++_counter;
     move();
+    shot();
     return true;
 }
 
@@ -62,4 +66,11 @@ void Player::move()
     const float IN_BOTTOM_RIGHT_X = GlobalValues::IN_TOP_LEFT_X + GlobalValues::IN_WIDTH;
     const float IN_BOTTOM_RIGHT_Y = GlobalValues::IN_TOP_LEFT_Y + GlobalValues::IN_HEIGHT;
     _pos = _pos.clamp(Vec2{ IN_TOP_LEFT_X, IN_TOP_LEFT_Y }, Vec2{ IN_BOTTOM_RIGHT_X, IN_BOTTOM_RIGHT_Y });
+}
+
+void Player::shot() {
+    auto pad_ins = PadInput::get_instance();
+    if (pad_ins->get(Shot) > 0 && pad_ins->get(Shot) % 5 == 0) {
+        _bullet_manager->push_bullet(*this);
+    }
 }

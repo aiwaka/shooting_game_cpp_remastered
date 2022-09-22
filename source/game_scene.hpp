@@ -9,6 +9,8 @@
 #include "enemy_manager.hpp"
 #include "enemy_bullet.hpp"
 #include "enemy_bullet_manager.hpp"
+#include "player_bullet.hpp"
+#include "player_bullet_manager.hpp"
 
 class GameScene : public AbstractScene {
 public:
@@ -30,4 +32,5 @@ private:
     std::shared_ptr<Board> _board;
     std::shared_ptr<AbstractBackground> _background;
     std::shared_ptr<EnemyManager> _enemy_manager;
+    std::shared_ptr<PlayerBulletManager> _player_bullet_manager;
 };

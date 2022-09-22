@@ -18,6 +18,10 @@ void ImageManager::load() {
     // 自機画像
     app_load_div_graph("./dat/img/player1.png", 6, 2, 3, 70, 60, _player_a);
 
+    // 自機ショット画像
+    _player_shot[0] = app_load_graph("./dat/img/chshot1.png");
+    _player_shot[1] = app_load_graph("./dat/img/chshot2.png");
+
     // 敵画像
     app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemy_a);
     app_load_div_graph("./dat/img/enemy_b.png", 3, 3, 1, 30, 40, _enemy_b);
@@ -56,6 +60,10 @@ const int* ImageManager::get_enemy_b() const {
 }
 const int ImageManager::get_enemy_bullet(int type, int color) const {
     return _enemy_bullet[type][color];
+}
+
+const int ImageManager::get_player_shot(int type) const {
+    return _player_shot[type];
 }
 
 int ImageManager::app_load_graph(std::string filename) {

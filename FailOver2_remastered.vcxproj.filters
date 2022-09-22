@@ -43,6 +43,12 @@
     <Filter Include="ヘッダー ファイル\components\enemy_attack">
       <UniqueIdentifier>{605eb99f-986b-4b43-ad9d-fc5a5a6b6fe9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\collision">
+      <UniqueIdentifier>{76d4aaaf-c3be-4d55-8a52-75ec0b45f2ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\collision">
+      <UniqueIdentifier>{6cd24e2d-adf7-4653-bcec-dfa356305fd8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\game_system.cpp">
@@ -125,6 +131,12 @@
     </ClCompile>
     <ClCompile Include="source\abstract_enemy.cpp">
       <Filter>ソース ファイル\components\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\player_bullet_manager.cpp">
+      <Filter>ソース ファイル\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\player_bullet.cpp">
+      <Filter>ソース ファイル\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +229,12 @@
     </ClInclude>
     <ClInclude Include="source\abstract_enemy.hpp">
       <Filter>ヘッダー ファイル\components\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="source\player_bullet_manager.hpp">
+      <Filter>ヘッダー ファイル\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\player_bullet.hpp">
+      <Filter>ヘッダー ファイル\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

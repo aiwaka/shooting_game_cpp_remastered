@@ -19,6 +19,8 @@ public:
     const int* get_enemy_a() const;
     const int* get_enemy_b() const;
 
+    const int get_player_shot(int type) const;
+
     const int get_enemy_bullet(int type, int color) const;
 
 
@@ -38,6 +40,7 @@ private:
     std::vector<int> _images;
 
     int _player_a[6];
+    int _player_shot[2];
     int _board[4];
     //! @brief ƒ|[ƒYó‘Ô‚Ì‰æ‘œ
     int _pause_bg;

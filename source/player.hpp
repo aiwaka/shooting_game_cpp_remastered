@@ -1,11 +1,14 @@
 #pragma once
 
+#include <memory>
 #include "task.hpp"
 #include "euclid_vec.hpp"
 
+class PlayerBulletManager;
+
 class Player : public Task {
 public:
-    Player();
+    Player(std::shared_ptr<PlayerBulletManager> manager);
     virtual ~Player() = default;
     bool update() override;
     void draw() const override;
@@ -14,6 +17,9 @@ public:
 
 private:
     void move();
+    void shot();
+
+    std::shared_ptr<PlayerBulletManager>_bullet_manager;
 
     Vec2 _pos;
     int _counter;

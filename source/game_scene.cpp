@@ -8,9 +8,10 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     // _backgroundはAbstractBackgroundのポインタだが, Backgroundはそれを継承しているので完全な形でキャスト可能
     _background = std::make_shared<Background>();
     //_level = param.get_param(this->param_tag_level);
-    _player = std::make_shared<Player>();
     _board = std::make_shared<Board>();
     _enemy_manager = std::make_shared<EnemyManager>(this);
+    _player_bullet_manager = std::make_shared<PlayerBulletManager>(this);
+    _player = std::make_shared<Player>(_player_bullet_manager);
 }
 
 void GameScene::update() {
@@ -18,6 +19,7 @@ void GameScene::update() {
     _player->update();
     _enemy_manager->update();
     _board->update();
+    _player_bullet_manager->update();
 }
 
 void GameScene::draw() const {
@@ -26,6 +28,7 @@ void GameScene::draw() const {
     _player->draw();
     _enemy_manager->draw();
     _board->draw();
+    _player_bullet_manager->draw();
     //DrawFormatString(100, 100, GetColor(255, 255, 255), "level %d", _level);
 }
 
