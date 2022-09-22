@@ -32,15 +32,20 @@ bool EnemyBullet::update() {
     return is_inside_field();
 }
 void EnemyBullet::draw() const {
-    float ex_rate = 1.0f;
+    float ex_rate = 0.4f;
+    /*
     switch (_type)
     {
     case 0:
         ex_rate = 0.4f;
         break;
+    case 1:
+        ex_rate = 0.4f;
+        break;
     default:
         break;
     }
+    */
     utils::DrawRotaGraphF_Screen(_pos.x, _pos.y, ex_rate, _angle, _handle, 1, 0);
 }
 bool EnemyBullet::is_inside_field() const

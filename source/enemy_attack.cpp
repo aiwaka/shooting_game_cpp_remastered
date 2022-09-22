@@ -5,19 +5,16 @@
 #include "enemy_bullet_manager.hpp"
 
 EnemyAttack::EnemyAttack() {
+    // —p‚¢‚ç‚ê‚Ä‚¢‚é‚Ì‚Í0, 1, 2, 4, 5, 7, 8, 9, 10, 11
     _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_01);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_02);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_dummy);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_04);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_05);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_dummy);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_07);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_08);
     _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
     _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
     _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
@@ -56,9 +53,157 @@ void EnemyAttack::attack_pattern_00(AbstractEnemy* enemy) {
         info.speed = 5.0;
         info.omega = 0.0;
         info.acceleration = 0.0;
-        info.base_angle = 0.0;
         info.temp_speed = 5.0;
         info.bomb_regist = false;
         enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+    }
+}
+
+void EnemyAttack::attack_pattern_01(AbstractEnemy* enemy) {
+    const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
+    if (0 <= local_count && local_count < 100 && local_count % 10 == 0) {
+        float angle = enemy->get_angle_to_player();
+
+        EnemyBulletInfo info;
+        info.bullet_type = 1;
+        info.color = 2;
+        info.endure_count = 0;
+        info.damage = 1;
+        info.rotating = 0;
+        info.fx_detail = 0;
+        Vec2 pos = enemy->get_pos();
+        info.x = pos.x;
+        info.y = pos.y;
+        info.angle = angle;
+        info.speed = 4.0;
+        info.omega = 0.0;
+        info.acceleration = 0.0;
+        info.temp_speed = 4.0;
+        info.bomb_regist = false;
+        enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+    }
+}
+void EnemyAttack::attack_pattern_02(AbstractEnemy* enemy) {
+    const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
+    if (local_count == 0) {
+        float angle = enemy->get_angle_to_player();
+        enemy->set_f_slot(0, angle);
+    }
+    if (0 <= local_count && local_count < 100 && local_count % 10 == 0) {
+        EnemyBulletInfo info;
+        info.bullet_type = 1;
+        info.color = 2;
+        info.endure_count = 0;
+        info.damage = 1;
+        info.rotating = 0;
+        info.fx_detail = 0;
+        Vec2 pos = enemy->get_pos();
+        info.x = pos.x;
+        info.y = pos.y;
+        info.angle = enemy->get_f_slot(0);
+        info.speed = 4.0;
+        info.omega = 0.0;
+        info.acceleration = 0.0;
+        info.temp_speed = 4.0;
+        info.bomb_regist = false;
+        enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+    }
+}
+void EnemyAttack::attack_pattern_04(AbstractEnemy* enemy) {
+    const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
+    if (0 <= local_count && local_count < 120 && local_count % 30 == 0) {
+        float angle = enemy->get_angle_to_player();
+        for (int i = 0; i < 20; ++i) {
+            EnemyBulletInfo info;
+            info.bullet_type = 2;
+            info.color = 1;
+            info.endure_count = 0;
+            info.damage = 1;
+            info.rotating = 0;
+            info.fx_detail = 0;
+            Vec2 pos = enemy->get_pos();
+            info.x = pos.x;
+            info.y = pos.y;
+            info.angle = angle + GlobalValues::PI * static_cast<float>(i) / 10.0;
+            info.speed = 4.0;
+            info.omega = 0.0;
+            info.acceleration = 0.0;
+            info.temp_speed = 4.0;
+            info.bomb_regist = false;
+            enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+        }
+    }
+}
+void EnemyAttack::attack_pattern_05(AbstractEnemy* enemy) {
+    const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
+    if (0 <= local_count && local_count < 120 && local_count % 3 == 0) {
+        float angle = enemy->get_angle_to_player();
+        EnemyBulletInfo info;
+        info.bullet_type = 4;
+        info.color = 1;
+        info.endure_count = 0;
+        info.damage = 1;
+        info.rotating = 0;
+        info.fx_detail = 0;
+        Vec2 pos = enemy->get_pos();
+        info.x = pos.x;
+        info.y = pos.y;
+        info.angle = angle + utils::rand_in_range(GlobalValues::PI / 4.0);
+        info.speed = 4.0 + utils::rand_in_range(1.5);
+        info.omega = 0.0;
+        info.acceleration = 0.0;
+        info.temp_speed = 4.0;
+        info.bomb_regist = false;
+        enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+    }
+}
+void EnemyAttack::attack_pattern_07(AbstractEnemy* enemy) {
+    const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
+    if (0 <= local_count && local_count < 160 && local_count % 20 == 0) {
+        float angle = enemy->get_angle_to_player();
+        for (int i = 0; i < 4; ++i) {
+            EnemyBulletInfo info;
+            info.bullet_type = 1;
+            info.color = 3;
+            info.endure_count = 0;
+            info.damage = 1;
+            info.rotating = 0;
+            info.fx_detail = 0;
+            Vec2 pos = enemy->get_pos();
+            info.x = pos.x;
+            info.y = pos.y;
+            info.angle = angle + GlobalValues::PI * (static_cast<float>(i) / 18.0 - 1.0 / 12.0);
+            info.speed = 4.0;
+            info.omega = 0.0;
+            info.acceleration = 0.0;
+            info.temp_speed = 4.0;
+            info.bomb_regist = false;
+            enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+        }
+    }
+}
+void EnemyAttack::attack_pattern_08(AbstractEnemy* enemy) {
+    const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
+    if (0 <= local_count && local_count < 160 && local_count % 20 == 0) {
+        float angle = enemy->get_angle_to_player();
+        for (int i = 0; i < 5; ++i) {
+            EnemyBulletInfo info;
+            info.bullet_type = 1;
+            info.color = 0;
+            info.endure_count = 0;
+            info.damage = 1;
+            info.rotating = 0;
+            info.fx_detail = 0;
+            Vec2 pos = enemy->get_pos();
+            info.x = pos.x;
+            info.y = pos.y;
+            info.angle = angle + GlobalValues::PI * (static_cast<float>(i) / 24.0 - 1.0 / 12.0);
+            info.speed = 4.0;
+            info.omega = 0.0;
+            info.acceleration = 0.0;
+            info.temp_speed = 4.0;
+            info.bomb_regist = false;
+            enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+        }
     }
 }

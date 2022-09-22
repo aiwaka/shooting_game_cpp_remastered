@@ -7,6 +7,8 @@ namespace utils {
     extern float round_point(float val, int point);
     //! @brief valを[min, max]の区間に収めるように修正した値を返す.
     extern float clamp(const float val, const float min, const float max);
+    //! @brief -valからvalまでのランダムな数値を返す
+    extern float rand_in_range(float val);
     //! @brief DxLibのDrawRotaGraphF関数を, 画面内のみの座標で扱えるようにラップした関数.
     extern int DrawRotaGraphF_Screen(float x, float y, float ExRate, float Angle, int GrHandle, int TransFlag = FALSE, int TurnFlag = FALSE);
 }

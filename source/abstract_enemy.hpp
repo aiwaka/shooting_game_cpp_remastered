@@ -36,8 +36,15 @@ public:
 
     // 敵管理クラスへのポインタを通じて自機の情報を得られるようにする
     Vec2 get_player_pos() const;
+    //! @brief 自分（敵）から自機への角度を返す. 近すぎるときは鉛直下向きをを返す
+    float get_angle_to_player() const;
 
     void push_bullet(std::shared_ptr<EnemyBullet> bullet);
+
+    void set_f_slot(size_t idx, float val);
+    void set_i_slot(size_t idx, int val);
+    float get_f_slot(size_t idx) const;
+    int get_i_slot(size_t idx) const;
 
 protected:
     virtual void set_size() = 0;
@@ -49,7 +56,7 @@ protected:
     EnemyMover _mover;
     EnemyAttack _attack;
     //! @brief この敵が撃った弾のポインタリスト
-    std::list<std::shared_ptr<EnemyBullet>> _bullet_list;
+    //std::list<std::shared_ptr<EnemyBullet>> _bullet_list;
     // 自分を管理するマネージャへの問い合わせ用ポインタ
     EnemyManager* _manager;
 
@@ -73,6 +80,9 @@ protected:
     int _texture_width;
     int _texture_height;
 
+    //! @brief 実数の好きに使える値を保存するスロット.
+    std::array<float, 5> _f_var_slot;
+    std::array<int, 5> _i_var_slot;
 };
 
 inline Vec2 AbstractEnemy::get_pos() const { return _pos; }

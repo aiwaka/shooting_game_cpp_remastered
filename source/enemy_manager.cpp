@@ -60,6 +60,7 @@ void EnemyManager::load_enemy_story(std::string filename) {
 
 EnemyManager::EnemyManager(GameScene* scene) {
     _game_scene = scene;
+    _enemy_bullet_manager = std::make_shared<EnemyBulletManager>(_game_scene);
     _counter = 0;
 
     // csv‚©‚ç“Gî•ñ‚ð“Ç‚Ýž‚Ý
@@ -69,6 +70,10 @@ EnemyManager::EnemyManager(GameScene* scene) {
     for (auto enemy : _list) {
         enemy->initialize();
     }
+}
+
+void EnemyManager::push_bullet(std::shared_ptr<EnemyBullet> bullet) {
+    this->_enemy_bullet_manager->push_bullet(bullet);
 }
 
 bool EnemyManager::update() {
@@ -86,6 +91,8 @@ bool EnemyManager::update() {
             ++iter;
         }
     }
+    // “G’eŠÇ—ƒNƒ‰ƒX‚àXV
+    this->_enemy_bullet_manager->update();
     clsDx();
     printfDx("count : %d\n", _counter);
     ++_counter;
@@ -97,6 +104,7 @@ void EnemyManager::draw() const {
     for (const auto enemy : _list) {
         enemy->draw();
     }
+    this->_enemy_bullet_manager->draw();
 }
 
 Vec2 EnemyManager::get_player_pos() const {

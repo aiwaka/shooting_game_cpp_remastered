@@ -10,9 +10,9 @@ EnemyA::EnemyA(EnemyInfo& info, EnemyManager* manager) : AbstractEnemy(info, man
 
 void EnemyA::draw() const {
     auto handle = ImageManager::get_instance()->get_enemy_a()[0];
-    for (auto& bullet : _bullet_list) {
-        bullet->draw();
-    }
+    //for (auto& bullet : _bullet_list) {
+        //bullet->draw();
+    //}
     utils::DrawRotaGraphF_Screen(_pos.x, _pos.y, 1.0, 0.0, handle, 1);
 }
 

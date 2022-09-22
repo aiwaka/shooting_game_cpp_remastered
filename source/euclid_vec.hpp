@@ -25,6 +25,8 @@ struct Vec2
     constexpr Vec2 perp() const {
         return Vec2{ -y, x };
     }
+    //! @brief 0とみなせるかどうかを返す
+    bool is_zero() const;
     //! @brief 引数の位置ベクトルとの距離を返す.
     float distance(const Vec2 _rhs) const;
     //! @brief 自分の長さの二乗を返す.
@@ -41,6 +43,8 @@ struct Vec2
     Vec2 rotate(const float angle) const;
     //! @brief 正規化したベクトルを返す.
     Vec2 normalized() const;
+    //! @brief 正規化可能ならば正規化したベクトルを返し, できないほど小さいならば0を返す.
+    Vec2 normalize_or_zero() const;
     //! @brief minベクトルとmaxベクトルによる矩形の範囲に収めたベクトルを返す
     Vec2 clamp(const Vec2 min, const Vec2 max) const;
 

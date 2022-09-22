@@ -19,3 +19,7 @@ float utils::clamp(const float val, const float min, const float max) {
 int utils::DrawRotaGraphF_Screen(float x, float y, float ExRate, float Angle, int GrHandle, int TransFlag, int TurnFlag) {
     return DrawRotaGraphF(x + GlobalValues::IN_TOP_LEFT_X, y + GlobalValues::IN_TOP_LEFT_Y, ExRate, Angle, GrHandle, TransFlag, TurnFlag);
 }
+
+float utils::rand_in_range(float ang) {
+    return (-ang + ang * 2.0f * static_cast<float>(GetRand(10000)) / 10000.0f);
+}

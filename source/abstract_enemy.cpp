@@ -19,10 +19,14 @@ AbstractEnemy::AbstractEnemy(const EnemyInfo& info, EnemyManager* manager) :
     _bullet_id(info.bullet_id),
     _bullet_color(info.bullet_color),
     _wait_time(info.wait_time),
-    _item_slot{ info.item }
+    _item_slot{ info.item },
+
+    _f_var_slot{ std::array<float, 5>{} },
+    _i_var_slot{ std::array<int, 5>{}
+}
 {
     _manager = manager;
-    _bullet_list = std::list<std::shared_ptr<EnemyBullet>>(0);
+    //_bullet_list = std::list<std::shared_ptr<EnemyBullet>>(0);
 }
 
 void AbstractEnemy::initialize() {
@@ -32,9 +36,11 @@ void AbstractEnemy::initialize() {
 bool AbstractEnemy::update() {
     _mover.move(this);
     _attack.attack(this);
-    for (auto& bullet : _bullet_list) {
+    /*
+   for (auto& bullet : _bullet_list) {
         bullet->update();
     }
+    //*/
     ++_counter;
     return is_inside_field();
 }
@@ -52,7 +58,28 @@ bool AbstractEnemy::is_inside_field() const
 }
 
 Vec2 AbstractEnemy::get_player_pos() const { return _manager->get_player_pos(); }
+float  AbstractEnemy::get_angle_to_player() const {
+    Vec2 diff_vec = this->get_player_pos() - this->get_pos();
+    float angle = GlobalValues::PI / 2.0;
+    if (!diff_vec.is_zero()) {
+        angle = diff_vec.angle();
+    }
+    return angle;
+}
 
+void AbstractEnemy::set_f_slot(size_t idx, float val) {
+    this->_f_var_slot[idx] = val;
+}
+void AbstractEnemy::set_i_slot(size_t idx, int val) {
+    this->_i_var_slot[idx] = val;
+}
+float AbstractEnemy::get_f_slot(size_t idx) const {
+    return this->_f_var_slot[idx];
+}
+int AbstractEnemy::get_i_slot(size_t idx) const {
+    return this->_i_var_slot[idx];
+}
 void AbstractEnemy::push_bullet(std::shared_ptr<EnemyBullet> bullet) {
-    _bullet_list.push_back(bullet);
+    _manager->push_bullet(bullet);
+    //_bullet_list.push_back(bullet);
 }

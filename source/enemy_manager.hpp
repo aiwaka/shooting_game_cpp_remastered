@@ -10,6 +10,7 @@
 
 // 循環参照回避用の宣言
 class GameScene;
+class EnemyBulletManager;
 
 /**
  * @brief 敵の出現や移動・攻撃等の情報を格納する構造体. ファイルから読み込んで作成し, 実体の生成に使う
@@ -30,9 +31,12 @@ public:
 
     Vec2 get_player_pos() const;
 
+    void push_bullet(std::shared_ptr<EnemyBullet> bullet);
+
 private:
     //! @brief 敵管理クラスはゲームシーンへのポインタを持つ. これにより公開された情報に限って敵管理クラスが様々な情報にアクセスできる.
     GameScene* _game_scene;
+    std::shared_ptr<EnemyBulletManager> _enemy_bullet_manager;
     int _counter;
     /**
      * @brief 敵の出現情報をcsvファイルから読み込んで格納する.
