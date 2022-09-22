@@ -27,8 +27,8 @@ private:
     void attack_pattern_05(AbstractEnemy* enemy);
     void attack_pattern_07(AbstractEnemy* enemy);
     void attack_pattern_08(AbstractEnemy* enemy);
-    //void attack_pattern_09(AbstractEnemy* enemy);
-    //void attack_pattern_10(AbstractEnemy* enemy);
-    //void attack_pattern_11(AbstractEnemy* enemy);
+    void attack_pattern_09(AbstractEnemy* enemy);
+    void attack_pattern_10(AbstractEnemy* enemy);
+    void attack_pattern_11(AbstractEnemy* enemy);
 };
 

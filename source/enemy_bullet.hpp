@@ -15,6 +15,8 @@ public:
     void draw() const override;
 
     int get_counter() const;
+    int get_type() const;
+    Vec2 get_pos() const;
 
 private:
     bool is_inside_field() const;

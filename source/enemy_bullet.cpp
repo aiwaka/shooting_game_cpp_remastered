@@ -61,3 +61,5 @@ bool EnemyBullet::is_inside_field() const
     return true;
 }
 int EnemyBullet::get_counter() const { return this->_counter; }
+Vec2 EnemyBullet::get_pos() const { return this->_pos; }
+int EnemyBullet::get_type() const { return this->_type; }

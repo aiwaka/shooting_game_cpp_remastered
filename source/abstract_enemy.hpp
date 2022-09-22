@@ -40,6 +40,7 @@ public:
     float get_angle_to_player() const;
 
     void push_bullet(EnemyBulletInfo& info);
+    std::list<std::shared_ptr<EnemyBullet>> get_bullet_iterator() const;
 
     void set_f_slot(size_t idx, float val);
     void set_i_slot(size_t idx, int val);

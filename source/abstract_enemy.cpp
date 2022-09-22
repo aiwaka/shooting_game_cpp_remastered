@@ -1,4 +1,5 @@
 #include <DxLib.h>
+#include <utility>
 #include "global_define.hpp"
 #include "abstract_enemy.hpp"
 #include "enemy_manager.hpp"
@@ -78,4 +79,7 @@ void AbstractEnemy::push_bullet(EnemyBulletInfo& info) {
     auto bullet = std::make_shared<EnemyBullet>(info, this);
     _manager->push_bullet(bullet);
     _bullet_list.push_back(bullet);
+}
+std::list<std::shared_ptr<EnemyBullet>> AbstractEnemy::get_bullet_iterator() const {
+    return this->_bullet_list;
 }

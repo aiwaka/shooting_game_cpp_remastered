@@ -15,9 +15,9 @@ EnemyAttack::EnemyAttack() {
     _attack_pattern.push_back(&EnemyAttack::attack_pattern_dummy);
     _attack_pattern.push_back(&EnemyAttack::attack_pattern_07);
     _attack_pattern.push_back(&EnemyAttack::attack_pattern_08);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
-    _attack_pattern.push_back(&EnemyAttack::attack_pattern_00);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_09);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_10);
+    _attack_pattern.push_back(&EnemyAttack::attack_pattern_11);
 }
 
 void EnemyAttack::attack(AbstractEnemy* enemy)
@@ -111,12 +111,12 @@ void EnemyAttack::attack_pattern_02(AbstractEnemy* enemy) {
 }
 void EnemyAttack::attack_pattern_04(AbstractEnemy* enemy) {
     const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
-    if (0 <= local_count && local_count < 120 && local_count % 30 == 0) {
+    if (0 <= local_count && local_count < 120 && local_count % 25 == 0) {
         float angle = enemy->get_angle_to_player();
         for (int i = 0; i < 20; ++i) {
             EnemyBulletInfo info;
-            info.bullet_type = 2;
-            info.color = 1;
+            info.bullet_type = 5;
+            info.color = 3;
             info.endure_count = 0;
             info.damage = 1;
             info.rotating = 0;
@@ -199,6 +199,108 @@ void EnemyAttack::attack_pattern_08(AbstractEnemy* enemy) {
             info.y = pos.y;
             info.angle = angle + GlobalValues::PI * (static_cast<float>(i) / 24.0 - 1.0 / 12.0);
             info.speed = 4.0;
+            info.omega = 0.0;
+            info.acceleration = 0.0;
+            info.temp_speed = 4.0;
+            info.bomb_regist = false;
+            enemy->push_bullet(info);
+        }
+    }
+}
+
+void EnemyAttack::attack_pattern_09(AbstractEnemy* enemy) {
+    const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
+    if (0 <= local_count && local_count <= 240 && local_count % 80 == 0) {
+        float angle = enemy->get_angle_to_player();
+        EnemyBulletInfo info;
+        info.bullet_type = 4;
+        info.color = 3;
+        info.endure_count = 0;
+        info.damage = 6;
+        info.rotating = 0;
+        info.fx_detail = 0;
+        Vec2 pos = enemy->get_pos();
+        info.x = pos.x;
+        info.y = pos.y;
+        info.angle = angle;
+        info.speed = 5.5;
+        info.omega = 0.0;
+        info.acceleration = 0.0;
+        info.temp_speed = 5.5;
+        info.bomb_regist = false;
+        enemy->push_bullet(info);
+    }
+    auto bullet_list = enemy->get_bullet_iterator();
+    for (auto& bullet : bullet_list) {
+        // ’e‚Å“Á’è‚ÌŽí—Þ‚Ì‚à‚Ì‚ª“Á’è‚ÌƒJƒEƒ“ƒgŽüŠú‚Ì‚Æ‚«
+        if (bullet->get_counter() % 12 == 0 && bullet->get_type() == 4) {
+            float angle = utils::rand_in_range(GlobalValues::PI);
+            for (int i = 0; i < 4; ++i) {
+                EnemyBulletInfo info;
+                info.bullet_type = 1;
+                info.color = 3;
+                info.endure_count = 0;
+                info.damage = 3;
+                info.rotating = 0;
+                info.fx_detail = 0;
+                Vec2 pos = bullet->get_pos();
+                info.x = pos.x;
+                info.y = pos.y;
+                info.angle = angle + GlobalValues::PI * static_cast<float>(i) / 2.0;
+                info.speed = 4.0;
+                info.omega = 0.0;
+                info.acceleration = 0.0;
+                info.temp_speed = 4.0;
+                info.bomb_regist = false;
+                enemy->push_bullet(info);
+            }
+        }
+    }
+}
+void EnemyAttack::attack_pattern_10(AbstractEnemy* enemy) {
+    const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
+    if (0 <= local_count && local_count < 240 && local_count % 80 == 0) {
+        float angle = utils::rand_in_range(GlobalValues::PI);
+        for (int i = 0; i < 12; ++i) {
+            for (int j = 0; j < 2; ++j) {
+                EnemyBulletInfo info;
+                info.bullet_type = 5;
+                info.color = 2;
+                info.endure_count = 50;
+                info.damage = 2;
+                info.rotating = 0;
+                info.fx_detail = 0;
+                Vec2 pos = enemy->get_pos();
+                info.x = pos.x;
+                info.y = pos.y;
+                info.angle = angle + GlobalValues::PI * static_cast<float>(i) / 6.0;
+                info.speed = j == 0 ? 3.0 : 5.0;
+                info.omega = j == 0 ? 0.0 : GlobalValues::PI / 240.0;
+                info.acceleration = 0.0;
+                info.temp_speed = 4.0;
+                info.bomb_regist = false;
+                enemy->push_bullet(info);
+            }
+        }
+    }
+}
+void EnemyAttack::attack_pattern_11(AbstractEnemy* enemy) {
+    const int local_count = enemy->get_counter() - enemy->get_start_attack_count();
+    if (0 <= local_count && local_count < 60 && local_count % 4 == 0) {
+        float angle = enemy->get_angle_to_player();
+        for (int i = 0; i < 5; ++i) {
+            EnemyBulletInfo info;
+            info.bullet_type = 1;
+            info.color = 3;
+            info.endure_count = 0;
+            info.damage = 2;
+            info.rotating = 0;
+            info.fx_detail = 0;
+            Vec2 pos = enemy->get_pos();
+            info.x = pos.x;
+            info.y = pos.y;
+            info.angle = angle + GlobalValues::PI * (static_cast<float>(i) / 32.0 - 1.0 / 16.0);
+            info.speed = static_cast<float>(local_count + 30) * 0.09;
             info.omega = 0.0;
             info.acceleration = 0.0;
             info.temp_speed = 4.0;
