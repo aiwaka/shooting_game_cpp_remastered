@@ -4,10 +4,10 @@
 #include "utils.hpp"
 #include "image_manager.hpp"
 
-PlayerBullet::PlayerBullet(const Player& player) :
+PlayerBullet::PlayerBullet(int power, Vec2 pos) :
     _counter(0),
-    _power(1),
-    _pos(player.get_pos()),
+    _power(power),
+    _pos(pos),
     _angle(-GlobalValues::PI / 2.0),
     _speed(20.0)
 {

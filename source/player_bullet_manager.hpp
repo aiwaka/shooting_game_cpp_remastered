@@ -16,7 +16,7 @@ public:
     bool update() override;
     void draw() const override;
 
-    void push_bullet(Player& player);
+    void push_bullet(int power, Vec2 pos);
     //! @brief 自機ショットのリストを返す
     std::list<std::shared_ptr<PlayerBullet>> get_all_player_bullet() const;
 

@@ -31,7 +31,7 @@ void PlayerBulletManager::draw() const {
 std::list<std::shared_ptr<PlayerBullet>> PlayerBulletManager::get_all_player_bullet() const {
     return this->_bullet_list;
 }
-void PlayerBulletManager::push_bullet(Player& player) {
-    auto bullet = std::make_shared<PlayerBullet>(player);
+void PlayerBulletManager::push_bullet(int power, Vec2 pos) {
+    auto bullet = std::make_shared<PlayerBullet>(power, pos);
     _bullet_list.push_back(bullet);
 }

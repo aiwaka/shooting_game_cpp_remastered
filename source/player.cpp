@@ -69,8 +69,19 @@ void Player::move()
 }
 
 void Player::shot() {
+    constexpr float SHOT_POS_X[4] = { -10.0, 10.0, -30.0, 30.0 };
+    constexpr float SHOT_POS_Y[4] = { -30.0, -30.0, -10.0, -10.0 };
+    constexpr int POWER = 1;
     auto pad_ins = PadInput::get_instance();
     if (pad_ins->get(Shot) > 0 && pad_ins->get(Shot) % 5 == 0) {
-        _bullet_manager->push_bullet(*this);
+        for (int i = 0; i < 4; ++i) {
+            if (pad_ins->get(Slow) > 0) {
+                _bullet_manager->push_bullet(POWER, Vec2{ SHOT_POS_X[i] / 3.0f, SHOT_POS_Y[i] / 2.0f } + this->_pos);
+            }
+            else {
+                _bullet_manager->push_bullet(POWER, Vec2{ SHOT_POS_X[i], SHOT_POS_Y[i] } + this->_pos);
+
+            }
+        }
     }
 }

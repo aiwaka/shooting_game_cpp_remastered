@@ -7,7 +7,7 @@ class Player;
 
 class PlayerBullet : public Task {
 public:
-    PlayerBullet(const Player& player);
+    PlayerBullet(int power, Vec2 pos);
     virtual ~PlayerBullet() = default;
     bool update() override;
     void draw() const override;
