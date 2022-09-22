@@ -39,7 +39,7 @@ public:
     //! @brief 自分（敵）から自機への角度を返す. 近すぎるときは鉛直下向きをを返す
     float get_angle_to_player() const;
 
-    void push_bullet(std::shared_ptr<EnemyBullet> bullet);
+    void push_bullet(EnemyBulletInfo& info);
 
     void set_f_slot(size_t idx, float val);
     void set_i_slot(size_t idx, int val);
@@ -55,8 +55,8 @@ protected:
 
     EnemyMover _mover;
     EnemyAttack _attack;
-    //! @brief この敵が撃った弾のポインタリスト
-    //std::list<std::shared_ptr<EnemyBullet>> _bullet_list;
+    //! @brief この敵が撃った弾のポインタリスト. 弾を登録するときここに登録すれば, この敵が生きている間参照して情報を書き換えられる.
+    std::list<std::shared_ptr<EnemyBullet>> _bullet_list;
     // 自分を管理するマネージャへの問い合わせ用ポインタ
     EnemyManager* _manager;
 

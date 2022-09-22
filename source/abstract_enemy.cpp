@@ -26,7 +26,7 @@ AbstractEnemy::AbstractEnemy(const EnemyInfo& info, EnemyManager* manager) :
 }
 {
     _manager = manager;
-    //_bullet_list = std::list<std::shared_ptr<EnemyBullet>>(0);
+    _bullet_list = std::list<std::shared_ptr<EnemyBullet>>(0);
 }
 
 void AbstractEnemy::initialize() {
@@ -36,11 +36,6 @@ void AbstractEnemy::initialize() {
 bool AbstractEnemy::update() {
     _mover.move(this);
     _attack.attack(this);
-    /*
-   for (auto& bullet : _bullet_list) {
-        bullet->update();
-    }
-    //*/
     ++_counter;
     return is_inside_field();
 }
@@ -79,7 +74,8 @@ float AbstractEnemy::get_f_slot(size_t idx) const {
 int AbstractEnemy::get_i_slot(size_t idx) const {
     return this->_i_var_slot[idx];
 }
-void AbstractEnemy::push_bullet(std::shared_ptr<EnemyBullet> bullet) {
+void AbstractEnemy::push_bullet(EnemyBulletInfo& info) {
+    auto bullet = std::make_shared<EnemyBullet>(info, this);
     _manager->push_bullet(bullet);
-    //_bullet_list.push_back(bullet);
+    _bullet_list.push_back(bullet);
 }

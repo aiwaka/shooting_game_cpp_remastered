@@ -55,7 +55,7 @@ void EnemyAttack::attack_pattern_00(AbstractEnemy* enemy) {
         info.acceleration = 0.0;
         info.temp_speed = 5.0;
         info.bomb_regist = false;
-        enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+        enemy->push_bullet(info);
     }
 }
 
@@ -80,7 +80,7 @@ void EnemyAttack::attack_pattern_01(AbstractEnemy* enemy) {
         info.acceleration = 0.0;
         info.temp_speed = 4.0;
         info.bomb_regist = false;
-        enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+        enemy->push_bullet(info);
     }
 }
 void EnemyAttack::attack_pattern_02(AbstractEnemy* enemy) {
@@ -106,7 +106,7 @@ void EnemyAttack::attack_pattern_02(AbstractEnemy* enemy) {
         info.acceleration = 0.0;
         info.temp_speed = 4.0;
         info.bomb_regist = false;
-        enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+        enemy->push_bullet(info);
     }
 }
 void EnemyAttack::attack_pattern_04(AbstractEnemy* enemy) {
@@ -130,7 +130,7 @@ void EnemyAttack::attack_pattern_04(AbstractEnemy* enemy) {
             info.acceleration = 0.0;
             info.temp_speed = 4.0;
             info.bomb_regist = false;
-            enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+            enemy->push_bullet(info);
         }
     }
 }
@@ -154,7 +154,7 @@ void EnemyAttack::attack_pattern_05(AbstractEnemy* enemy) {
         info.acceleration = 0.0;
         info.temp_speed = 4.0;
         info.bomb_regist = false;
-        enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+        enemy->push_bullet(info);
     }
 }
 void EnemyAttack::attack_pattern_07(AbstractEnemy* enemy) {
@@ -178,7 +178,7 @@ void EnemyAttack::attack_pattern_07(AbstractEnemy* enemy) {
             info.acceleration = 0.0;
             info.temp_speed = 4.0;
             info.bomb_regist = false;
-            enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+            enemy->push_bullet(info);
         }
     }
 }
@@ -203,7 +203,7 @@ void EnemyAttack::attack_pattern_08(AbstractEnemy* enemy) {
             info.acceleration = 0.0;
             info.temp_speed = 4.0;
             info.bomb_regist = false;
-            enemy->push_bullet(std::make_shared<EnemyBullet>(info, enemy));
+            enemy->push_bullet(info);
         }
     }
 }

@@ -14,6 +14,8 @@ public:
     bool update() override;
     void draw() const override;
 
+    int get_counter() const;
+
 private:
     bool is_inside_field() const;
 

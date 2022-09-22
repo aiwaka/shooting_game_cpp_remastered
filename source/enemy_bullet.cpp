@@ -60,3 +60,4 @@ bool EnemyBullet::is_inside_field() const
     }
     return true;
 }
+int EnemyBullet::get_counter() const { return this->_counter; }
