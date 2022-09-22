@@ -111,3 +111,6 @@ Vec2 EnemyManager::get_player_pos() const {
     return _game_scene->get_player_pos();
 }
 
+std::list<std::shared_ptr<AbstractEnemy>> EnemyManager::get_all_enemies_iterator() const {
+    return this->_list;
+}

@@ -9,6 +9,9 @@ PlayerBulletManager::PlayerBulletManager(GameScene* scene) : _counter(0) {
 }
 
 bool PlayerBulletManager::update() {
+    // ‚±‚±‚Å“–‚½‚è”»’è‚ð‚¨‚±‚È‚¤
+    collision_against_enemies();
+    // ‘S’e‚ðXV, update‚ªfalse‚Å•Ô‚Á‚Ä‚«‚½‚à‚Ì‚ÍÁ‹Ž‚·‚é
     for (auto iter = _bullet_list.begin(); iter != _bullet_list.end();) {
         if (!((*iter)->update())) {
             iter = _bullet_list.erase(iter);
@@ -28,10 +31,22 @@ void PlayerBulletManager::draw() const {
     }
 }
 
-std::list<std::shared_ptr<PlayerBullet>> PlayerBulletManager::get_all_player_bullet() const {
-    return this->_bullet_list;
-}
 void PlayerBulletManager::push_bullet(int power, Vec2 pos) {
     auto bullet = std::make_shared<PlayerBullet>(power, pos);
     _bullet_list.push_back(bullet);
+}
+
+void PlayerBulletManager::collision_against_enemies() {
+    auto all_enemies = this->_game_scene->get_all_enemies_iterator();
+    for (auto& enemy : all_enemies) {
+        Vec2 enemy_pos = enemy->get_pos();
+        for (auto& bullet : this->_bullet_list) {
+            Vec2 bullet_pos = bullet->get_pos();
+            // ‚ ‚½‚Á‚Ä‚¢‚ê‚Î
+            if (enemy_pos.distance(bullet_pos) < 20.0) {
+                enemy->modify_hp(-bullet->get_power());
+                bullet->set_collide_flag();
+            }
+        }
+    }
 }

@@ -17,10 +17,11 @@ public:
     void draw() const override;
 
     void push_bullet(int power, Vec2 pos);
-    //! @brief 自機ショットのリストを返す
-    std::list<std::shared_ptr<PlayerBullet>> get_all_player_bullet() const;
 
 private:
+    //! @brief 敵との当たり判定を行い, 敵にダメージを与える命令と自機弾を消滅させる命令を送る.
+    void collision_against_enemies();
+
     GameScene* _game_scene;
     int _counter;
     std::list<std::shared_ptr<PlayerBullet>> _bullet_list;

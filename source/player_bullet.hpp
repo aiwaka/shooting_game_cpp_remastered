@@ -13,6 +13,9 @@ public:
     void draw() const override;
 
     Vec2 get_pos() const;
+    int get_power() const;
+
+    void set_collide_flag();
 
 private:
     bool is_inside_field() const;
@@ -24,4 +27,7 @@ private:
     Vec2 _pos;
     float _angle;
     float _speed;
+
+    //! @brief “G‚Æ‚Ô‚Â‚©‚Á‚½‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO.
+    bool _collided;
 };

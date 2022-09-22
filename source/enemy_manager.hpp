@@ -32,6 +32,8 @@ public:
     Vec2 get_player_pos() const;
 
     void push_bullet(std::shared_ptr<EnemyBullet> bullet);
+    //! @brief 敵全体へのポインタを取得できる
+    std::list<std::shared_ptr<AbstractEnemy>> get_all_enemies_iterator() const;
 
 private:
     //! @brief 敵管理クラスはゲームシーンへのポインタを持つ. これにより公開された情報に限って敵管理クラスが様々な情報にアクセスできる.

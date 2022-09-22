@@ -71,7 +71,7 @@ void Player::move()
 void Player::shot() {
     constexpr float SHOT_POS_X[4] = { -10.0, 10.0, -30.0, 30.0 };
     constexpr float SHOT_POS_Y[4] = { -30.0, -30.0, -10.0, -10.0 };
-    constexpr int POWER = 1;
+    constexpr int POWER = 15;
     auto pad_ins = PadInput::get_instance();
     if (pad_ins->get(Shot) > 0 && pad_ins->get(Shot) % 5 == 0) {
         for (int i = 0; i < 4; ++i) {

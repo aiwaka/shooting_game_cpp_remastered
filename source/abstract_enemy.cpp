@@ -35,6 +35,10 @@ void AbstractEnemy::initialize() {
 }
 
 bool AbstractEnemy::update() {
+    if (_hp <= 0) {
+        // TODO: ここでアイテム出現処理等
+        return false;
+    }
     _mover.move(this);
     _attack.attack(this);
     ++_counter;
