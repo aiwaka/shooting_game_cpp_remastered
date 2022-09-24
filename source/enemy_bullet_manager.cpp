@@ -19,6 +19,8 @@ bool EnemyBulletManager::update() {
             iter = _bullet_list.erase(iter);
         }
     }
+    // Ž©‹@‚Æ‚Ì“–‚½‚è”»’è
+    this->collision_against_player();
     ++_counter;
     return true;
 }
@@ -35,4 +37,17 @@ Vec2 EnemyBulletManager::get_player_pos() const {
 }
 void EnemyBulletManager::push_bullet(std::shared_ptr<EnemyBullet> bullet) {
     _bullet_list.push_back(bullet);
+}
+
+
+void EnemyBulletManager::collision_against_player() {
+    Vec2 player_pos = _game_scene->get_player_pos();
+    for (auto& bullet : this->_bullet_list) {
+        Vec2 bullet_pos = bullet->get_pos();
+        // ‚ ‚½‚Á‚Ä‚¢‚ê‚Î
+        if (utils::sphere_collision(player_pos, bullet_pos, 3.0, 17.0)) {
+            _game_scene->modify_player_hp(-bullet->get_damage());
+            bullet->set_delete_flag();
+        }
+    }
 }

@@ -10,12 +10,13 @@ float utils::round_point(float val, int point) {
     return ret * std::pow(10.0f, -point + 1);
 }
 
-float utils::clamp(const float val, const float min, const float max) {
+template <typename T> T utils::clamp(const T val, const T min, const T max) {
     if (val > max) return max;
     if (val < min) return min;
     return val;
 }
-
+template int utils::clamp<int>(const int, const int, const int);
+template float utils::clamp<float>(const float, const float, const float);
 
 int utils::DrawRotaGraphF_Screen(float x, float y, float ExRate, float Angle, int GrHandle, int TransFlag, int TurnFlag) {
     return DrawRotaGraphF(x + GlobalValues::IN_TOP_LEFT_X, y + GlobalValues::IN_TOP_LEFT_Y, ExRate, Angle, GrHandle, TransFlag, TurnFlag);

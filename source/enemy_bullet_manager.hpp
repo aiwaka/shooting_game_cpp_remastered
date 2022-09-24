@@ -31,4 +31,7 @@ private:
     int _counter;
     std::list<std::shared_ptr<EnemyBullet>> _bullet_list;
 
+    //! @brief ©‹@‚Æ“G’e‚Ì“–‚½‚è”»’è‚ğs‚¢, ©‹@‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚é–½—ß‚ğ—^‚¦“G’e‚ğÁ‚·
+    void collision_against_player();
+
 };

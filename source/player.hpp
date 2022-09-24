@@ -46,7 +46,6 @@ inline Vec2 Player::get_pos() const { return _pos; }
 inline int Player::get_power() const { return _power; }
 inline int Player::get_hp() const { return _hp; }
 inline int Player::get_max_hp() const { return _max_hp; }
-inline void Player::modify_hp(int delta) { _hp += delta; }
 inline int Player::get_player_state() const { return _state; }
 inline int Player::get_lives_num() const { return _lives_num; }
 inline int Player::get_bombs_num() const { return _bombs_num; }

@@ -18,6 +18,7 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
 }
 
 void GameScene::update() {
+    // ‚±‚±‚Ìˆ—‡‚É‹C‚ğ‚Â‚¯‚È‚¢‚Æ1ƒtƒŒ[ƒ€ˆ—‚ª’x‚ê‚é‚±‚Æ‚ª‚ ‚è‚»‚¤
     _background->update();
     _player->update();
     _enemy_manager->update();

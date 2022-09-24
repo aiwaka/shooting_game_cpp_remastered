@@ -18,6 +18,7 @@ Player::Player(std::shared_ptr<PlayerBulletManager> manager) :
     _move_dir(Vec2{}),
     _power(15),
     _hp(PLAYER_MAX_HP),
+    _max_hp(PLAYER_MAX_HP),
     _lives_num(2),
     _bombs_num(2),
     _state(0)
@@ -26,6 +27,9 @@ Player::Player(std::shared_ptr<PlayerBulletManager> manager) :
 }
 
 bool Player::update() {
+    if (_hp == 0) {
+        _state = 2;
+    }
     ++_counter;
     move();
     shot();
@@ -39,10 +43,18 @@ void Player::draw() const {
     if (_move_dir.x > 0.0) idx = 2;
     if (_move_dir.x < 0.0) idx = 4;
     idx += (_counter / 15) % 2 == 0 ? 0 : 1;
-    utils::DrawRotaGraphF_Screen(_pos.x, _pos.y, 1.0, 0.0, img_manager->get_player_a()[idx], 1);
+    // –³“G’†‚Í“_–Å‚³‚¹‚é
+    bool draw_player = true;
+    if (_state != 0) {
+        draw_player = (_counter / 2) % 2 == 0;
+    }
+    if (draw_player) {
+        utils::DrawRotaGraphF_Screen(_pos.x, _pos.y, 1.0, 0.0, img_manager->get_player_a()[idx], 1);
+    }
 }
 void Player::move()
 {
+    if (_state == 2) return;
     float move_x = 0, move_y = 0;
     auto pad_ins = PadInput::get_instance();
     if (pad_ins->get(Left) > 0) {
@@ -92,4 +104,10 @@ void Player::shot() {
             }
         }
     }
+}
+
+
+void Player::modify_hp(int delta) {
+    if (_state != 0) return;
+    _hp = utils::clamp(_hp + delta, 0, _max_hp);
 }

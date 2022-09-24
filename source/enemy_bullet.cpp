@@ -17,7 +17,8 @@ EnemyBullet::EnemyBullet(const EnemyBulletInfo& info, AbstractEnemy* parent) :
     _color(info.color),
     _damage(info.damage),
     _fx_detail(info.fx_detail),
-    _bomb_regist(info.bomb_regist)
+    _bomb_regist(info.bomb_regist),
+    _delete_flag(false)
 {
     auto handle = ImageManager::get_instance()->get_enemy_bullet(info.bullet_type, info.color);
     _handle = handle;
@@ -25,6 +26,7 @@ EnemyBullet::EnemyBullet(const EnemyBulletInfo& info, AbstractEnemy* parent) :
 }
 
 bool EnemyBullet::update() {
+    if (_delete_flag) return false;
     _angle += _omega;
     _speed += _acceleration;
     _pos += _speed * Vec2::from_angle(_angle);
@@ -33,19 +35,6 @@ bool EnemyBullet::update() {
 }
 void EnemyBullet::draw() const {
     float ex_rate = 0.4f;
-    /*
-    switch (_type)
-    {
-    case 0:
-        ex_rate = 0.4f;
-        break;
-    case 1:
-        ex_rate = 0.4f;
-        break;
-    default:
-        break;
-    }
-    */
     utils::DrawRotaGraphF_Screen(_pos.x, _pos.y, ex_rate, _angle, _handle, 1, 0);
 }
 bool EnemyBullet::is_inside_field() const

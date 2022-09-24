@@ -9,8 +9,6 @@ PlayerBulletManager::PlayerBulletManager(GameScene* scene) : _counter(0) {
 }
 
 bool PlayerBulletManager::update() {
-    // ここで当たり判定をおこなう
-    collision_against_enemies();
     // 全弾を更新, updateがfalseで返ってきたものは消去する
     for (auto iter = _bullet_list.begin(); iter != _bullet_list.end();) {
         if ((*iter)->update()) {
@@ -20,6 +18,9 @@ bool PlayerBulletManager::update() {
             iter = _bullet_list.erase(iter);
         }
     }
+    // ここで当たり判定をおこなう
+    // 消すものを消してから当たり判定を行わないと, あたっているのに見えないということが起こるはず
+    collision_against_enemies();
     ++_counter;
     return true;
 }

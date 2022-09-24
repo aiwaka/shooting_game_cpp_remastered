@@ -34,6 +34,7 @@ public:
     std::list<std::shared_ptr<AbstractEnemy>> get_all_enemies_iterator() const;
 
     void modify_score(int delta);
+    void modify_player_hp(int delta);
 
     //! @brief エフェクトを登録する
     void set_effect(std::shared_ptr<AbstractEffect> effect);
@@ -52,3 +53,4 @@ private:
 
 
 inline void GameScene::modify_score(int delta) { _score += delta; }
+inline void GameScene::modify_player_hp(int delta) { _player->modify_hp(delta); }

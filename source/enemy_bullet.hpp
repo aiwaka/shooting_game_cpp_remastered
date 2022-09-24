@@ -17,6 +17,9 @@ public:
     int get_counter() const;
     int get_type() const;
     Vec2 get_pos() const;
+    int get_damage() const;
+
+    void set_delete_flag();
 
 private:
     bool is_inside_field() const;
@@ -40,4 +43,9 @@ private:
     int _fx_detail;
     bool _bomb_regist;
 
+    //! @brief ‚±‚ê‚ªtrue‚É‚È‚Á‚½ê‡XV‚¹‚¸‘¦À‚ÉÁ‚·‚±‚Æ‚É‚·‚é
+    bool _delete_flag;
 };
+
+inline int EnemyBullet::get_damage() const { return _damage; }
+inline void EnemyBullet::set_delete_flag() { _delete_flag = true; }
