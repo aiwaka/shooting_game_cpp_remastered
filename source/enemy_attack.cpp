@@ -43,7 +43,7 @@ void EnemyAttack::attack_pattern_00(AbstractEnemy* enemy) {
         info.bullet_type = 0;
         info.color = 0;
         info.endure_count = 0;
-        info.damage = 1;
+        info.damage = 4;
         info.rotating = 0;
         info.fx_detail = 0;
         Vec2 pos = enemy->get_pos();
@@ -68,7 +68,7 @@ void EnemyAttack::attack_pattern_01(AbstractEnemy* enemy) {
         info.bullet_type = 1;
         info.color = 2;
         info.endure_count = 0;
-        info.damage = 1;
+        info.damage = 4;
         info.rotating = 0;
         info.fx_detail = 0;
         Vec2 pos = enemy->get_pos();
@@ -94,7 +94,7 @@ void EnemyAttack::attack_pattern_02(AbstractEnemy* enemy) {
         info.bullet_type = 1;
         info.color = 2;
         info.endure_count = 0;
-        info.damage = 1;
+        info.damage = 4;
         info.rotating = 0;
         info.fx_detail = 0;
         Vec2 pos = enemy->get_pos();
@@ -118,7 +118,7 @@ void EnemyAttack::attack_pattern_04(AbstractEnemy* enemy) {
             info.bullet_type = 5;
             info.color = 3;
             info.endure_count = 0;
-            info.damage = 1;
+            info.damage = 4;
             info.rotating = 0;
             info.fx_detail = 0;
             Vec2 pos = enemy->get_pos();
@@ -142,7 +142,7 @@ void EnemyAttack::attack_pattern_05(AbstractEnemy* enemy) {
         info.bullet_type = 4;
         info.color = 1;
         info.endure_count = 0;
-        info.damage = 1;
+        info.damage = 3;
         info.rotating = 0;
         info.fx_detail = 0;
         Vec2 pos = enemy->get_pos();
@@ -164,7 +164,7 @@ void EnemyAttack::attack_pattern_07(AbstractEnemy* enemy) {
         for (int i = 0; i < 4; ++i) {
             EnemyBulletInfo info;
             info.bullet_type = 1;
-            info.color = 3;
+            info.color = 6;
             info.endure_count = 0;
             info.damage = 1;
             info.rotating = 0;
@@ -191,7 +191,7 @@ void EnemyAttack::attack_pattern_08(AbstractEnemy* enemy) {
             info.bullet_type = 1;
             info.color = 0;
             info.endure_count = 0;
-            info.damage = 1;
+            info.damage = 3;
             info.rotating = 0;
             info.fx_detail = 0;
             Vec2 pos = enemy->get_pos();
@@ -216,7 +216,7 @@ void EnemyAttack::attack_pattern_09(AbstractEnemy* enemy) {
         info.bullet_type = 4;
         info.color = 3;
         info.endure_count = 0;
-        info.damage = 6;
+        info.damage = 8;
         info.rotating = 0;
         info.fx_detail = 0;
         Vec2 pos = enemy->get_pos();
@@ -267,7 +267,7 @@ void EnemyAttack::attack_pattern_10(AbstractEnemy* enemy) {
                 info.bullet_type = 5;
                 info.color = 2;
                 info.endure_count = 50;
-                info.damage = 2;
+                info.damage = 4;
                 info.rotating = 0;
                 info.fx_detail = 0;
                 Vec2 pos = enemy->get_pos();
@@ -293,7 +293,7 @@ void EnemyAttack::attack_pattern_11(AbstractEnemy* enemy) {
             info.bullet_type = 1;
             info.color = 3;
             info.endure_count = 0;
-            info.damage = 2;
+            info.damage = 4;
             info.rotating = 0;
             info.fx_detail = 0;
             Vec2 pos = enemy->get_pos();
