@@ -118,6 +118,8 @@ std::list<std::shared_ptr<AbstractEnemy>> EnemyManager::get_all_enemies_iterator
 
 
 void EnemyManager::set_destroy_effect(Vec2 pos, int color) {
+    // ƒXƒRƒA‰ÁŽZ
+    _game_scene->modify_score(150);
     auto effect = std::make_shared<DestroyEnemyEffect>(pos, color);
     _game_scene->set_effect(effect);
 }

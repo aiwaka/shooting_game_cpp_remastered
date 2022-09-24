@@ -33,6 +33,8 @@ public:
     //! @brief 敵全体へのポインタを取得できる
     std::list<std::shared_ptr<AbstractEnemy>> get_all_enemies_iterator() const;
 
+    void modify_score(int delta);
+
     //! @brief エフェクトを登録する
     void set_effect(std::shared_ptr<AbstractEffect> effect);
 private:
@@ -47,3 +49,6 @@ private:
     std::shared_ptr<PlayerBulletManager> _player_bullet_manager;
     std::shared_ptr<EffectManager> _effect_manager;
 };
+
+
+inline void GameScene::modify_score(int delta) { _score += delta; }
