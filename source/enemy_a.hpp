@@ -11,4 +11,5 @@ public:
 
 protected:
     void set_size() override;
+    int _type;
 };

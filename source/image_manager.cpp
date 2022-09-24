@@ -26,8 +26,13 @@ void ImageManager::load() {
     _player_shot[1] = app_load_graph("./dat/img/chshot2.png");
 
     // “G‰æ‘œ
-    app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemy_a);
-    app_load_div_graph("./dat/img/enemy_b.png", 3, 3, 1, 30, 40, _enemy_b);
+    //app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemy_a);
+    //app_load_div_graph("./dat/img/enemy_b.png", 3, 3, 1, 30, 40, _enemy_b);
+    app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemies[0]);
+    app_load_div_graph("./dat/img/enemy_b.png", 3, 3, 1, 30, 40, _enemies[1]);
+    app_load_div_graph("./dat/img/enemy_c.png", 3, 3, 1, 64, 64, _enemies[2]);
+    app_load_div_graph("./dat/img/enemy_d.png", 3, 3, 1, 80, 50, _enemies[3]);
+
 
     // “G’e‰æ‘œ
     app_load_div_graph("dat/img/bullet_0.png", 6, 6, 1, 64, 64, _enemy_bullet[0]);//Œõ’e
@@ -58,13 +63,9 @@ std::array<int, 4> ImageManager::get_board() const {
 int ImageManager::get_background() const {
     return _background;
 }
-const int* ImageManager::get_enemy_a() const {
-    return _enemy_a;
+const int* ImageManager::get_enemy(int type) const {
+    return _enemies[type];
 }
-const int* ImageManager::get_enemy_b() const {
-    return _enemy_b;
-}
-
 
 const int* ImageManager::get_numbers() const {
     return _numbers;
