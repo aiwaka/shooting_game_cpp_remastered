@@ -22,7 +22,6 @@ public:
     void push_item(Vec2 pos, int type);
 
 private:
-    //! @brief 敵管理クラスはゲームシーンへのポインタを持つ. これにより公開された情報に限って敵管理クラスが様々な情報にアクセスできる.
     GameScene* _game_scene;
     int _counter;
 
