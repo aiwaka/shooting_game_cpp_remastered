@@ -37,6 +37,11 @@ bool Player::update() {
         _invincible_counter = 180;
         _hp = _max_hp;
         _state = 2;
+        --_lives_num;
+    }
+    if (_lives_num == 0) {
+        // ここでゲームオーバー処理
+        printfDx("gameover\n");
     }
     if (_state == 2) { move_in_dead(); }
     else { move(); }

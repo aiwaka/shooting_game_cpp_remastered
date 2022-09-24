@@ -19,8 +19,8 @@ public:
     int get_max_hp() const;
     void modify_hp(int delta);
     int get_player_state() const;
-    int get_invincible_counter() const;
-    void set_invincibl_counter(int count);
+    //int get_invincible_counter() const;
+    //void set_invincible_counter(int count);
     int get_lives_num() const;
     int get_bombs_num() const;
 
@@ -56,5 +56,5 @@ inline int Player::get_player_state() const { return _state; }
 inline int Player::get_lives_num() const { return _lives_num; }
 inline int Player::get_bombs_num() const { return _bombs_num; }
 
-inline int Player::get_invincible_counter() const { return _invincible_counter; }
-inline void Player::set_invincibl_counter(int count) { _invincible_counter = count; }
+//inline int Player::get_invincible_counter() const { return _invincible_counter; }
+//inline void Player::set_invincible_counter(int count) { _invincible_counter = count; }
