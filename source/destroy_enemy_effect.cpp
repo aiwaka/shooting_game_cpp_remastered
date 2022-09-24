@@ -15,7 +15,6 @@ DestroyEnemyEffect::DestroyEnemyEffect(Vec2 pos, int color) :
 bool DestroyEnemyEffect::update() {
     _ex_rate += 0.05f;
     _angle += 0.3f; // radian
-    printf("%d\n", get_counter());
     if (get_counter() == 30) finish();
     return true;
 }

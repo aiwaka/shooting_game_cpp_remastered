@@ -2,6 +2,7 @@
 #include <cmath>
 #include "utils.hpp"
 #include "global_define.hpp"
+#include "euclid_vec.hpp"
 
 float utils::round_point(float val, int point) {
     float ret = val * std::pow(10.0f, point - 1);
@@ -22,4 +23,8 @@ int utils::DrawRotaGraphF_Screen(float x, float y, float ExRate, float Angle, in
 
 float utils::rand_in_range(float ang) {
     return (-ang + ang * 2.0f * static_cast<float>(GetRand(10000)) / 10000.0f);
+}
+
+bool utils::sphere_collision(Vec2 pos1, Vec2 pos2, float r1, float r2) {
+    return pos1.distance(pos2) < r1 + r2;
 }

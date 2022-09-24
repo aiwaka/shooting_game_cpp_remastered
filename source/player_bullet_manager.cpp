@@ -43,7 +43,7 @@ void PlayerBulletManager::collision_against_enemies() {
         for (auto& bullet : this->_bullet_list) {
             Vec2 bullet_pos = bullet->get_pos();
             // ‚ ‚½‚Á‚Ä‚¢‚ê‚Î
-            if (enemy_pos.distance(bullet_pos) < 20.0) {
+            if (utils::sphere_collision(enemy_pos, bullet_pos, 25.0, 10.0)) {
                 enemy->modify_hp(-bullet->get_power());
                 bullet->set_collide_flag();
             }
