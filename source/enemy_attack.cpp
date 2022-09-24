@@ -164,9 +164,9 @@ void EnemyAttack::attack_pattern_07(AbstractEnemy* enemy) {
         for (int i = 0; i < 4; ++i) {
             EnemyBulletInfo info;
             info.bullet_type = 1;
-            info.color = 6;
+            info.color = 3;
             info.endure_count = 0;
-            info.damage = 1;
+            info.damage = 3;
             info.rotating = 0;
             info.fx_detail = 0;
             Vec2 pos = enemy->get_pos();
