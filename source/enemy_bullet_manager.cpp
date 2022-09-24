@@ -45,7 +45,7 @@ void EnemyBulletManager::collision_against_player() {
     for (auto& bullet : this->_bullet_list) {
         Vec2 bullet_pos = bullet->get_pos();
         // ‚ ‚½‚Á‚Ä‚¢‚ê‚Î
-        if (utils::sphere_collision(player_pos, bullet_pos, 3.0, 17.0)) {
+        if (utils::sphere_collision(player_pos, bullet_pos, 2.0, 5.0)) {
             _game_scene->modify_player_hp(-bullet->get_damage());
             bullet->set_delete_flag();
         }

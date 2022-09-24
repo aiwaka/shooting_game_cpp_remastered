@@ -30,10 +30,10 @@ void GameScene::update() {
 void GameScene::draw() const {
     // ‚±‚±‚Å‚Ì‡”Ô‚ª•`‰æ‡‚É‚È‚é.
     _background->draw();
+    _effect_manager->draw();
+    _player_bullet_manager->draw();
     _player->draw();
     _enemy_manager->draw();
-    _player_bullet_manager->draw();
-    _effect_manager->draw();
     _board->draw();
     //DrawFormatString(100, 100, GetColor(255, 255, 255), "level %d", _level);
 }

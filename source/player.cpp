@@ -21,17 +21,25 @@ Player::Player(std::shared_ptr<PlayerBulletManager> manager) :
     _max_hp(PLAYER_MAX_HP),
     _lives_num(2),
     _bombs_num(2),
-    _state(0)
+    _state(0),
+    _invincible_counter(0)
 {
     _bullet_manager = manager;
 }
 
 bool Player::update() {
+    ++_counter;
+    // 無敵カウンタが有効なら減らす
+    if (_invincible_counter > 0) --_invincible_counter;
     if (_hp == 0) {
+        // 死んだらカウンターを0にして状態を2にする
+        _counter = 0;
+        _invincible_counter = 180;
+        _hp = _max_hp;
         _state = 2;
     }
-    ++_counter;
-    move();
+    if (_state == 2) { move_in_dead(); }
+    else { move(); }
     shot();
     return true;
 }
@@ -45,9 +53,7 @@ void Player::draw() const {
     idx += (_counter / 15) % 2 == 0 ? 0 : 1;
     // 無敵中は点滅させる
     bool draw_player = true;
-    if (_state != 0) {
-        draw_player = (_counter / 2) % 2 == 0;
-    }
+    draw_player = (_invincible_counter / 2) % 2 == 0;
     if (draw_player) {
         utils::DrawRotaGraphF_Screen(_pos.x, _pos.y, 1.0, 0.0, img_manager->get_player_a()[idx], 1);
     }
@@ -106,8 +112,24 @@ void Player::shot() {
     }
 }
 
+void Player::move_in_dead() {
+    if (_counter == 0) {
+        _pos = Vec2{ static_cast<float>(GlobalValues::CENTER_X), static_cast<float>(GlobalValues::OUT_HEIGHT) * 0.8f + 60 };
+    }
+    _pos -= Vec2{ 0.0, 1.0 };
+    if (_counter >= 60) {
+        auto pad_ins = PadInput::get_instance();
+        if (pad_ins->get(Up) + pad_ins->get(Down) + pad_ins->get(Left) + pad_ins->get(Right) > 0) {
+            _state = 0;
+        }
+    }
+    if (_counter == 180) {
+        _state = 0;
+    }
+}
+
 
 void Player::modify_hp(int delta) {
-    if (_state != 0) return;
+    if (_invincible_counter > 0) return;
     _hp = utils::clamp(_hp + delta, 0, _max_hp);
 }
