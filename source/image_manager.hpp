@@ -18,6 +18,8 @@ public:
     int get_background() const;
     const int* get_enemy(int type) const;
 
+    const int* get_item(int type) const;
+
     const int* get_numbers() const;
 
     const int get_player_shot(int type) const;
@@ -52,6 +54,8 @@ private:
     int _background;
 
     int _enemies[4][3];
+
+    int _items[7][2];
 
     int _destroy_enemy_effect[5];
 

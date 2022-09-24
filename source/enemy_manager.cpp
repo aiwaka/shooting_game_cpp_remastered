@@ -124,3 +124,6 @@ void EnemyManager::set_destroy_effect(Vec2 pos, int color) {
     auto effect = std::make_shared<DestroyEnemyEffect>(pos, color);
     _game_scene->set_effect(effect);
 }
+void EnemyManager::spawn_items(std::array<int, 6> items, Vec2 pos) {
+    _game_scene->spawn_items(items, pos);
+}

@@ -12,6 +12,7 @@ ItemManager::ItemManager(GameScene* scene) :
 }
 
 void ItemManager::push_item(Vec2 pos, int type) {
+    if (type < 0 || 6 < type) return;
     auto item = std::make_shared<Item>(pos, type);
     this->_list.push_back(item);
 }

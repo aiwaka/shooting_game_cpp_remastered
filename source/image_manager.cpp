@@ -26,12 +26,19 @@ void ImageManager::load() {
     _player_shot[1] = app_load_graph("./dat/img/chshot2.png");
 
     // “G‰æ‘œ
-    //app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemy_a);
-    //app_load_div_graph("./dat/img/enemy_b.png", 3, 3, 1, 30, 40, _enemy_b);
     app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemies[0]);
     app_load_div_graph("./dat/img/enemy_b.png", 3, 3, 1, 30, 40, _enemies[1]);
     app_load_div_graph("./dat/img/enemy_c.png", 3, 3, 1, 64, 64, _enemies[2]);
     app_load_div_graph("./dat/img/enemy_d.png", 3, 3, 1, 80, 50, _enemies[3]);
+
+    // ƒAƒCƒeƒ€
+    app_load_div_graph("./dat/img/p0.png", 2, 2, 1, 35, 35, _items[0]); // hp
+    app_load_div_graph("./dat/img/p1.png", 2, 2, 1, 35, 35, _items[1]); // hp_big
+    app_load_div_graph("./dat/img/p2.png", 2, 2, 1, 35, 35, _items[2]); // power
+    app_load_div_graph("./dat/img/p3.png", 2, 2, 1, 35, 35, _items[3]); // life;
+    app_load_div_graph("./dat/img/p4.png", 2, 2, 1, 35, 35, _items[4]); // point
+    app_load_div_graph("./dat/img/p5.png", 2, 2, 1, 35, 35, _items[5]); // point_up
+    app_load_div_graph("./dat/img/p6.png", 2, 2, 1, 35, 35, _items[6]); // bomb;
 
 
     // “G’e‰æ‘œ
@@ -65,6 +72,9 @@ int ImageManager::get_background() const {
 }
 const int* ImageManager::get_enemy(int type) const {
     return _enemies[type];
+}
+const int* ImageManager::get_item(int type) const {
+    return _items[type];
 }
 
 const int* ImageManager::get_numbers() const {

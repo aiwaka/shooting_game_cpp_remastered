@@ -38,6 +38,8 @@ public:
 
     //! @brief 敵撃破エフェクトをセット
     void set_destroy_effect(Vec2 pos, int color);
+    //! @brief アイテムを出現させる
+    void spawn_items(std::array<int, 6> items, Vec2 pos);
 
 private:
     //! @brief 敵管理クラスはゲームシーンへのポインタを持つ. これにより公開された情報に限って敵管理クラスが様々な情報にアクセスできる.

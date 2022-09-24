@@ -19,6 +19,8 @@ public:
     Vec2 _pos;
     int _type;
 
+    //! @brief 出現時の位置のズレを表す
+    Vec2 _spawn_offset;
 
     bool is_inside_field() const;
 };

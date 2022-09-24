@@ -39,6 +39,8 @@ public:
 
     //! @brief エフェクトを登録する
     void set_effect(std::shared_ptr<AbstractEffect> effect);
+    //! @brief アイテムを出現させる
+    void spawn_items(std::array<int, 6>& items, Vec2 pos);
 private:
     // スコアはゲームシーンとして管理する
     int _score;

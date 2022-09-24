@@ -24,6 +24,7 @@ void GameScene::update() {
     _player->update();
     _enemy_manager->update();
     _player_bullet_manager->update();
+    _item_manager->update();
     _effect_manager->update();
     _board->update();
 }
@@ -32,6 +33,7 @@ void GameScene::draw() const {
     // ‚±‚±‚Å‚Ì‡”Ô‚ª•`‰æ‡‚É‚È‚é.
     _background->draw();
     _effect_manager->draw();
+    _item_manager->draw();
     _player_bullet_manager->draw();
     _player->draw();
     _enemy_manager->draw();
@@ -52,4 +54,10 @@ std::list<std::shared_ptr<AbstractEnemy>> GameScene::get_all_enemies_iterator() 
 }
 void GameScene::set_effect(std::shared_ptr<AbstractEffect> effect) {
     _effect_manager->push_effect(effect);
+}
+
+void GameScene::spawn_items(std::array<int, 6>& items, Vec2 pos) {
+    for (int type : items) {
+        _item_manager->push_item(pos, type);
+    }
 }
