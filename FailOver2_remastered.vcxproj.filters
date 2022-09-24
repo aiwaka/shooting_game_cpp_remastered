@@ -159,6 +159,9 @@
     <ClCompile Include="source\item.cpp">
       <Filter>ソース ファイル\components\items</Filter>
     </ClCompile>
+    <ClCompile Include="source\display_mission_effect.cpp">
+      <Filter>ソース ファイル\components\effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -271,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="source\item.hpp">
       <Filter>ヘッダー ファイル\components\items</Filter>
+    </ClInclude>
+    <ClInclude Include="source\display_mission_effect.hpp">
+      <Filter>ヘッダー ファイル\components\effects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

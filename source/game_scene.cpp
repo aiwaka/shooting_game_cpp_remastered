@@ -1,11 +1,13 @@
 #include <DxLib.h>
 #include "game_scene.hpp"
+#include "display_mission_effect.hpp"
 
 const char* GameScene::param_tag_stage = "param_tag_stage";
 const char* GameScene::param_tag_level = "param_tag_level";
 
 GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param) : AbstractScene(impl, param) {
     _score = 0;
+    _counter = 0;
 
     // _backgroundはAbstractBackgroundのポインタだが, Backgroundはそれを継承しているので完全な形でキャスト可能
     _background = std::make_shared<Background>();
@@ -19,6 +21,10 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
 }
 
 void GameScene::update() {
+    if (_counter == 100) {
+        auto mission = std::make_shared<DisplayMissionEffect>();
+        _effect_manager->push_effect(mission);
+    }
     // ここの処理順に気をつけないと1フレーム処理が遅れることがありそう
     _background->update();
     _player->update();
@@ -27,6 +33,7 @@ void GameScene::update() {
     _item_manager->update();
     _effect_manager->update();
     _board->update();
+    ++_counter;
 }
 
 void GameScene::draw() const {

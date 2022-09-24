@@ -45,6 +45,7 @@ public:
     //! @brief アイテムを出現させる
     void spawn_items(std::array<int, 6>& items, Vec2 pos);
 private:
+    int _counter;
     // スコアはゲームシーンとして管理する
     int _score;
     //int _level;

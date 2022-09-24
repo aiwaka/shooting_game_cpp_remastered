@@ -18,6 +18,9 @@ void ImageManager::load() {
     // デジタル数字画像
     app_load_div_graph("./dat/img/number_0.png", 10, 10, 1, 30, 55, _numbers);
 
+    // ステージ最初の画像
+    _mission_display = app_load_graph("./dat/img/stagetitle.png");
+
     // 自機画像
     app_load_div_graph("./dat/img/player1.png", 6, 2, 3, 70, 60, _player_a);
 
@@ -79,6 +82,10 @@ const int* ImageManager::get_item(int type) const {
 
 const int* ImageManager::get_numbers() const {
     return _numbers;
+}
+
+const int ImageManager::get_mission_display() const {
+    return _mission_display;
 }
 const int ImageManager::get_enemy_bullet(int type, int color) const {
     return _enemy_bullet[type][color];

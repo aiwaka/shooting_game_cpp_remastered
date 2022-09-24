@@ -21,6 +21,7 @@ public:
     const int* get_item(int type) const;
 
     const int* get_numbers() const;
+    const int get_mission_display() const;
 
     const int get_player_shot(int type) const;
 
@@ -45,6 +46,8 @@ private:
 
     //! @brief デジタル数字画像
     int _numbers[10];
+    //! @brief ステージ最初の表示
+    int _mission_display;
 
     int _player_a[6];
     int _player_shot[2];
