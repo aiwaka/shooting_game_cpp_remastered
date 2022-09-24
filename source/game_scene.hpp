@@ -13,6 +13,7 @@
 #include "player_bullet_manager.hpp"
 #include "abstract_effect.hpp"
 #include "effect_manager.hpp"
+#include "item_manager.hpp"
 
 class GameScene : public AbstractScene {
 public:
@@ -49,6 +50,7 @@ private:
     std::shared_ptr<EnemyManager> _enemy_manager;
     std::shared_ptr<PlayerBulletManager> _player_bullet_manager;
     std::shared_ptr<EffectManager> _effect_manager;
+    std::shared_ptr<ItemManager> _item_manager;
 };
 
 

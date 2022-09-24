@@ -43,17 +43,17 @@
     <Filter Include="ヘッダー ファイル\components\enemy_attack">
       <UniqueIdentifier>{605eb99f-986b-4b43-ad9d-fc5a5a6b6fe9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\collision">
-      <UniqueIdentifier>{76d4aaaf-c3be-4d55-8a52-75ec0b45f2ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\collision">
-      <UniqueIdentifier>{6cd24e2d-adf7-4653-bcec-dfa356305fd8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\components\effects">
       <UniqueIdentifier>{f4468917-b6cd-4166-9244-d05aebff8714}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\components\effects">
       <UniqueIdentifier>{ba0b5b1a-1ac4-4a02-acde-c6523a6ca935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\components\items">
+      <UniqueIdentifier>{ea1d32c6-b98a-4e1f-9b20-62c801122c81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\components\items">
+      <UniqueIdentifier>{42c41bdb-88ac-47f0-bff6-60874a496744}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +152,12 @@
     </ClCompile>
     <ClCompile Include="source\destroy_enemy_effect.cpp">
       <Filter>ソース ファイル\components\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\item_manager.cpp">
+      <Filter>ソース ファイル\components\items</Filter>
+    </ClCompile>
+    <ClCompile Include="source\item.cpp">
+      <Filter>ソース ファイル\components\items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +265,12 @@
     </ClInclude>
     <ClInclude Include="source\destroy_enemy_effect.hpp">
       <Filter>ヘッダー ファイル\components\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\item_manager.hpp">
+      <Filter>ヘッダー ファイル\components\items</Filter>
+    </ClInclude>
+    <ClInclude Include="source\item.hpp">
+      <Filter>ヘッダー ファイル\components\items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

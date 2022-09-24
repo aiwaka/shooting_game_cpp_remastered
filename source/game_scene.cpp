@@ -1,5 +1,5 @@
-#include "game_scene.hpp"
 #include <DxLib.h>
+#include "game_scene.hpp"
 
 const char* GameScene::param_tag_stage = "param_tag_stage";
 const char* GameScene::param_tag_level = "param_tag_level";
@@ -15,6 +15,7 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     _player_bullet_manager = std::make_shared<PlayerBulletManager>(this);
     _effect_manager = std::make_shared<EffectManager>(this);
     _player = std::make_shared<Player>(_player_bullet_manager);
+    _item_manager = std::make_shared<ItemManager>(this);
 }
 
 void GameScene::update() {

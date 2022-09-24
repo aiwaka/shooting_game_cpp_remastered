@@ -39,6 +39,8 @@
     <ClCompile Include="source\game_scene.cpp" />
     <ClCompile Include="source\global_define.cpp" />
     <ClCompile Include="source\image_manager.cpp" />
+    <ClCompile Include="source\item.cpp" />
+    <ClCompile Include="source\item_manager.cpp" />
     <ClCompile Include="source\i_on_changed_listener.cpp" />
     <ClCompile Include="source\keyboard.cpp" />
     <ClCompile Include="source\looper.cpp" />
@@ -74,6 +76,8 @@
     <ClInclude Include="source\global_define.hpp" />
     <ClInclude Include="source\game_system.hpp" />
     <ClInclude Include="source\image_manager.hpp" />
+    <ClInclude Include="source\item.hpp" />
+    <ClInclude Include="source\item_manager.hpp" />
     <ClInclude Include="source\i_on_changed_listener.hpp" />
     <ClInclude Include="source\keyboard.hpp" />
     <ClInclude Include="source\looper.hpp" />
