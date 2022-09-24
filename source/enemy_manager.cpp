@@ -101,11 +101,12 @@ bool EnemyManager::update() {
 }
 
 void EnemyManager::draw() const {
+    this->_enemy_bullet_manager->draw();
+    // “G’e‚æ‚èã‚É“G‚ğ•`‰æ‚·‚é
     DrawFormatString(0, 20, GetColor(255, 255, 255), "“G‚Ì” : %d", _list.size());
     for (const auto enemy : _list) {
         enemy->draw();
     }
-    this->_enemy_bullet_manager->draw();
 }
 
 Vec2 EnemyManager::get_player_pos() const {
