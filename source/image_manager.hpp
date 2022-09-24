@@ -19,6 +19,8 @@ public:
     const int* get_enemy_a() const;
     const int* get_enemy_b() const;
 
+    const int* get_numbers() const;
+
     const int get_player_shot(int type) const;
 
     const int get_enemy_bullet(int type, int color) const;
@@ -39,6 +41,9 @@ private:
 
     //! @brief 画像ハンドルを並べて格納する配列. 一括開放を可能にする.
     std::vector<int> _images;
+
+    //! @brief デジタル数字画像
+    int _numbers[10];
 
     int _player_a[6];
     int _player_shot[2];

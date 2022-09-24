@@ -27,12 +27,17 @@ public:
 
     //! @brief 自機の位置を問い合わせられるようにする
     Vec2 get_player_pos() const;
+    //! @brief ボード表示用にプレイヤーの情報を取得する.
+    //! @return [スコア, HP, ショットパワー, 残機, ボム]が整数で返る.
+    std::array<int, 5> get_player_info_for_board() const;
     //! @brief 敵全体へのポインタを取得できる
     std::list<std::shared_ptr<AbstractEnemy>> get_all_enemies_iterator() const;
 
     //! @brief エフェクトを登録する
     void set_effect(std::shared_ptr<AbstractEffect> effect);
 private:
+    // スコアはゲームシーンとして管理する
+    int _score;
     //int _level;
     // ここでシーン内で動かすものへのポインタを保持しておき, updateやdrawを適用することで更新を行っていく.
     std::shared_ptr<Player> _player;

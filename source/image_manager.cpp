@@ -4,7 +4,7 @@ ImageManager::ImageManager() {
     load();
 }
 
-// あとで書く
+// TODO: シーンで分けて画像を読み込めるようにするとよさそう
 void ImageManager::load() {
     _board[0] = app_load_graph("./dat/img/10.png");
     _board[1] = app_load_graph("./dat/img/11.png");
@@ -14,6 +14,9 @@ void ImageManager::load() {
 
     // ポーズ画像を読み込み
     _pause_bg = LoadPauseGraph("./dat/img/pause.png");
+
+    // デジタル数字画像
+    app_load_div_graph("./dat/img/number_0.png", 10, 10, 1, 30, 55, _numbers);
 
     // 自機画像
     app_load_div_graph("./dat/img/player1.png", 6, 2, 3, 70, 60, _player_a);
@@ -60,6 +63,11 @@ const int* ImageManager::get_enemy_a() const {
 }
 const int* ImageManager::get_enemy_b() const {
     return _enemy_b;
+}
+
+
+const int* ImageManager::get_numbers() const {
+    return _numbers;
 }
 const int ImageManager::get_enemy_bullet(int type, int color) const {
     return _enemy_bullet[type][color];
