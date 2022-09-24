@@ -16,7 +16,7 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     _enemy_manager = std::make_shared<EnemyManager>(this);
     _player_bullet_manager = std::make_shared<PlayerBulletManager>(this);
     _effect_manager = std::make_shared<EffectManager>(this);
-    _player = std::make_shared<Player>(_player_bullet_manager);
+    _player = std::make_shared<Player>(this, _player_bullet_manager);
     _item_manager = std::make_shared<ItemManager>(this);
 }
 

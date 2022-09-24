@@ -22,6 +22,7 @@
     <ClCompile Include="source\abstract_bg.cpp" />
     <ClCompile Include="source\abstract_effect.cpp" />
     <ClCompile Include="source\abstract_enemy.cpp" />
+    <ClCompile Include="source\bomb_effect.cpp" />
     <ClCompile Include="source\destroy_enemy_effect.cpp" />
     <ClCompile Include="source\display_mission_effect.cpp" />
     <ClCompile Include="source\effect_manager.cpp" />
@@ -59,6 +60,7 @@
     <ClInclude Include="source\abstract_bg.hpp" />
     <ClInclude Include="source\abstract_effect.hpp" />
     <ClInclude Include="source\abstract_enemy.hpp" />
+    <ClInclude Include="source\bomb_effect.hpp" />
     <ClInclude Include="source\destroy_enemy_effect.hpp" />
     <ClInclude Include="source\display_mission_effect.hpp" />
     <ClInclude Include="source\effect_manager.hpp" />

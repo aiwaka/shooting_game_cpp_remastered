@@ -4,11 +4,12 @@
 #include "task.hpp"
 #include "euclid_vec.hpp"
 
+class GameScene;
 class PlayerBulletManager;
 
 class Player : public Task {
 public:
-    Player(std::shared_ptr<PlayerBulletManager> manager);
+    Player(GameScene* scene, std::shared_ptr<PlayerBulletManager> manager);
     virtual ~Player() = default;
     bool update() override;
     void draw() const override;
@@ -28,6 +29,7 @@ public:
     int get_bombs_num() const;
 
 private:
+    GameScene* _game_scene;
     void move();
     void shot();
     //! @brief state‚ª2, €–S’†‚ÌˆÚ“®‘€ì‚ğ‚·‚é
@@ -49,6 +51,7 @@ private:
     int _invincible_counter;
     int _lives_num; // c‹@
     int _bombs_num;
+    bool _bombing;
 };
 
 inline Vec2 Player::get_pos() const { return _pos; }

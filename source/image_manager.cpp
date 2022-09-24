@@ -6,6 +6,7 @@ ImageManager::ImageManager() {
 
 // TODO: シーンで分けて画像を読み込めるようにするとよさそう
 void ImageManager::load() {
+    _black = app_load_graph("./dat/img/black.png");
     _board[0] = app_load_graph("./dat/img/10.png");
     _board[1] = app_load_graph("./dat/img/11.png");
     _board[2] = app_load_graph("./dat/img/12.png");
@@ -27,6 +28,8 @@ void ImageManager::load() {
     // 自機ショット画像
     _player_shot[0] = app_load_graph("./dat/img/chshot1.png");
     _player_shot[1] = app_load_graph("./dat/img/chshot2.png");
+
+    _bomb = app_load_graph("./dat/img/bomb0.png");
 
     // 敵画像
     app_load_div_graph("./dat/img/enemy_a.png", 3, 3, 1, 30, 30, _enemies[0]);
@@ -64,6 +67,10 @@ void ImageManager::release() {
     _images.clear();
 }
 
+
+const int ImageManager::get_black() const {
+    return _black;
+}
 const int* ImageManager::get_player_a() const {
     return _player_a;
 }
@@ -93,6 +100,10 @@ const int ImageManager::get_enemy_bullet(int type, int color) const {
 
 const int ImageManager::get_player_shot(int type) const {
     return _player_shot[type];
+}
+
+const int ImageManager::get_bomb() const {
+    return _bomb;
 }
 const int ImageManager::get_destroy_enemy_effect(int color) const {
     return _destroy_enemy_effect[color];

@@ -162,6 +162,9 @@
     <ClCompile Include="source\display_mission_effect.cpp">
       <Filter>ソース ファイル\components\effects</Filter>
     </ClCompile>
+    <ClCompile Include="source\bomb_effect.cpp">
+      <Filter>ソース ファイル\components\effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -276,6 +279,9 @@
       <Filter>ヘッダー ファイル\components\items</Filter>
     </ClInclude>
     <ClInclude Include="source\display_mission_effect.hpp">
+      <Filter>ヘッダー ファイル\components\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\bomb_effect.hpp">
       <Filter>ヘッダー ファイル\components\effects</Filter>
     </ClInclude>
   </ItemGroup>

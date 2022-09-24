@@ -4,6 +4,8 @@
 #include "player.hpp"
 #include "pad_input.hpp"
 #include "player_bullet_manager.hpp"
+#include "game_scene.hpp"
+#include "bomb_effect.hpp"
 #include "image_manager.hpp"
 #include "utils.hpp"
 
@@ -12,7 +14,7 @@ namespace {
     constexpr int PLAYER_MAX_HP = 99;
 }
 
-Player::Player(std::shared_ptr<PlayerBulletManager> manager) :
+Player::Player(GameScene* scene, std::shared_ptr<PlayerBulletManager> manager) :
     _pos(Vec2{ static_cast<float>(GlobalValues::CENTER_X), static_cast<float>(GlobalValues::OUT_HEIGHT) * 0.8f }),
     _counter(0),
     _move_dir(Vec2{}),
@@ -22,8 +24,10 @@ Player::Player(std::shared_ptr<PlayerBulletManager> manager) :
     _lives_num(2),
     _bombs_num(2),
     _state(0),
-    _invincible_counter(0)
+    _invincible_counter(0),
+    _bombing(false)
 {
+    _game_scene = scene;
     _bullet_manager = manager;
 }
 
@@ -31,6 +35,7 @@ bool Player::update() {
     ++_counter;
     // 無敵カウンタが有効なら減らす
     if (_invincible_counter > 0) --_invincible_counter;
+    if (_bombing && _invincible_counter == 0) _bombing = false;
     if (_hp == 0) {
         // 死んだらカウンターを0にして状態を2にする
         _counter = 0;
@@ -101,9 +106,20 @@ void Player::move()
 
 void Player::shot() {
     if (_state == 2) return;
+
+    auto pad_ins = PadInput::get_instance();
+    // 先にボムを判定
+    if (!_bombing && pad_ins->get(Bomb) == 1 && _bombs_num > 0) {
+        --_bombs_num;
+        _bombing = true;
+        _invincible_counter = 170;
+        auto bomb_eff = std::make_shared<BombEffect>(_pos);
+        _game_scene->set_effect(bomb_eff);
+        return;
+    }
+
     constexpr float SHOT_POS_X[4] = { -10.0, 10.0, -30.0, 30.0 };
     constexpr float SHOT_POS_Y[4] = { -30.0, -30.0, -10.0, -10.0 };
-    auto pad_ins = PadInput::get_instance();
     if (pad_ins->get(Shot) > 0 && pad_ins->get(Shot) % 5 == 0) {
         for (int i = 0; i < 4; ++i) {
             if (pad_ins->get(Slow) > 0) {

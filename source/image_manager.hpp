@@ -13,6 +13,7 @@ public:
     void load();
     void release();
 
+    const int get_black() const;
     const int* get_player_a() const;
     std::array<int, 4> get_board() const;
     int get_background() const;
@@ -24,6 +25,7 @@ public:
     const int get_mission_display() const;
 
     const int get_player_shot(int type) const;
+    const int get_bomb() const;
 
     const int get_enemy_bullet(int type, int color) const;
 
@@ -44,6 +46,8 @@ private:
     //! @brief 画像ハンドルを並べて格納する配列. 一括開放を可能にする.
     std::vector<int> _images;
 
+    //! @brief 画面サイズの真っ黒な画像
+    int _black;
     //! @brief デジタル数字画像
     int _numbers[10];
     //! @brief ステージ最初の表示
@@ -51,6 +55,8 @@ private:
 
     int _player_a[6];
     int _player_shot[2];
+
+    int _bomb;
     int _board[4];
     //! @brief ポーズ状態の画像
     int _pause_bg;
