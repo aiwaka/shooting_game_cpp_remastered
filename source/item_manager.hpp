@@ -26,4 +26,6 @@ private:
     int _counter;
 
     std::list<std::shared_ptr<Item>> _list;
+
+    void collision_against_player() const;
 };

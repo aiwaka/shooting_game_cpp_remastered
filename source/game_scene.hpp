@@ -36,6 +36,9 @@ public:
 
     void modify_score(int delta);
     void modify_player_hp(int delta);
+    void modify_player_power(int delta);
+    void increment_player_life();
+    void increment_player_bomb();
 
     //! @brief エフェクトを登録する
     void set_effect(std::shared_ptr<AbstractEffect> effect);
@@ -58,3 +61,7 @@ private:
 
 inline void GameScene::modify_score(int delta) { _score += delta; }
 inline void GameScene::modify_player_hp(int delta) { _player->modify_hp(delta); }
+
+inline void GameScene::modify_player_power(int delta) { _player->modify_power(delta); }
+inline void GameScene::increment_player_life() { _player->increment_life(); }
+inline void GameScene::increment_player_bomb() { _player->increment_bomb(); }
