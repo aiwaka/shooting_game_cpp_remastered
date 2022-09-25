@@ -115,8 +115,8 @@ void EnemyAttack::attack_pattern_04(AbstractEnemy* enemy) {
         float angle = enemy->get_angle_to_player();
         for (int i = 0; i < 20; ++i) {
             EnemyBulletInfo info;
-            info.bullet_type = 5;
-            info.color = 3;
+            info.bullet_type = 0;
+            info.color = 0;
             info.endure_count = 0;
             info.damage = 4;
             info.rotating = 0;
