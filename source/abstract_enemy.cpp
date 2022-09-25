@@ -82,7 +82,9 @@ int AbstractEnemy::get_i_slot(size_t idx) const {
     return this->_i_var_slot[idx];
 }
 void AbstractEnemy::push_bullet(EnemyBulletInfo& info) {
-    auto bullet = std::make_shared<EnemyBullet>(info, this);
+    // parent‚ğ‚½‚¹‚é‚æ‚¤‚É‚µ‚Ä‚¢‚½‚ª‚â‚ß‚é
+    //auto bullet = std::make_shared<EnemyBullet>(info, this);
+    auto bullet = std::make_shared<EnemyBullet>(info);
     _manager->push_bullet(bullet);
     _bullet_list.push_back(bullet);
 }

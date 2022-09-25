@@ -9,7 +9,9 @@ class AbstractEnemy;
 
 class EnemyBullet : public Task {
 public:
-    EnemyBullet(const EnemyBulletInfo& info, AbstractEnemy* parent);
+    // parentは使っていないので消してしまえばよさそう
+    //EnemyBullet(const EnemyBulletInfo& info, AbstractEnemy* parent);
+    EnemyBullet(const EnemyBulletInfo& info);
     virtual ~EnemyBullet() = default;
     bool update() override;
     void draw() const override;
@@ -24,8 +26,8 @@ public:
 private:
     bool is_inside_field() const;
 
-    //! @brief 自分を扱っている親へのポインタ
-    AbstractEnemy* _parent;
+    // //! @brief 自分を扱っている親へのポインタ
+    //AbstractEnemy* _parent;
 
     int _counter;
     Vec2 _pos;

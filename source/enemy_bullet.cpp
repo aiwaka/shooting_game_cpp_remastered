@@ -5,7 +5,7 @@
 #include "image_manager.hpp"
 #include "utils.hpp"
 
-EnemyBullet::EnemyBullet(const EnemyBulletInfo& info, AbstractEnemy* parent) :
+EnemyBullet::EnemyBullet(const EnemyBulletInfo& info) :
     _counter(0),
     _pos(Vec2{ info.x, info.y }),
     _angle(info.angle),
@@ -22,7 +22,7 @@ EnemyBullet::EnemyBullet(const EnemyBulletInfo& info, AbstractEnemy* parent) :
 {
     auto handle = ImageManager::get_instance()->get_enemy_bullet(info.bullet_type, info.color);
     _handle = handle;
-    _parent = parent;
+    //_parent = parent;
 }
 
 bool EnemyBullet::update() {
