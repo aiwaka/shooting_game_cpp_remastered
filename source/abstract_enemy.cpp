@@ -35,6 +35,16 @@ void AbstractEnemy::initialize() {
 }
 
 bool AbstractEnemy::update() {
+    // 敵弾の管理をする. 消えているものを取り除く
+    for (auto iter = _bullet_list.begin(); iter != _bullet_list.end();) {
+        if (!(*iter)->get_delete_flag()) {
+            ++iter;
+        }
+        else {
+            // イテレータを用いてループして, updateがfalseになったものが取り除かれるように
+            iter = _bullet_list.erase(iter);
+        }
+    }
     if (_hp <= 0) {
         _manager->set_destroy_effect(this->_pos, 0);
         // TODO: ここでアイテム出現処理等

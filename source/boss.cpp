@@ -29,6 +29,16 @@ Boss::Boss(std::queue<int> attack_patterns, bool is_big_boss, BossManager* manag
 }
 
 bool Boss::update() {
+    // 敵弾の管理をする. 消えているものを取り除く
+    for (auto iter = _bullet_list.begin(); iter != _bullet_list.end();) {
+        if (!(*iter)->get_delete_flag()) {
+            ++iter;
+        }
+        else {
+            // イテレータを用いてループして, updateがfalseになったものが取り除かれるように
+            iter = _bullet_list.erase(iter);
+        }
+    }
     // 攻撃中にhpが0以下になった場合
     if (_hp <= 0 && _attack_pattern_id != -1) {
         // 子機と敵弾をすべて消す

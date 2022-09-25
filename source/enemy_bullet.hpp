@@ -20,9 +20,12 @@ public:
     int get_type() const;
     Vec2 get_pos() const;
     int get_damage() const;
+    int get_color() const;
 
+    void set_pos(Vec2 pos);
     void set_omega(float omega);
 
+    bool get_delete_flag() const;
     void set_delete_flag();
 
 private:
@@ -51,6 +54,9 @@ private:
     bool _delete_flag;
 };
 
-inline int EnemyBullet::get_damage() const { return _damage; }
+inline bool EnemyBullet::get_delete_flag() const { return _delete_flag; }
 inline void EnemyBullet::set_delete_flag() { _delete_flag = true; }
+inline int EnemyBullet::get_damage() const { return _damage; }
+inline void EnemyBullet::set_pos(Vec2 pos) { _pos = pos; }
 inline void EnemyBullet::set_omega(float omega) { _omega = omega; }
+inline int EnemyBullet::get_color() const { return _color; }

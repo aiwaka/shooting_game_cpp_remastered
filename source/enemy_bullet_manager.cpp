@@ -16,6 +16,8 @@ bool EnemyBulletManager::update() {
         }
         else {
             // ƒCƒeƒŒ[ƒ^‚ğ—p‚¢‚Äƒ‹[ƒv‚µ‚Ä, update‚ªfalse‚É‚È‚Á‚½‚à‚Ì‚ªæ‚èœ‚©‚ê‚é‚æ‚¤‚É
+            // “G’e‚Ö‚Ìƒ|ƒCƒ“ƒ^‚Í“G‚âƒ{ƒX‚à‚Á‚Ä‚¢‚é‚Ì‚Å, ‚»‚¿‚ç‚Å‚àæ‚èœ‚¯‚é‚æ‚¤‚Éƒtƒ‰ƒO‚ğ—§‚Ä‚Ä‚¨‚­•K—v‚ ‚è
+            (*iter)->set_delete_flag();
             iter = _bullet_list.erase(iter);
         }
     }
@@ -26,7 +28,7 @@ bool EnemyBulletManager::update() {
 }
 
 void EnemyBulletManager::draw() const {
-    DrawFormatString(0, 60, GetColor(255, 255, 255), "“G’e‚Ì” : %d", _bullet_list.size());
+    DrawFormatString(0, 60, GetColor(255, 255, 255), "    “G’e‚Ì” : %u", _bullet_list.size());
     for (const auto bullet : _bullet_list) {
         bullet->draw();
     }
