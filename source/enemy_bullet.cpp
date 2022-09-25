@@ -35,7 +35,11 @@ bool EnemyBullet::update() {
 }
 void EnemyBullet::draw() const {
     float ex_rate = 0.4f;
+    if (_fx_detail == 1) {
+        SetDrawBlendMode(DX_BLENDMODE_ADD, 255);
+    }
     utils::DrawRotaGraphF_Screen(_pos.x, _pos.y, ex_rate, _angle, _handle, 1, 0);
+    SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 bool EnemyBullet::is_inside_field() const
 {
