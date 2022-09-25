@@ -63,7 +63,8 @@ EnemyManager::EnemyManager(GameScene* scene, std::shared_ptr<EnemyBulletManager>
     _game_scene = scene;
     //_enemy_bullet_manager = std::make_shared<EnemyBulletManager>(_game_scene);
     _enemy_bullet_manager = bullet_manager;
-    _counter = 0;
+    // ここを変えればステージの途中から始められる
+    _counter = 1700;
 
     // csvから敵情報を読み込み
     load_enemy_story("./dat/csv/storyH0.csv");
@@ -94,8 +95,10 @@ bool EnemyManager::update() {
         }
     }
     clsDx();
-    printfDx("count : %d\n", _counter);
-    ++_counter;
+    printfDx("enemy_manager count : %d\n", _counter);
+    if (!_game_scene->boss_exist()) {
+        ++_counter;
+    }
     return true;
 }
 

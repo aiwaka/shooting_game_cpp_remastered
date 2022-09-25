@@ -186,6 +186,15 @@
     <ClCompile Include="source\fullscreen_picture.cpp">
       <Filter>ソース ファイル\background</Filter>
     </ClCompile>
+    <ClCompile Include="source\boss_manager.cpp">
+      <Filter>ソース ファイル\components\boss</Filter>
+    </ClCompile>
+    <ClCompile Include="source\boss_attack.cpp">
+      <Filter>ソース ファイル\components\boss</Filter>
+    </ClCompile>
+    <ClCompile Include="source\boss.cpp">
+      <Filter>ソース ファイル\components\boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">

@@ -45,6 +45,9 @@ void ImageManager::load() {
     app_load_div_graph("./dat/img/enemy_c.png", 3, 3, 1, 64, 64, _enemies[2]);
     app_load_div_graph("./dat/img/enemy_d.png", 3, 3, 1, 80, 50, _enemies[3]);
 
+    // ボス画像
+    app_load_div_graph("./dat/img/boss.png", 24, 6, 4, 100, 70, _boss);
+
     // アイテム
     app_load_div_graph("./dat/img/p0.png", 2, 2, 1, 35, 35, _items[0]); // hp
     app_load_div_graph("./dat/img/p1.png", 2, 2, 1, 35, 35, _items[1]); // hp_big
@@ -95,6 +98,11 @@ std::array<int, 7> ImageManager::get_background() const {
 const int* ImageManager::get_enemy(int type) const {
     return _enemies[type];
 }
+const int ImageManager::get_boss() const {
+    // ボス画像はアニメーションさせないことにする（読み込んでいる画像は分割されているが全部同じ）
+    return _boss[0];
+}
+
 const int* ImageManager::get_item(int type) const {
     return _items[type];
 }

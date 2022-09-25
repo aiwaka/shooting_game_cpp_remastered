@@ -29,6 +29,7 @@ public:
     bool update() override;
     void draw() const override;
 
+    int get_counter() const;
     Vec2 get_player_pos() const;
 
     void push_bullet(std::shared_ptr<EnemyBullet> bullet);
@@ -61,3 +62,4 @@ private:
 
 };
 
+inline int EnemyManager::get_counter() const { return _counter; }

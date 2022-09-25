@@ -9,6 +9,7 @@
 #include "enemy_manager.hpp"
 #include "enemy_bullet.hpp"
 #include "enemy_bullet_manager.hpp"
+#include "boss_manager.hpp"
 #include "player_bullet.hpp"
 #include "player_bullet_manager.hpp"
 #include "abstract_effect.hpp"
@@ -41,13 +42,18 @@ public:
     void increment_player_life();
     void increment_player_bomb();
 
+    //! @brief 敵管理クラスのカウンタを取得する
+    int get_enemy_manager_counter() const;
+    //! @brief ボス出現中か？
+    bool boss_exist();
     //! @brief エフェクトを登録する
     void set_effect(std::shared_ptr<AbstractEffect> effect);
     //! @brief アイテムを出現させる
     void spawn_items(std::array<int, 6>& items, Vec2 pos);
 private:
     int _stage;
-    int _counter;
+    // シーンにカウンタを用意すると色々煩雑になりそう
+    //int _counter;
     // スコアはゲームシーンとして管理する
     int _score;
     //int _level;
@@ -60,8 +66,10 @@ private:
     std::shared_ptr<PlayerBulletManager> _player_bullet_manager;
     std::shared_ptr<EffectManager> _effect_manager;
     std::shared_ptr<ItemManager> _item_manager;
+    std::shared_ptr<BossManager> _boss_manager;
 };
 
+inline int GameScene::get_enemy_manager_counter() const { return _enemy_manager->get_counter(); }
 
 inline void GameScene::modify_score(int delta) { _score += delta; }
 inline void GameScene::modify_player_hp(int delta) { _player->modify_hp(delta); }
@@ -69,3 +77,5 @@ inline void GameScene::modify_player_hp(int delta) { _player->modify_hp(delta); 
 inline void GameScene::modify_player_power(int delta) { _player->modify_power(delta); }
 inline void GameScene::increment_player_life() { _player->increment_life(); }
 inline void GameScene::increment_player_bomb() { _player->increment_bomb(); }
+
+inline bool GameScene::boss_exist() { return _boss_manager->boss_exist(); }

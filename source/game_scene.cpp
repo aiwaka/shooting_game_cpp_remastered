@@ -7,7 +7,7 @@ const char* GameScene::param_tag_level = "param_tag_level";
 
 GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param) : AbstractScene(impl, param) {
     _score = 0;
-    _counter = 0;
+    //_counter = 0;
 
     // ƒXƒe[ƒW‚ðŽæ“¾
     _stage = param.get_param(this->param_tag_stage);
@@ -20,6 +20,7 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     _board = std::make_shared<Board>(this);
     _enemy_bullet_manager = std::make_shared<EnemyBulletManager>(this);
     _enemy_manager = std::make_shared<EnemyManager>(this, _enemy_bullet_manager);
+    _boss_manager = std::make_shared<BossManager>(this, _enemy_bullet_manager);
     _player_bullet_manager = std::make_shared<PlayerBulletManager>(this);
     _effect_manager = std::make_shared<EffectManager>(this);
     _player = std::make_shared<Player>(this, _player_bullet_manager);
@@ -27,7 +28,7 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
 }
 
 void GameScene::update() {
-    if (_counter == 100) {
+    if (_enemy_manager->get_counter() == 100) {
         auto mission = std::make_shared<DisplayMissionEffect>();
         _effect_manager->push_effect(mission);
     }
@@ -36,11 +37,12 @@ void GameScene::update() {
     _player->update();
     _enemy_bullet_manager->update();
     _enemy_manager->update();
+    _boss_manager->update();
     _player_bullet_manager->update();
     _item_manager->update();
     _effect_manager->update();
     _board->update();
-    ++_counter;
+    //++_counter;
 }
 
 void GameScene::draw() const {
@@ -52,6 +54,7 @@ void GameScene::draw() const {
     _player->draw();
     _enemy_bullet_manager->draw();
     // “G’e‚æ‚èã‚É“G‚ð•`‰æ‚·‚é
+    _boss_manager->draw();
     _enemy_manager->draw();
     _board->draw();
     //DrawFormatString(100, 100, GetColor(255, 255, 255), "level %d", _level);
