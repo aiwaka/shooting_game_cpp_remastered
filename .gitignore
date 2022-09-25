@@ -35,6 +35,6 @@
 .vs/*
 x64/*
 *.vcxproj.user
-assets/*
+dat/*
 Log.txt
 
