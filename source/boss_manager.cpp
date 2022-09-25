@@ -64,6 +64,12 @@ void BossManager::register_boss() {
     if (_game_scene->get_enemy_manager_counter() == 2000 && !this->boss_exist()) {
         auto attack_queue = std::queue<int>{};
         // 攻撃パターン番号をキューに詰める
+        attack_queue.push(11);
+        attack_queue.push(10);
+        attack_queue.push(9);
+        attack_queue.push(8);
+        attack_queue.push(7);
+        attack_queue.push(5);
         attack_queue.push(4);
         attack_queue.push(3);
         attack_queue.push(2);

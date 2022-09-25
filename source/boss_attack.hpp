@@ -37,11 +37,12 @@ private:
     void pattern_002(Boss* boss);
     void pattern_003(Boss* boss);
     void pattern_004(Boss* boss);
-    //void pattern_010(Boss* boss);
-    //void pattern_011(Boss* boss);
-    //void pattern_012(Boss* boss);
-    //void pattern_013(Boss* boss);
-    //void pattern_014(Boss* boss);
+    void pattern_005(Boss* boss);
+    void pattern_007(Boss* boss);
+    void pattern_008(Boss* boss);
+    void pattern_009(Boss* boss);
+    void pattern_010(Boss* boss);
+    void pattern_011(Boss* boss);
 };
 
 /*

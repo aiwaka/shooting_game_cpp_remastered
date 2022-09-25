@@ -23,7 +23,10 @@ public:
     int get_color() const;
 
     void set_pos(Vec2 pos);
+    void set_speed(float speed);
     void set_omega(float omega);
+    void set_fx(int num);
+
 
     bool get_delete_flag() const;
     void set_delete_flag();
@@ -58,5 +61,7 @@ inline bool EnemyBullet::get_delete_flag() const { return _delete_flag; }
 inline void EnemyBullet::set_delete_flag() { _delete_flag = true; }
 inline int EnemyBullet::get_damage() const { return _damage; }
 inline void EnemyBullet::set_pos(Vec2 pos) { _pos = pos; }
+inline void EnemyBullet::set_speed(float speed) { _speed = speed; }
 inline void EnemyBullet::set_omega(float omega) { _omega = omega; }
+inline void EnemyBullet::set_fx(int num) { _fx_detail = num; }
 inline int EnemyBullet::get_color() const { return _color; }

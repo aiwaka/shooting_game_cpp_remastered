@@ -19,6 +19,8 @@ public:
     int get_state() const;
     Vec2 get_pos() const;
     void set_pos(Vec2 pos);
+    float get_speed() const;
+    void set_speed(float speed);
     float get_angle() const;
     void set_angle(float angle);
 
@@ -47,6 +49,8 @@ inline void BossChild::delete_child() { _delete_flag = true; }
 inline int BossChild::get_counter() const { return this->_counter; }
 inline Vec2 BossChild::get_pos() const { return this->_pos; }
 inline  void BossChild::set_pos(Vec2 pos) { _pos = pos; }
+inline float BossChild::get_speed() const { return _speed; }
+inline void BossChild::set_speed(float speed) { _speed = speed; }
 inline float BossChild::get_angle() const { return _angle; }
 inline void BossChild::set_angle(float angle) { _angle = angle; }
 inline int BossChild::get_state() const { return this->_state; }

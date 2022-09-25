@@ -72,7 +72,7 @@ bool Boss::update() {
     if (_attack_pattern_id == -1) {
         // ‘Ò‹@ó‘Ô
         // ‰æ–Ê’†‰›‚É–ß‚·
-        set_move(Vec2{ static_cast<float>(GlobalValues::CENTER_X), static_cast<float>(GlobalValues::CENTER_Y) - 90.0f });
+        set_move(Vec2{ static_cast<float>(GlobalValues::CENTER_X),  80.0f });
         // 2•bŒo‰ß‚µ‚½‚çŸ‚ÌUŒ‚‚Ö
         if (_counter > 120) {
             _attack_pattern_id = _attack_patterns.front();
