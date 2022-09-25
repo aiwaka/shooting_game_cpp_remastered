@@ -21,6 +21,8 @@ public:
     Vec2 get_pos() const;
     int get_damage() const;
 
+    void set_omega(float omega);
+
     void set_delete_flag();
 
 private:
@@ -51,3 +53,4 @@ private:
 
 inline int EnemyBullet::get_damage() const { return _damage; }
 inline void EnemyBullet::set_delete_flag() { _delete_flag = true; }
+inline void EnemyBullet::set_omega(float omega) { _omega = omega; }

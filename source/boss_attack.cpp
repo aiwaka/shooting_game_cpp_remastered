@@ -7,8 +7,11 @@
 BossAttack::BossAttack() {
     using AttackPattern = BossAttack::AttackPattern;
     // 体力・制限時間・関数へのポインタをあわせてセットする
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_006 });
     _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_dummy });
+    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_001 });
+    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_002 });
+    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_003 });
+    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_004 });
 }
 
 void BossAttack::attack(Boss* boss)
@@ -84,7 +87,7 @@ void BossAttack::pattern_005(Boss* boss) {
 */
 
 // でかい2色の円をいっぱい発射
-void BossAttack::pattern_006(Boss* boss) {
+void BossAttack::pattern_001(Boss* boss) {
     int count = boss->get_counter();
     Vec2 boss_pos = boss->get_pos();
     if (count == 0) {
@@ -93,9 +96,8 @@ void BossAttack::pattern_006(Boss* boss) {
             for (int j = 0; j < 8; ++j) {
                 EnemyBulletInfo info;
                 info.bullet_type = i * 8 + j; // 子機番号として使う
-                Vec2 pos = boss->get_pos();
-                info.x = pos.x;
-                info.y = pos.y;
+                info.x = boss_pos.x;
+                info.y = boss_pos.y;
                 info.angle = -GlobalValues::PI / 2.0; // 角度は発射方向として使う
                 info.speed = 0.0; // 自動で移動しない
                 info.omega = 0.0;
@@ -136,6 +138,148 @@ void BossAttack::pattern_006(Boss* boss) {
     }
 }
 
+//一つの子機から2色楔弾
+void BossAttack::pattern_002(Boss* boss) {
+    int count = boss->get_counter();
+    Vec2 boss_pos = boss->get_pos();
+    if (count == 0) {
+        EnemyBulletInfo info;
+        info.angle = utils::rand_in_range(GlobalValues::PI);
+        Vec2 rel_pos = Vec2::from_angle(info.angle) * 75.0f;
+        info.x = boss_pos.x + rel_pos.x;
+        info.y = boss_pos.y + rel_pos.y;
+        info.speed = 0.0; // 自動で移動しない
+        boss->push_child(info);
+    }
+    auto child_list = boss->get_child_iterator();
+    for (auto& child : child_list) {
+        // 子機の位置と角度を更新
+        float next_child_angle = child->get_angle() + GlobalValues::PI / 60.0;
+        child->set_angle(next_child_angle);
+        Vec2 next_child_pos = boss_pos + Vec2::from_angle(next_child_angle) * 75.0f;
+        child->set_pos(next_child_pos);
+
+        if (count % 5 == 0) {
+            // 子機から2列7wayで発射
+            for (int j = 0; j < 2; ++j) {
+                for (int i = 0; i < 7; ++i) {
+                    EnemyBulletInfo info;
+                    info.bullet_type = 5;
+                    info.color = 4 * j + 1; // 1 or 5
+                    info.endure_count = 30;
+                    info.damage = 4;
+                    info.x = next_child_pos.x;
+                    info.y = next_child_pos.y;
+                    info.angle = static_cast<float>(count) * 0.3 + GlobalValues::PI * 2.0 * static_cast<float>(i) / 7.0f;
+                    info.speed = j == 0 ? 2.8 : 3.6;
+                    boss->push_bullet(info);
+                    // se
+                }
+            }
+        }
+    }
+}
+
+// 曲がる交差弾
+void BossAttack::pattern_003(Boss* boss) {
+    int count = boss->get_counter();
+    int local_count = count % 240; // 3秒周期を持つのでこのカウントを用意する
+    Vec2 boss_pos = boss->get_pos();
+    static float base_angle;
+    if (count == 0) {
+        base_angle = utils::rand_in_range(GlobalValues::PI);
+    }
+    if (local_count % 9 == 0 && local_count < 150) {
+        float angle = base_angle + local_count * 0.1;
+        for (int j = 0; j < 2; ++j) {
+            for (int i = 0; i < 10; ++i) {
+                EnemyBulletInfo info;
+                info.bullet_type = 0;
+                info.color = 4;
+                info.endure_count = 50;
+                info.damage = 4;
+                info.x = boss_pos.x;
+                info.y = boss_pos.y;
+                info.angle = angle + GlobalValues::PI * static_cast<float>(i) / 5.0;
+                info.speed = 4.4;
+                info.omega = j == 0 ? GlobalValues::PI / 180.0 : -GlobalValues::PI / 180.0;
+                boss->push_bullet(info);
+                // se
+            }
+        }
+    }
+    auto bullet_list = boss->get_bullet_iterator();
+    for (auto& bullet : bullet_list) {
+        if (bullet->get_counter() >= 90) {
+            bullet->set_omega(0.0);
+        }
+    }
+}
+
+// 子機から出て回転する弾 花っぽい
+void BossAttack::pattern_004(Boss* boss) {
+    int count = boss->get_counter();
+    int local_count = count % 200; // 200フレーム周期
+    int period_num = count / 200; // 何週期目？
+    Vec2 boss_pos = boss->get_pos();
+
+    if (local_count == 0) {
+        float child_base_angle = utils::rand_in_range(GlobalValues::PI); // 前は自機狙いだったがランダムでも大差ないのでは
+        //chilang = bossatan2();
+        // 各周期の最初に子機を3つ発射
+        for (int i = 0; i < 3; ++i) {
+            EnemyBulletInfo info;
+            info.angle = child_base_angle + GlobalValues::PI * 2.0 * static_cast<float>(i) / 3.0f;
+            info.x = boss_pos.x;
+            info.y = boss_pos.y;
+            info.speed = 3.0;
+            info.omega = GlobalValues::PI / 180.0;
+            boss->push_child(info);
+        }
+        if (period_num % 3 == 1) {
+            // 3周期に1回移動
+            Vec2 target = Vec2::from_angle(utils::rand_in_range(GlobalValues::PI)) * 60.0 + boss_pos;
+            // 適当な位置に収める. 敵の位置は左上が基準で描画しているので複雑に考えないでいい
+            Vec2 min_vec = Vec2{ 50.0, 40.0 };
+            Vec2 max_vec = Vec2{ static_cast<float>(GlobalValues::IN_WIDTH) - 50.0f, 80.0f };
+            target = target.clamp(min_vec, max_vec);
+            boss->set_move(target);
+        }
+    }
+    auto child_list = boss->get_child_iterator();
+    for (auto& child : child_list) {
+        if (child->get_counter() > 81) {
+            // 81カウントで子機は消滅させる
+            child->delete_child();
+            continue;
+        }
+        if (local_count % 5 == 0) {
+            float angle = child->get_angle();
+            Vec2 child_pos = child->get_pos();
+            for (int i = 0; i < 7; i++) {
+                EnemyBulletInfo info;
+                info.bullet_type = 1;
+                info.color = 2;
+                info.endure_count = 150;
+                info.damage = 5;
+                info.x = child_pos.x;
+                info.y = child_pos.y;
+                info.angle = angle + GlobalValues::PI * 2.0 * static_cast<float>(i) / 7.0;
+                info.speed = 3.0;
+                info.omega = GlobalValues::PI / 30.0;
+                boss->push_bullet(info);
+            }
+            // se
+        }
+    }
+
+    auto bullet_list = boss->get_bullet_iterator();
+    for (auto& bullet : bullet_list) {
+        if (bullet->get_counter() >= 100) {
+            bullet->set_omega(0.0);
+        }
+    }
+}
 /*
 void boss_shot_bullet007() {
 #define TM007 300
@@ -208,75 +352,7 @@ void boss_shot_bullet008() {
 }
 
 
-//回転弾　花っぽい
-void boss_shot_bullet009() {
-#define TM009 200
-    int i, j, k, t = boss_shot.cnt % TM009, t2 = boss_shot.cnt;
-    static int cnum;
-    static double angle, chilang;
-    if (t2 == 0) {
-        cnum = 0;
-    }
 
-    if (t == 0) {
-        chilang = bossatan2();
-        for (i = 0; i < 3; i++) {
-            if ((k = child_search()) != -1) {
-                child[k].flag = 1;
-                child[k].cnt = 0;
-                child[k].angle = chilang + PI2 / 3 * i;
-                child[k].range = 0.5;
-                child[k].spd = 3;
-                child[k].x = boss.x;
-                child[k].y = boss.y;
-            }
-        }
-        if (cnum % 3 == 0) {
-            move_boss_pos(40, 30, FMX - 40, 120, 60, 60);
-        }
-    }
-    if (t % 5 == 0) {
-        for (j = 0; j < CHILD_MAX; j++) {
-            if (child[j].flag > 0) {
-                angle = child[j].angle;
-                for (i = 0; i < 7; i++) {
-                    if ((k = search_boss_shot()) != -1) {
-                        boss_shot.bullet[k].flag = 1;
-                        boss_shot.bullet[k].cnt = 0;
-                        boss_shot.bullet[k].col = 2;
-                        boss_shot.bullet[k].knd = 1;
-                        boss_shot.bullet[k].x = child[j].x;
-                        boss_shot.bullet[k].y = child[j].y;
-                        boss_shot.bullet[k].spd = 3;
-                        boss_shot.bullet[k].angle = angle + PI2 / 7 * i;
-                        boss_shot.bullet[k].base_angle[0] = PI / 60;
-                        boss_shot.bullet[k].power = 5;
-                        boss_shot.bullet[k].till = 150;
-                    }
-                }
-                se.SetSEFlag(10);
-                if (child[j].cnt > 80) {
-                    child[j].flag = 0;
-                }
-            }
-        }
-    }
-    for (i = 0; i < BOSS_BULLET_MAX; i++) {
-        if (boss_shot.bullet[i].flag > 0) {
-            if (boss_shot.bullet[i].cnt < 100) {
-                boss_shot.bullet[i].angle += boss_shot.bullet[i].base_angle[0];
-            }
-        }
-    }
-    for (i = 0; i < CHILD_MAX; i++) {
-        if (child[i].flag > 0) {
-            child[i].angle += PI2 / 360;
-        }
-    }
-    if (t == TM009 - 1) {
-        cnum++;
-    }
-}
 
 //sine wave
 void boss_shot_bullet010() {
@@ -375,82 +451,8 @@ void boss_shot_bullet011() {
     }
 }
 
-//一つの魔法陣から2色楔弾
-void boss_shot_bullet012() {
-    int i, j, k, t = boss_shot.cnt;
-#define CHILD_NUM 0
-    static double y, angle, baseangle, childang;
-    if (t == 0) {
-        childang = rang(PI);
-        angle = rang(PI);
-    }
-    child[CHILD_NUM].flag = 1;
-    child[CHILD_NUM].cnt = 0;
-    child[CHILD_NUM].range = 0.5;
-    child[CHILD_NUM].angle = childang;
-    child[CHILD_NUM].spd = 0;
-    child[CHILD_NUM].x = cos(childang) * 75 + boss.x;
-    child[CHILD_NUM].y = sin(childang) * 75 + boss.y;
 
-    if (t % 4 == 0) {
-        for (j = 0; j < 2; j++) {
-            for (i = 0; i < 7; i++) {
-                if ((k = search_boss_shot()) != -1) {
-                    boss_shot.bullet[k].flag = 1;
-                    boss_shot.bullet[k].cnt = 0;
-                    boss_shot.bullet[k].knd = 5;
-                    boss_shot.bullet[k].col = j == 0 ? 1 : 5;
-                    boss_shot.bullet[k].angle = angle + (t * 0.3) + PI2 / 7 * i;
-                    boss_shot.bullet[k].spd = j == 0 ? 2.8 : 3.4;
-                    boss_shot.bullet[k].x = child[CHILD_NUM].x;
-                    boss_shot.bullet[k].y = child[CHILD_NUM].y;
-                    boss_shot.bullet[k].power = 5;
-                    se.SetSEFlag(10);
-                }
-            }
-        }
-    }
-    childang += PI2 / 120;
-}
 
-//へにょり交差弾
-void boss_shot_bullet013() {
-#define TM013 240
-    int i, j, k, t = boss_shot.cnt % TM013, t2 = boss_shot.cnt;
-    static double y, angle, baseangle;
-    if (t == 0) {
-        baseangle = rang(PI);
-    }
-    if (t % 9 == 0 && t < 150) {
-        angle = baseangle + t * 0.1;
-        for (j = 0; j < 2; j++) {
-            for (i = 0; i < 10; i++) {
-                if ((k = search_boss_shot()) != -1) {
-                    boss_shot.bullet[k].flag = 1;
-                    boss_shot.bullet[k].cnt = 0;
-                    boss_shot.bullet[k].knd = 0;
-                    boss_shot.bullet[k].col = 4;
-                    boss_shot.bullet[k].x = boss.x;
-                    boss_shot.bullet[k].y = boss.y;
-                    boss_shot.bullet[k].angle = angle + PI2 / 10 * i;
-                    boss_shot.bullet[k].spd = 4.4;
-                    boss_shot.bullet[k].till = 50;
-                    boss_shot.bullet[k].power = 3;
-                    boss_shot.bullet[k].state = j == 0 ? 0 : 1;
-                    boss_shot.bullet[k].base_angle[0] = j == 0 ? PI2 / 360 : -PI2 / 360;
-                    se.SetSEFlag(10);
-                }
-            }
-        }
-    }
-    for (i = 0; i < BOSS_BULLET_MAX; i++) {
-        if (boss_shot.bullet[i].flag > 0) {
-            if (boss_shot.bullet[i].cnt < 90) {
-                boss_shot.bullet[i].angle += boss_shot.bullet[i].base_angle[0];
-            }
-        }
-    }
-}
 
 //ダブル波粒
 void boss_shot_bullet014() {

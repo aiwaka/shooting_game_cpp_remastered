@@ -29,7 +29,8 @@ Boss::Boss(std::queue<int> attack_patterns, bool is_big_boss, BossManager* manag
 }
 
 bool Boss::update() {
-    if (_hp <= 0) {
+    // 攻撃中にhpが0以下になった場合
+    if (_hp <= 0 && _attack_pattern_id != -1) {
         // 子機と敵弾をすべて消す
         _child_list.clear();
         for (auto& bullet : _bullet_list) {
@@ -41,6 +42,7 @@ bool Boss::update() {
             // TODO: 演出
             return false;
         }
+        _counter = 0;
         //_manager->set_destroy_effect(this->_pos, 0);
         // TODO: ここでアイテム出現処理等
         //_manager->spawn_items(this->_item_slot, this->_pos);

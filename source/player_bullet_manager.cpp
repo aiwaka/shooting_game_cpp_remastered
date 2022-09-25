@@ -58,6 +58,10 @@ void PlayerBulletManager::collision_against_boss() {
     if (!_game_scene->boss_exist()) return;
     auto all_boss = this->_game_scene->get_all_boss_iterator();
     for (auto& boss : all_boss) {
+        if (boss->get_attack_pattern_id() == -1) {
+            // 攻撃パターンが-1なら大気中なので当たり判定を行わない
+            continue;
+        }
         Vec2 boss_pos = boss->get_pos();
         for (auto& bullet : this->_bullet_list) {
             Vec2 bullet_pos = bullet->get_pos();
