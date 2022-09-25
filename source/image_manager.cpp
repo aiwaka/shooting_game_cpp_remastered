@@ -11,7 +11,15 @@ void ImageManager::load() {
     _board[1] = app_load_graph("./dat/img/11.png");
     _board[2] = app_load_graph("./dat/img/12.png");
     _board[3] = app_load_graph("./dat/img/20.png");
-    _background = app_load_graph("./dat/img/backg_2.png");
+
+    // ”wŒi
+    _background[0] = app_load_graph("./dat/img/title.png");
+    _background[1] = app_load_graph("./dat/img/backg_2.png");
+    _background[2] = app_load_graph("./dat/img/backg_6.png");
+    _background[3] = app_load_graph("./dat/img/backg_7.png");
+    _background[4] = app_load_graph("./dat/img/backg_9.png");
+    _background[5] = app_load_graph("./dat/img/backg_5_0.png");
+    _background[6] = app_load_graph("./dat/img/backg_5_1.png");
 
     // ƒ|[ƒY‰æ‘œ‚ğ“Ç‚İ‚İ
     _pause_bg = LoadPauseGraph("./dat/img/pause.png");
@@ -77,8 +85,12 @@ const int* ImageManager::get_player_a() const {
 std::array<int, 4> ImageManager::get_board() const {
     return std::array<int, 4>{_board[0], _board[1], _board[2], _board[3]};
 }
-int ImageManager::get_background() const {
-    return _background;
+std::array<int, 7> ImageManager::get_background() const {
+    auto temp = std::array<int, 7>{};
+    for (int i = 0; i < 7; ++i) {
+        temp[i] = _background[i];
+    }
+    return temp;
 }
 const int* ImageManager::get_enemy(int type) const {
     return _enemies[type];

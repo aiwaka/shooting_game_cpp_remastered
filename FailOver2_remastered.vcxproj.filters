@@ -55,6 +55,12 @@
     <Filter Include="ヘッダー ファイル\components\items">
       <UniqueIdentifier>{42c41bdb-88ac-47f0-bff6-60874a496744}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\titlemenu">
+      <UniqueIdentifier>{020190c0-46da-454b-ac64-87bb00de8ff0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\titlemenu">
+      <UniqueIdentifier>{3a35b6f6-4953-48e7-bf5f-78b8c78f38d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\game_system.cpp">

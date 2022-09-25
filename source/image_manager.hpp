@@ -16,7 +16,7 @@ public:
     const int get_black() const;
     const int* get_player_a() const;
     std::array<int, 4> get_board() const;
-    int get_background() const;
+    std::array<int, 7> get_background() const;
     const int* get_enemy(int type) const;
 
     const int* get_item(int type) const;
@@ -60,7 +60,7 @@ private:
     int _board[4];
     //! @brief ƒ|[ƒYó‘Ô‚Ì‰æ‘œ
     int _pause_bg;
-    int _background;
+    int _background[7];
 
     int _enemies[4][3];
 

@@ -12,6 +12,8 @@ public:
     bool update() override;
     void draw() const override;
 
+    void set_bg(int type);
+
 private:
     class Quadrangle {
     public:
@@ -21,6 +23,11 @@ private:
         Quadrangle(float x, float y, int img) : pos(Vec2{ x, y }), img(img) {}
     };
 
-    const static int BG_NUM = 4;
+    int _bg_type;
+    //! @brief ”wŒi‚ğ•À‚×‚é–‡”
+    const static int BG_NUM = 6;
+    std::array<int, 7> _handles;
+    int _img_height;
+
     std::array<std::shared_ptr<Quadrangle>, BG_NUM> _list;
 };
