@@ -47,6 +47,7 @@ void ImageManager::load() {
 
     // ボス画像
     app_load_div_graph("./dat/img/boss.png", 24, 6, 4, 100, 70, _boss);
+    _boss_child = app_load_graph("./dat/img/child.png");
 
     // アイテム
     app_load_div_graph("./dat/img/p0.png", 2, 2, 1, 35, 35, _items[0]); // hp
@@ -101,6 +102,9 @@ const int* ImageManager::get_enemy(int type) const {
 const int ImageManager::get_boss() const {
     // ボス画像はアニメーションさせないことにする（読み込んでいる画像は分割されているが全部同じ）
     return _boss[0];
+}
+const int ImageManager::get_boss_child() const {
+    return _boss_child;
 }
 
 const int* ImageManager::get_item(int type) const {

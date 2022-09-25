@@ -25,6 +25,7 @@
     <ClCompile Include="source\bomb_effect.cpp" />
     <ClCompile Include="source\boss.cpp" />
     <ClCompile Include="source\boss_attack.cpp" />
+    <ClCompile Include="source\boss_child.cpp" />
     <ClCompile Include="source\boss_manager.cpp" />
     <ClCompile Include="source\destroy_enemy_effect.cpp" />
     <ClCompile Include="source\display_mission_effect.cpp" />
@@ -67,6 +68,7 @@
     <ClInclude Include="source\bomb_effect.hpp" />
     <ClInclude Include="source\boss.hpp" />
     <ClInclude Include="source\boss_attack.hpp" />
+    <ClInclude Include="source\boss_child.hpp" />
     <ClInclude Include="source\boss_manager.hpp" />
     <ClInclude Include="source\destroy_enemy_effect.hpp" />
     <ClInclude Include="source\display_mission_effect.hpp" />

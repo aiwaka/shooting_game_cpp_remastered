@@ -16,6 +16,9 @@ public:
     virtual ~BossAttack() = default;
     void attack(Boss* boss);
 
+    //! @brief 指定されたidの攻撃の体力と制限時間を返す
+    std::array<int, 2> get_hp_and_time(int id);
+
 private:
     using AttackFunc = void(BossAttack::*)(Boss* boss);
     //! @brief パターンに体力・時間の情報を持たせるための構造体. これらはボスクラスで攻撃を登録するときにコピーするためのみに使用される.
@@ -29,12 +32,16 @@ private:
     std::vector<AttackPattern> _attack_pattern_list;
 
     //! @brief 配列埋め用ダミー
-    void attack_pattern_dummy(Boss* boss);
-    //void attack_pattern_00(Boss* boss);
-    //void attack_pattern_01(Boss* boss);
-    //void attack_pattern_02(Boss* boss);
-    //void attack_pattern_04(Boss* boss);
-    //void attack_pattern_05(Boss* boss);
-    //void attack_pattern_07(Boss* boss);
+    void pattern_dummy(Boss* boss);
+    //void pattern_005(Boss* boss);
+    void pattern_006(Boss* boss);
+    //void pattern_007(Boss* boss);
+    //void pattern_008(Boss* boss);
+    //void pattern_009(Boss* boss);
+    //void pattern_010(Boss* boss);
+    //void pattern_011(Boss* boss);
+    //void pattern_012(Boss* boss);
+    //void pattern_013(Boss* boss);
+    //void pattern_014(Boss* boss);
 };
 

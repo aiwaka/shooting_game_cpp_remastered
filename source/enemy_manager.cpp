@@ -64,7 +64,7 @@ EnemyManager::EnemyManager(GameScene* scene, std::shared_ptr<EnemyBulletManager>
     //_enemy_bullet_manager = std::make_shared<EnemyBulletManager>(_game_scene);
     _enemy_bullet_manager = bullet_manager;
     // ここを変えればステージの途中から始められる
-    _counter = 1700;
+    _counter = 1900;
 
     // csvから敵情報を読み込み
     load_enemy_story("./dat/csv/storyH0.csv");

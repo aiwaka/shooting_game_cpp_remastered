@@ -6,9 +6,9 @@
 #include "enemy_bullet.hpp"
 
 struct EnemyBulletInfo {
-    int bullet_type, color, endure_count, damage, rotating, fx_detail;
-    float x, y, angle, speed, omega, acceleration, temp_speed;
-    bool bomb_regist;
+    int bullet_type = 0, color = 0, endure_count = 0, damage = 0, rotating = 0, fx_detail = 0;
+    float x = 0.0, y = 0.0, angle = 0.0, speed = 0.0, omega = 0.0, acceleration = 0.0, temp_speed = 0.0;
+    bool bomb_regist = false;
 };
 
 class AbstractEnemy;

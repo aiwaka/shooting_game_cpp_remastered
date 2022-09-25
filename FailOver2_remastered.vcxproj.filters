@@ -195,6 +195,9 @@
     <ClCompile Include="source\boss.cpp">
       <Filter>ソース ファイル\components\boss</Filter>
     </ClCompile>
+    <ClCompile Include="source\boss_child.cpp">
+      <Filter>ソース ファイル\components\boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -324,6 +327,9 @@
       <Filter>ヘッダー ファイル\components\boss</Filter>
     </ClInclude>
     <ClInclude Include="source\boss_manager.hpp">
+      <Filter>ヘッダー ファイル\components\boss</Filter>
+    </ClInclude>
+    <ClInclude Include="source\boss_child.hpp">
       <Filter>ヘッダー ファイル\components\boss</Filter>
     </ClInclude>
   </ItemGroup>

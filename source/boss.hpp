@@ -7,6 +7,7 @@
 #include "task.hpp"
 #include "euclid_vec.hpp"
 #include "boss_attack.hpp"
+#include "boss_child.hpp"
 #include "enemy_bullet.hpp"
 
 class BossManager;
@@ -34,7 +35,9 @@ public:
     float get_angle_to_player() const;
 
     void push_bullet(EnemyBulletInfo& info);
+    void push_child(EnemyBulletInfo& info);
     std::list<std::shared_ptr<EnemyBullet>> get_bullet_iterator() const;
+    std::list<std::shared_ptr<BossChild>> get_child_iterator() const;
 
     void set_f_slot(size_t idx, float val);
     void set_i_slot(size_t idx, int val);
@@ -45,6 +48,8 @@ protected:
     BossAttack _attack;
     //! @brief ‚±‚Ì“G‚ªŒ‚‚Á‚½’e‚Ìƒ|ƒCƒ“ƒ^ƒŠƒXƒg. ’e‚ğ“o˜^‚·‚é‚Æ‚«‚±‚±‚É“o˜^‚·‚ê‚Î, ‚±‚Ì“G‚ª¶‚«‚Ä‚¢‚éŠÔQÆ‚µ‚Äî•ñ‚ğ‘‚«Š·‚¦‚ç‚ê‚é.
     std::list<std::shared_ptr<EnemyBullet>> _bullet_list;
+    //! @brief q‹@‚ğ•Û‘¶‚·‚é
+    std::list<std::shared_ptr<BossChild>> _child_list;
     BossManager* _manager;
 
     bool _is_big_boss;

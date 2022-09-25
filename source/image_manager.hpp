@@ -19,6 +19,7 @@ public:
     std::array<int, 7> get_background() const;
     const int* get_enemy(int type) const;
     const int get_boss() const;
+    const int get_boss_child() const;
 
     const int* get_item(int type) const;
 
@@ -65,6 +66,7 @@ private:
 
     int _enemies[4][3];
     int _boss[24];
+    int _boss_child;
 
     int _items[7][2];
 
