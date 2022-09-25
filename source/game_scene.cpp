@@ -18,7 +18,8 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     _background = std::make_shared<Background>(bg_idx);
     //_level = param.get_param(this->param_tag_level);
     _board = std::make_shared<Board>(this);
-    _enemy_manager = std::make_shared<EnemyManager>(this);
+    _enemy_bullet_manager = std::make_shared<EnemyBulletManager>(this);
+    _enemy_manager = std::make_shared<EnemyManager>(this, _enemy_bullet_manager);
     _player_bullet_manager = std::make_shared<PlayerBulletManager>(this);
     _effect_manager = std::make_shared<EffectManager>(this);
     _player = std::make_shared<Player>(this, _player_bullet_manager);
@@ -33,6 +34,7 @@ void GameScene::update() {
     // ‚±‚±‚Ìˆ—‡‚É‹C‚ð‚Â‚¯‚È‚¢‚Æ1ƒtƒŒ[ƒ€ˆ—‚ª’x‚ê‚é‚±‚Æ‚ª‚ ‚è‚»‚¤
     _background->update();
     _player->update();
+    _enemy_bullet_manager->update();
     _enemy_manager->update();
     _player_bullet_manager->update();
     _item_manager->update();
@@ -48,6 +50,8 @@ void GameScene::draw() const {
     _item_manager->draw();
     _player_bullet_manager->draw();
     _player->draw();
+    _enemy_bullet_manager->draw();
+    // “G’e‚æ‚èã‚É“G‚ð•`‰æ‚·‚é
     _enemy_manager->draw();
     _board->draw();
     //DrawFormatString(100, 100, GetColor(255, 255, 255), "level %d", _level);

@@ -67,6 +67,12 @@
     <Filter Include="ソース ファイル\background">
       <UniqueIdentifier>{96e89e09-4fd4-4411-833f-ff2f4abc8a3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\components\boss">
+      <UniqueIdentifier>{b2c54c8e-72a9-4999-b635-34335fa21cb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\components\boss">
+      <UniqueIdentifier>{7826cdd2-4e63-4eae-a28a-62b32e6da1e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\game_system.cpp">
@@ -301,6 +307,15 @@
     </ClInclude>
     <ClInclude Include="source\fullscreen_picture.hpp">
       <Filter>ヘッダー ファイル\background</Filter>
+    </ClInclude>
+    <ClInclude Include="source\boss.hpp">
+      <Filter>ヘッダー ファイル\components\boss</Filter>
+    </ClInclude>
+    <ClInclude Include="source\boss_attack.hpp">
+      <Filter>ヘッダー ファイル\components\boss</Filter>
+    </ClInclude>
+    <ClInclude Include="source\boss_manager.hpp">
+      <Filter>ヘッダー ファイル\components\boss</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

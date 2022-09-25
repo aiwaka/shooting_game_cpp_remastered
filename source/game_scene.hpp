@@ -56,6 +56,7 @@ private:
     std::shared_ptr<Board> _board;
     std::shared_ptr<AbstractBackground> _background;
     std::shared_ptr<EnemyManager> _enemy_manager;
+    std::shared_ptr<EnemyBulletManager> _enemy_bullet_manager;
     std::shared_ptr<PlayerBulletManager> _player_bullet_manager;
     std::shared_ptr<EffectManager> _effect_manager;
     std::shared_ptr<ItemManager> _item_manager;

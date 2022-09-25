@@ -24,7 +24,7 @@ struct EnemyInfo {
 
 class EnemyManager : public Task {
 public:
-    EnemyManager(GameScene* scene);
+    EnemyManager(GameScene* scene, std::shared_ptr<EnemyBulletManager> bullet_manager);
     virtual ~EnemyManager() = default;
     bool update() override;
     void draw() const override;

@@ -62,6 +62,9 @@
     <ClInclude Include="source\abstract_effect.hpp" />
     <ClInclude Include="source\abstract_enemy.hpp" />
     <ClInclude Include="source\bomb_effect.hpp" />
+    <ClInclude Include="source\boss.hpp" />
+    <ClInclude Include="source\boss_attack.hpp" />
+    <ClInclude Include="source\boss_manager.hpp" />
     <ClInclude Include="source\destroy_enemy_effect.hpp" />
     <ClInclude Include="source\display_mission_effect.hpp" />
     <ClInclude Include="source\effect_manager.hpp" />

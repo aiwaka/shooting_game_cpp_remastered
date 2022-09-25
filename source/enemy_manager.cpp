@@ -59,9 +59,10 @@ void EnemyManager::load_enemy_story(std::string filename) {
     }
 }
 
-EnemyManager::EnemyManager(GameScene* scene) {
+EnemyManager::EnemyManager(GameScene* scene, std::shared_ptr<EnemyBulletManager> bullet_manager) {
     _game_scene = scene;
-    _enemy_bullet_manager = std::make_shared<EnemyBulletManager>(_game_scene);
+    //_enemy_bullet_manager = std::make_shared<EnemyBulletManager>(_game_scene);
+    _enemy_bullet_manager = bullet_manager;
     _counter = 0;
 
     // csv‚©‚ç“Gî•ñ‚ð“Ç‚Ýž‚Ý
@@ -92,8 +93,6 @@ bool EnemyManager::update() {
             iter = _list.erase(iter);
         }
     }
-    // “G’eŠÇ—ƒNƒ‰ƒX‚àXV
-    this->_enemy_bullet_manager->update();
     clsDx();
     printfDx("count : %d\n", _counter);
     ++_counter;
@@ -101,8 +100,6 @@ bool EnemyManager::update() {
 }
 
 void EnemyManager::draw() const {
-    this->_enemy_bullet_manager->draw();
-    // “G’e‚æ‚èã‚É“G‚ð•`‰æ‚·‚é
     DrawFormatString(0, 20, GetColor(255, 255, 255), "“G‚Ì” : %d", _list.size());
     for (const auto enemy : _list) {
         enemy->draw();
