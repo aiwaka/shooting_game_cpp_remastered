@@ -71,6 +71,10 @@ std::array<int, 5> GameScene::get_player_info_for_board() const {
 std::list<std::shared_ptr<AbstractEnemy>> GameScene::get_all_enemies_iterator() const {
     return this->_enemy_manager->get_all_enemies_iterator();
 }
+
+std::list<std::shared_ptr<Boss>> GameScene::get_all_boss_iterator() const {
+    return this->_boss_manager->get_all_boss_iterator();
+}
 void GameScene::set_effect(std::shared_ptr<AbstractEffect> effect) {
     _effect_manager->push_effect(effect);
 }

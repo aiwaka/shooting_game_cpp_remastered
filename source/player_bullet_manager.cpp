@@ -1,6 +1,7 @@
 #include "player_bullet_manager.hpp"
 #include "player.hpp"
 #include "player_bullet.hpp"
+#include "boss.hpp"
 #include "game_scene.hpp"
 
 PlayerBulletManager::PlayerBulletManager(GameScene* scene) : _counter(0) {
@@ -21,6 +22,7 @@ bool PlayerBulletManager::update() {
     // ‚±‚±‚Å“–‚½‚è”»’è‚ğ‚¨‚±‚È‚¤
     // Á‚·‚à‚Ì‚ğÁ‚µ‚Ä‚©‚ç“–‚½‚è”»’è‚ğs‚í‚È‚¢‚Æ, ‚ ‚½‚Á‚Ä‚¢‚é‚Ì‚ÉŒ©‚¦‚È‚¢‚Æ‚¢‚¤‚±‚Æ‚ª‹N‚±‚é‚Í‚¸
     collision_against_enemies();
+    collision_against_boss();
     ++_counter;
     return true;
 }
@@ -47,6 +49,22 @@ void PlayerBulletManager::collision_against_enemies() {
             if (utils::sphere_collision(enemy_pos, bullet_pos, 25.0, 10.0)) {
                 _game_scene->modify_score(10);
                 enemy->modify_hp(-bullet->get_power());
+                bullet->set_collide_flag();
+            }
+        }
+    }
+}
+void PlayerBulletManager::collision_against_boss() {
+    if (!_game_scene->boss_exist()) return;
+    auto all_boss = this->_game_scene->get_all_boss_iterator();
+    for (auto& boss : all_boss) {
+        Vec2 boss_pos = boss->get_pos();
+        for (auto& bullet : this->_bullet_list) {
+            Vec2 bullet_pos = bullet->get_pos();
+            // ‚ ‚½‚Á‚Ä‚¢‚ê‚Î
+            if (utils::sphere_collision(boss_pos, bullet_pos, 60.0, 10.0)) {
+                _game_scene->modify_score(10);
+                boss->modify_hp(-bullet->get_power());
                 bullet->set_collide_flag();
             }
         }

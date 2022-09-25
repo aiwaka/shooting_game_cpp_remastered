@@ -27,6 +27,7 @@ public:
     int get_counter() const;
     int get_attack_pattern_id() const;
     int get_hp() const;
+    int get_max_hp() const;
     void modify_hp(int delta);
 
     // 敵管理クラスへのポインタを通じて自機の情報を得られるようにする
@@ -56,6 +57,7 @@ protected:
     int _counter;
     int _time_limit;
     int _hp;
+    int _max_hp;
     Vec2 _pos;
     //! @brief 現在の攻撃パターン番号
     int _attack_pattern_id;
@@ -76,6 +78,7 @@ inline void Boss::set_pos(Vec2 pos) { _pos = pos; }
 inline int Boss::get_counter() const { return _counter; }
 inline int Boss::get_attack_pattern_id() const { return _attack_pattern_id; }
 inline int Boss::get_hp() const { return _hp; }
+inline int Boss::get_max_hp() const { return _max_hp; }
 inline void Boss::modify_hp(int delta) { _hp += delta; }
 
 

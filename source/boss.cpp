@@ -13,6 +13,7 @@ Boss::Boss(std::queue<int> attack_patterns, bool is_big_boss, BossManager* manag
     _attack_pattern_id(-1),
     _attack_patterns{ attack_patterns },
     _hp(0),
+    _max_hp(0),
     _is_big_boss(is_big_boss),
     _f_var_slot{ std::array<float, 5>{} },
     _i_var_slot{ std::array<int, 5>{} },
@@ -23,8 +24,7 @@ Boss::Boss(std::queue<int> attack_patterns, bool is_big_boss, BossManager* manag
     _manager = manager;
     // 最初の攻撃にhpと時間をセットする
     auto hp_and_time = _attack.get_hp_and_time(_attack_patterns.front());
-    _hp = hp_and_time[0];
-    printf("hp : %d\n", _hp);
+    _max_hp = _hp = hp_and_time[0];
     _time_limit = hp_and_time[1];
 }
 
@@ -65,6 +65,9 @@ bool Boss::update() {
         if (_counter > 120) {
             _attack_pattern_id = _attack_patterns.front();
             _attack_patterns.pop();
+            auto hp_and_time = _attack.get_hp_and_time(_attack_pattern_id);
+            _max_hp = _hp = hp_and_time[0];
+            _time_limit = hp_and_time[1];
             // このループの最後で1増えるので0から始めるために-1にする
             _counter = -1;
         }

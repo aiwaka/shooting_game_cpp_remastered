@@ -3,12 +3,14 @@
 #include "global_define.hpp"
 #include "game_scene.hpp"
 #include "boss.hpp"
+#include "image_manager.hpp"
 #include "macro.hpp"
 //#include "destroy_enemy_effect.hpp"
 
 BossManager::BossManager(GameScene* scene, std::shared_ptr<EnemyBulletManager> bullet_manager) {
     _game_scene = scene;
     _enemy_bullet_manager = bullet_manager;
+    _hp_bar_handle = ImageManager::get_instance()->get_hp_bar();
     _counter = 0;
 }
 
@@ -31,7 +33,16 @@ bool BossManager::update() {
 }
 
 void BossManager::draw() const {
+
     for (const auto boss : _list) {
+        // 体力バーを表示. 画像は横1pxなので, 画面幅くらいの大きさに合うようにスケーリングして並べて表示する
+        int boss_hp = boss->get_hp();
+        int boss_max_hp = boss->get_max_hp();
+        int bar_num = GlobalValues::IN_WIDTH * 9 / 10 * boss_hp / boss_max_hp;
+        for (int i = 0; i < bar_num; ++i) {
+            utils::DrawRotaGraphF_Screen(20 + i, 20, 1.0, 0.0, _hp_bar_handle, 0);
+        }
+
         boss->draw();
     }
 }
@@ -49,6 +60,7 @@ void BossManager::register_boss() {
     // 楽だから
     if (_game_scene->get_enemy_manager_counter() == 2000 && !this->boss_exist()) {
         auto attack_queue = std::queue<int>{};
+        // 攻撃パターン番号をキューに詰める
         attack_queue.push(0);
         attack_queue.push(0);
         auto boss1 = std::make_shared<Boss>(attack_queue, false, this);

@@ -21,6 +21,7 @@ public:
 private:
     //! @brief “G‚Æ‚Ì“–‚½‚è”»’è‚ğs‚¢, “G‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚é–½—ß‚Æ©‹@’e‚ğÁ–Å‚³‚¹‚é–½—ß‚ğ‘—‚é.
     void collision_against_enemies();
+    void collision_against_boss();
 
     GameScene* _game_scene;
     int _counter;

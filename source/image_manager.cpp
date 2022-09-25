@@ -48,6 +48,7 @@ void ImageManager::load() {
     // ボス画像
     app_load_div_graph("./dat/img/boss.png", 24, 6, 4, 100, 70, _boss);
     _boss_child = app_load_graph("./dat/img/child.png");
+    _hp_bar = app_load_graph("./dat/img/hp_boss.png");
 
     // アイテム
     app_load_div_graph("./dat/img/p0.png", 2, 2, 1, 35, 35, _items[0]); // hp
@@ -105,6 +106,9 @@ const int ImageManager::get_boss() const {
 }
 const int ImageManager::get_boss_child() const {
     return _boss_child;
+}
+const int ImageManager::get_hp_bar() const {
+    return _hp_bar;
 }
 
 const int* ImageManager::get_item(int type) const {

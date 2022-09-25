@@ -35,6 +35,8 @@ public:
     std::array<int, 5> get_player_info_for_board() const;
     //! @brief 敵全体へのポインタを取得できる
     std::list<std::shared_ptr<AbstractEnemy>> get_all_enemies_iterator() const;
+    //! @brief ボス全体へのポインタを取得できる
+    std::list<std::shared_ptr<Boss>> get_all_boss_iterator() const;
 
     void modify_score(int delta);
     void modify_player_hp(int delta);
@@ -46,6 +48,7 @@ public:
     int get_enemy_manager_counter() const;
     //! @brief ボス出現中か？
     bool boss_exist();
+
     //! @brief エフェクトを登録する
     void set_effect(std::shared_ptr<AbstractEffect> effect);
     //! @brief アイテムを出現させる

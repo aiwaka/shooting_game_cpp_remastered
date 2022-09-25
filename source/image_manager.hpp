@@ -20,6 +20,7 @@ public:
     const int* get_enemy(int type) const;
     const int get_boss() const;
     const int get_boss_child() const;
+    const int get_hp_bar() const;
 
     const int* get_item(int type) const;
 
@@ -67,6 +68,8 @@ private:
     int _enemies[4][3];
     int _boss[24];
     int _boss_child;
+
+    int _hp_bar;
 
     int _items[7][2];
 
