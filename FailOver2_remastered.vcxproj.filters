@@ -61,6 +61,12 @@
     <Filter Include="ソース ファイル\titlemenu">
       <UniqueIdentifier>{3a35b6f6-4953-48e7-bf5f-78b8c78f38d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\background">
+      <UniqueIdentifier>{8a13a825-0803-4d7c-b4fb-c5e73e983c29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\background">
+      <UniqueIdentifier>{96e89e09-4fd4-4411-833f-ff2f4abc8a3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\game_system.cpp">
@@ -111,17 +117,11 @@
     <ClCompile Include="source\board.cpp">
       <Filter>ソース ファイル\components</Filter>
     </ClCompile>
-    <ClCompile Include="source\background.cpp">
-      <Filter>ソース ファイル\components</Filter>
-    </ClCompile>
     <ClCompile Include="source\enemy_a.cpp">
       <Filter>ソース ファイル\components\enemies</Filter>
     </ClCompile>
     <ClCompile Include="source\image_manager.cpp">
       <Filter>ソース ファイル\assets</Filter>
-    </ClCompile>
-    <ClCompile Include="source\abstract_bg.cpp">
-      <Filter>ソース ファイル\components</Filter>
     </ClCompile>
     <ClCompile Include="source\abstract_scene.cpp">
       <Filter>ソース ファイル</Filter>
@@ -170,6 +170,15 @@
     </ClCompile>
     <ClCompile Include="source\bomb_effect.cpp">
       <Filter>ソース ファイル\components\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\abstract_bg.cpp">
+      <Filter>ソース ファイル\background</Filter>
+    </ClCompile>
+    <ClCompile Include="source\background.cpp">
+      <Filter>ソース ファイル\background</Filter>
+    </ClCompile>
+    <ClCompile Include="source\fullscreen_picture.cpp">
+      <Filter>ソース ファイル\background</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,17 +239,11 @@
     <ClInclude Include="source\board.hpp">
       <Filter>ヘッダー ファイル\components</Filter>
     </ClInclude>
-    <ClInclude Include="source\background.hpp">
-      <Filter>ヘッダー ファイル\components</Filter>
-    </ClInclude>
     <ClInclude Include="source\enemy_a.hpp">
       <Filter>ヘッダー ファイル\components\enemies</Filter>
     </ClInclude>
     <ClInclude Include="source\image_manager.hpp">
       <Filter>ヘッダー ファイル\assets</Filter>
-    </ClInclude>
-    <ClInclude Include="source\abstract_bg.hpp">
-      <Filter>ヘッダー ファイル\components</Filter>
     </ClInclude>
     <ClInclude Include="source\abstract_scene.hpp">
       <Filter>ヘッダー ファイル</Filter>
@@ -289,6 +292,15 @@
     </ClInclude>
     <ClInclude Include="source\bomb_effect.hpp">
       <Filter>ヘッダー ファイル\components\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\background.hpp">
+      <Filter>ヘッダー ファイル\background</Filter>
+    </ClInclude>
+    <ClInclude Include="source\abstract_bg.hpp">
+      <Filter>ヘッダー ファイル\background</Filter>
+    </ClInclude>
+    <ClInclude Include="source\fullscreen_picture.hpp">
+      <Filter>ヘッダー ファイル\background</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,8 +9,13 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     _score = 0;
     _counter = 0;
 
+    // ステージを取得
+    _stage = param.get_param(this->param_tag_stage);
+    // 背景番号を作る
+    int bg_idx = _stage + 2;
+
     // _backgroundはAbstractBackgroundのポインタだが, Backgroundはそれを継承しているので完全な形でキャスト可能
-    _background = std::make_shared<Background>();
+    _background = std::make_shared<Background>(bg_idx);
     //_level = param.get_param(this->param_tag_level);
     _board = std::make_shared<Board>(this);
     _enemy_manager = std::make_shared<EnemyManager>(this);

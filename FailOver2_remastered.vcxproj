@@ -38,6 +38,7 @@
     <ClCompile Include="source\error.cpp" />
     <ClCompile Include="source\euclid_vec.cpp" />
     <ClCompile Include="source\frame_rate_manager.cpp" />
+    <ClCompile Include="source\fullscreen_picture.cpp" />
     <ClCompile Include="source\game_scene.cpp" />
     <ClCompile Include="source\global_define.cpp" />
     <ClCompile Include="source\image_manager.cpp" />
@@ -76,6 +77,7 @@
     <ClInclude Include="source\error.hpp" />
     <ClInclude Include="source\euclid_vec.hpp" />
     <ClInclude Include="source\frame_rate_manager.hpp" />
+    <ClInclude Include="source\fullscreen_picture.hpp" />
     <ClInclude Include="source\game_scene.hpp" />
     <ClInclude Include="source\global_define.hpp" />
     <ClInclude Include="source\game_system.hpp" />

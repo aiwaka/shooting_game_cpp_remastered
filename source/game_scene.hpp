@@ -17,6 +17,7 @@
 
 class GameScene : public AbstractScene {
 public:
+    // パラメータのラベルとして利用する
     const static char* param_tag_stage;
     const static char* param_tag_level;
 
@@ -45,6 +46,7 @@ public:
     //! @brief アイテムを出現させる
     void spawn_items(std::array<int, 6>& items, Vec2 pos);
 private:
+    int _stage;
     int _counter;
     // スコアはゲームシーンとして管理する
     int _score;

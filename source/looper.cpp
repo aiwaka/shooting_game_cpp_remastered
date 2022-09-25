@@ -13,9 +13,9 @@ Looper::Looper() {
     SceneParameter param;
     // タイトルシーンを作成して追加し初期化
     // Looperはリスナー抽象クラスを継承しており, シーンのリスナーにはthisポインタを渡す.
-    //_scene_stack.push(std::make_shared<TitleScene>(this, param));
+    _scene_stack.push(std::make_shared<TitleScene>(this, param));
     // ゲームから始めるときはゲームシーンを作成して追加
-    _scene_stack.push(std::make_shared<GameScene>(this, param));
+    //_scene_stack.push(std::make_shared<GameScene>(this, param));
 }
 
 /**

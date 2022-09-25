@@ -5,10 +5,10 @@
 
 const static float SCROLL_SPEED = 2.0f;
 
-Background::Background() {
+Background::Background(int initial_type) {
     _handles = ImageManager::get_instance()->get_background();
     _img_height = 0;
-    set_bg(1);
+    set_bg(initial_type);
 }
 
 void Background::set_bg(int type) {

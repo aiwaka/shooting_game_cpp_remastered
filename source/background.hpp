@@ -7,7 +7,7 @@
 
 class Background final : public AbstractBackground {
 public:
-    Background();
+    Background(int initial_type);
     ~Background() = default;
     bool update() override;
     void draw() const override;
