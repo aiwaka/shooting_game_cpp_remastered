@@ -97,11 +97,8 @@ void Player::move()
     _move_dir = Vec2{ move_x, move_y };
     _pos += _move_dir;
     // ゲーム座標の上下反転に気をつける
-    const float IN_TOP_LEFT_X = GlobalValues::IN_TOP_LEFT_X;
-    const float IN_TOP_LEFT_Y = GlobalValues::IN_TOP_LEFT_Y;
-    const float IN_BOTTOM_RIGHT_X = GlobalValues::IN_TOP_LEFT_X + GlobalValues::IN_WIDTH;
-    const float IN_BOTTOM_RIGHT_Y = GlobalValues::IN_TOP_LEFT_Y + GlobalValues::IN_HEIGHT;
-    _pos = _pos.clamp(Vec2{ IN_TOP_LEFT_X, IN_TOP_LEFT_Y }, Vec2{ IN_BOTTOM_RIGHT_X, IN_BOTTOM_RIGHT_Y });
+    // posは画面内座標になっているので複雑なことをしなくていい
+    _pos = _pos.clamp(Vec2{ 0.0, 15.0 }, Vec2{ static_cast<float>(GlobalValues::IN_WIDTH), static_cast<float>(GlobalValues::IN_HEIGHT) });
 }
 
 void Player::shot() {
