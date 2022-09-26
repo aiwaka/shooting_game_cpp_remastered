@@ -16,7 +16,7 @@ bool GameSystem::initialize() const {
     //フルスクリーン時に縦横比を維持する
     SetFullScreenResolutionMode(DX_FSRESOLUTIONMODE_DESKTOP);
     //ウィンドウタイトルを付ける
-    SetWindowText("GameTitle");
+    SetWindowText("FailOver 2 Remastered");
     //ウィンドウモードに変更
     ChangeWindowMode(TRUE);
     // フォントサイズ変更
