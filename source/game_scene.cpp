@@ -1,6 +1,7 @@
 #include <DxLib.h>
 #include "game_scene.hpp"
 #include "display_mission_effect.hpp"
+#include "music_manager.hpp"
 
 const char* GameScene::param_tag_stage = "param_tag_stage";
 const char* GameScene::param_tag_level = "param_tag_level";
@@ -9,6 +10,8 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     _score = 0;
     //_counter = 0;
 
+    // 音楽を再生
+    MusicManager::get_instance()->play_music(1);
     // ステージを取得
     _stage = param.get_param(this->param_tag_stage);
     // 背景番号を作る

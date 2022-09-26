@@ -53,6 +53,7 @@
     <ClCompile Include="source\looper.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\game_system.cpp" />
+    <ClCompile Include="source\music_manager.cpp" />
     <ClCompile Include="source\pad_input.cpp" />
     <ClCompile Include="source\player.cpp" />
     <ClCompile Include="source\player_bullet.cpp" />

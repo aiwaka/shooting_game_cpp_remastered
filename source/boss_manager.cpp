@@ -5,6 +5,7 @@
 #include "boss.hpp"
 #include "image_manager.hpp"
 #include "macro.hpp"
+#include "music_manager.hpp"
 //#include "destroy_enemy_effect.hpp"
 
 BossManager::BossManager(GameScene* scene, std::shared_ptr<EnemyBulletManager> bullet_manager) {
@@ -110,6 +111,8 @@ void BossManager::register_boss() {
         auto boss2 = std::make_shared<Boss>(attack_queue, true, this);
         // もとの背景を保存. 一回だけ実行することにしないと上書きされてしまい戻らなくなる
         _stage_bg_num = _game_scene->get_bg();
+        // 音楽をボス用に変更
+        MusicManager::get_instance()->play_music(2);
         _list.push_back(boss2);
     }
 

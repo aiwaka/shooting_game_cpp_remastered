@@ -201,6 +201,9 @@
     <ClCompile Include="source\se_manager.cpp">
       <Filter>ソース ファイル\assets</Filter>
     </ClCompile>
+    <ClCompile Include="source\music_manager.cpp">
+      <Filter>ソース ファイル\assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">

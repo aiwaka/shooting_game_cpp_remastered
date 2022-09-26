@@ -5,8 +5,10 @@
 #include "keyboard.hpp"
 #include "pad_input.hpp"
 #include "fullscreen_picture.hpp"
+#include "music_manager.hpp"
 
 TitleScene::TitleScene(IOnSceneChangedListener* impl, const SceneParameter& param) : AbstractScene(impl, param) {
+    MusicManager::get_instance()->play_music(0);
     _background = std::make_shared<FullScreenPicture>(0);
 }
 
