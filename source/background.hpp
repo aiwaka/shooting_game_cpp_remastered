@@ -12,7 +12,8 @@ public:
     bool update() override;
     void draw() const override;
 
-    void set_bg(int type);
+    void set_bg(int type) override;
+    int get_bg() const override;
 
 private:
     class Quadrangle {
@@ -26,8 +27,11 @@ private:
     int _bg_type;
     //! @brief ”wŒi‚ğ•À‚×‚é–‡”
     const static int BG_NUM = 6;
-    std::array<int, 7> _handles;
+    std::array<int, 7> _handles; // ”wŒiƒ^ƒCƒv6‚Íƒnƒ“ƒhƒ‹”z—ñ‚Ì5”Ô‚Æ6”Ô‚ğ—¼•ûg‚¤
     int _img_height;
 
     std::array<std::shared_ptr<Quadrangle>, BG_NUM> _list;
 };
+
+
+inline int Background::get_bg() const { return _bg_type; }

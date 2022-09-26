@@ -8,6 +8,7 @@
 //#include "destroy_enemy_effect.hpp"
 
 BossManager::BossManager(GameScene* scene, std::shared_ptr<EnemyBulletManager> bullet_manager) {
+    _stage_bg_num = 0;
     _game_scene = scene;
     _enemy_bullet_manager = bullet_manager;
     _hp_bar_handle = ImageManager::get_instance()->get_hp_bar();
@@ -33,10 +34,8 @@ bool BossManager::update() {
 }
 
 void BossManager::draw() const {
-
     for (const auto boss : _list) {
         if (boss->get_attack_pattern_id() != -1) {
-
             // 攻撃中はHPバーを表示. 画像は横1pxなので, 画面幅くらいの大きさに合うようにスケーリングして並べて表示する
             int boss_hp = boss->get_hp();
             int boss_max_hp = boss->get_max_hp();
@@ -109,10 +108,19 @@ void BossManager::register_boss() {
             break;
         }
         auto boss2 = std::make_shared<Boss>(attack_queue, true, this);
+        // もとの背景を保存. 一回だけ実行することにしないと上書きされてしまい戻らなくなる
+        _stage_bg_num = _game_scene->get_bg();
         _list.push_back(boss2);
     }
 
 }
+
+
+void BossManager::set_big_boss_bg() {
+    // TODO: 本当は背景をスタックのような仕組みにした方がいいと思われる。
+    _game_scene->set_bg(6);
+}
+void BossManager::set_normal_bg() { _game_scene->set_bg(_stage_bg_num); };
 
 /*
 void BossManager::set_destroy_effect(Vec2 pos, int color) {

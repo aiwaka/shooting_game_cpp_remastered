@@ -52,8 +52,12 @@ void Background::draw() const {
     case 0:
     case 1:
     case 5:
-    case 6:
         DrawGraphF(_list[0]->pos.x, _list[0]->pos.y, _list[0]->img, 0);
+        break;
+    case 6:
+        // É{ÉXópîwåi
+        DrawGraph(GlobalValues::IN_TOP_LEFT_X, GlobalValues::IN_TOP_LEFT_Y, _handles[6], 0);
+        DrawGraph(GlobalValues::IN_TOP_LEFT_X, GlobalValues::IN_TOP_LEFT_Y, _handles[5], 1);
         break;
     case 2:
     case 3:

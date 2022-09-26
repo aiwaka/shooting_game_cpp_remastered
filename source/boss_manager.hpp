@@ -26,6 +26,10 @@ public:
 
     std::list<std::shared_ptr<Boss>> get_all_boss_iterator() const;
 
+    // 背景を変更する
+    void set_big_boss_bg();
+    void set_normal_bg();
+
     // //! @brief 敵撃破エフェクトをセット
     //void set_destroy_effect(Vec2 pos, int color);
     // //! @brief アイテムを出現させる
@@ -37,6 +41,7 @@ private:
     int _counter;
 
     int _hp_bar_handle;
+    int _stage_bg_num;
 
     std::list<std::shared_ptr<Boss>> _list;
     //! @brief ボスを定刻に登録する.
@@ -45,3 +50,4 @@ private:
 
 
 inline std::list<std::shared_ptr<Boss>> BossManager::get_all_boss_iterator() const { return _list; }
+

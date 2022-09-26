@@ -50,6 +50,7 @@ bool Boss::update() {
         if (_attack_patterns.size() == 0) {
             // もう攻撃が残っていなければ演出等してから終了
             // TODO: 演出
+            if (_is_big_boss) _manager->set_normal_bg();
             return false;
         }
         _counter = 0;
@@ -70,6 +71,9 @@ bool Boss::update() {
     }
     // 攻撃状態によって分岐
     if (_attack_pattern_id == -1) {
+        if (_counter == 0) {
+            if (_is_big_boss) _manager->set_big_boss_bg();
+        }
         // 待機状態
         // 画面中央に戻す
         set_move(Vec2{ static_cast<float>(GlobalValues::CENTER_X),  80.0f });

@@ -51,6 +51,9 @@ public:
     //! @brief ボス出現中か？
     bool boss_exist();
 
+    int get_bg() const;
+    //! @brief 背景を変更・登録する
+    void set_bg(int type);
     //! @brief エフェクトを登録する
     void set_effect(std::shared_ptr<AbstractEffect> effect);
     //! @brief アイテムを出現させる
@@ -84,6 +87,8 @@ inline void GameScene::increment_player_life() { _player->increment_life(); }
 inline void GameScene::increment_player_bomb() { _player->increment_bomb(); }
 
 
+inline int GameScene::get_bg() const { return _background->get_bg(); }
+inline void GameScene::set_bg(int type) { _background->set_bg(type); }
 inline int GameScene::get_stage() const { return _stage; }
 
 inline bool GameScene::boss_exist() { return _boss_manager->boss_exist(); }
