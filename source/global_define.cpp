@@ -9,7 +9,8 @@ const int GlobalValues::OUT_WIDTH = 448;
 const int GlobalValues::OUT_HEIGHT = 480;
 const int GlobalValues::IN_WIDTH = 384;
 const int GlobalValues::IN_HEIGHT = 448;
-const int GlobalValues::CENTER_X = (OUT_WIDTH / 2);
-const int GlobalValues::CENTER_Y = (OUT_HEIGHT / 2);
-const int GlobalValues::IN_TOP_LEFT_X = ((OUT_WIDTH - IN_WIDTH) / 2);
-const int GlobalValues::IN_TOP_LEFT_Y = ((OUT_HEIGHT - IN_HEIGHT) / 2);
+const int GlobalValues::IN_TOP_LEFT_X = 32;
+const int GlobalValues::IN_TOP_LEFT_Y = 16;
+// Ç±ÇÍÇÁÇÕâÊñ ç¿ïWÇ≈íËã`ÇµÇƒÇ¢ÇÈ
+const int GlobalValues::CENTER_X = IN_WIDTH / 2;
+const int GlobalValues::CENTER_Y = IN_HEIGHT / 2;

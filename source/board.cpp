@@ -17,13 +17,14 @@ void Board::draw() const {
     DrawGraph(0, 0, board_handle[0], 1);
     DrawGraph(0, GlobalValues::IN_TOP_LEFT_Y, board_handle[1], 1);
     DrawGraph(0, GlobalValues::IN_TOP_LEFT_Y + GlobalValues::IN_HEIGHT, board_handle[2], 1);
-    DrawGraph(GlobalValues::OUT_WIDTH, 0, board_handle[3], 1);
+    // ボードの画像への割り振りが微妙な形なので少々補正が必要
+    DrawGraph(GlobalValues::OUT_WIDTH - GlobalValues::IN_TOP_LEFT_X, 0, board_handle[3], 1);
 
     this->_draw_board_info();
 }
 
 void Board::_draw_board_info() const {
-    static const int INFO_X = GlobalValues::OUT_WIDTH + 10;
+    static const int INFO_X = GlobalValues::OUT_WIDTH - 22;
     static const int INFO_Y = 90;
     static const int COL_INTERVAL = 30;
     static const unsigned int WHITE = 4294967295; // 32bit unsigned intの最大値
