@@ -3,6 +3,7 @@
 #include "player_bullet.hpp"
 #include "boss.hpp"
 #include "game_scene.hpp"
+#include "se_manager.hpp"
 
 PlayerBulletManager::PlayerBulletManager(GameScene* scene) : _counter(0) {
     _game_scene = scene;
@@ -50,6 +51,7 @@ void PlayerBulletManager::collision_against_enemies() {
                 _game_scene->modify_score(10);
                 enemy->modify_hp(-bullet->get_power());
                 bullet->set_collide_flag();
+                SoundEffectManager::get_instance()->set_se(3);
             }
         }
     }
@@ -70,6 +72,7 @@ void PlayerBulletManager::collision_against_boss() {
                 _game_scene->modify_score(10);
                 boss->modify_hp(-bullet->get_power());
                 bullet->set_collide_flag();
+                SoundEffectManager::get_instance()->set_se(3);
             }
         }
     }

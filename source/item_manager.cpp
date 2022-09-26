@@ -3,6 +3,7 @@
 #include "global_define.hpp"
 #include "game_scene.hpp"
 #include "macro.hpp"
+#include "se_manager.hpp"
 
 ItemManager::ItemManager(GameScene* scene) :
     _list(std::list<std::shared_ptr<Item>>{})
@@ -89,6 +90,7 @@ void ItemManager::collision_against_player() const {
                 break;
             }
             item->set_getting();
+            SoundEffectManager::get_instance()->set_se(10);
         }
     }
 }

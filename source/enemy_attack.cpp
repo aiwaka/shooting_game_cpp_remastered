@@ -3,6 +3,7 @@
 #include "global_define.hpp"
 #include "abstract_enemy.hpp"
 #include "enemy_bullet_manager.hpp"
+#include "se_manager.hpp"
 
 EnemyAttack::EnemyAttack() {
     // —p‚¢‚ç‚ê‚Ä‚¢‚é‚Ì‚Í0, 1, 2, 4, 5, 7, 8, 9, 10, 11
@@ -35,6 +36,10 @@ void EnemyAttack::attack(AbstractEnemy* enemy)
 }
 
 
+void EnemyAttack::play_shot_se() {
+    SoundEffectManager::get_instance()->set_se(5);
+}
+
 void EnemyAttack::attack_pattern_dummy(AbstractEnemy* enemy) {}
 
 void EnemyAttack::attack_pattern_00(AbstractEnemy* enemy) {
@@ -56,6 +61,7 @@ void EnemyAttack::attack_pattern_00(AbstractEnemy* enemy) {
         info.temp_speed = 5.0;
         info.bomb_regist = false;
         enemy->push_bullet(info);
+        play_shot_se();
     }
 }
 
@@ -81,6 +87,7 @@ void EnemyAttack::attack_pattern_01(AbstractEnemy* enemy) {
         info.temp_speed = 4.0;
         info.bomb_regist = false;
         enemy->push_bullet(info);
+        play_shot_se();
     }
 }
 void EnemyAttack::attack_pattern_02(AbstractEnemy* enemy) {
@@ -107,6 +114,7 @@ void EnemyAttack::attack_pattern_02(AbstractEnemy* enemy) {
         info.temp_speed = 4.0;
         info.bomb_regist = false;
         enemy->push_bullet(info);
+        play_shot_se();
     }
 }
 void EnemyAttack::attack_pattern_04(AbstractEnemy* enemy) {
@@ -132,6 +140,7 @@ void EnemyAttack::attack_pattern_04(AbstractEnemy* enemy) {
             info.bomb_regist = false;
             enemy->push_bullet(info);
         }
+        play_shot_se();
     }
 }
 void EnemyAttack::attack_pattern_05(AbstractEnemy* enemy) {
@@ -155,6 +164,7 @@ void EnemyAttack::attack_pattern_05(AbstractEnemy* enemy) {
         info.temp_speed = 4.0;
         info.bomb_regist = false;
         enemy->push_bullet(info);
+        play_shot_se();
     }
 }
 void EnemyAttack::attack_pattern_07(AbstractEnemy* enemy) {
@@ -180,6 +190,7 @@ void EnemyAttack::attack_pattern_07(AbstractEnemy* enemy) {
             info.bomb_regist = false;
             enemy->push_bullet(info);
         }
+        play_shot_se();
     }
 }
 void EnemyAttack::attack_pattern_08(AbstractEnemy* enemy) {
@@ -205,6 +216,7 @@ void EnemyAttack::attack_pattern_08(AbstractEnemy* enemy) {
             info.bomb_regist = false;
             enemy->push_bullet(info);
         }
+        play_shot_se();
     }
 }
 
@@ -254,6 +266,7 @@ void EnemyAttack::attack_pattern_09(AbstractEnemy* enemy) {
                 info.bomb_regist = false;
                 enemy->push_bullet(info);
             }
+            play_shot_se();
         }
     }
 }
@@ -282,6 +295,7 @@ void EnemyAttack::attack_pattern_10(AbstractEnemy* enemy) {
                 enemy->push_bullet(info);
             }
         }
+        play_shot_se();
     }
 }
 void EnemyAttack::attack_pattern_11(AbstractEnemy* enemy) {
@@ -307,5 +321,6 @@ void EnemyAttack::attack_pattern_11(AbstractEnemy* enemy) {
             info.bomb_regist = false;
             enemy->push_bullet(info);
         }
+        play_shot_se();
     }
 }

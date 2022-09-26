@@ -4,6 +4,7 @@
 #include "boss.hpp"
 #include "boss_manager.hpp"
 #include "image_manager.hpp"
+#include "se_manager.hpp"
 
 
 Boss::Boss(std::queue<int> attack_patterns, bool is_big_boss, BossManager* manager) :
@@ -51,9 +52,11 @@ bool Boss::update() {
             // もう攻撃が残っていなければ演出等してから終了
             // TODO: 演出
             if (_is_big_boss) _manager->set_normal_bg();
+            SoundEffectManager::get_instance()->set_se(4);
             return false;
         }
         _counter = 0;
+        SoundEffectManager::get_instance()->set_se(6);
         //_manager->set_destroy_effect(this->_pos, 0);
         // TODO: ここでアイテム出現処理等
         //_manager->spawn_items(this->_item_slot, this->_pos);

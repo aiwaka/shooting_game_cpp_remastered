@@ -4,22 +4,23 @@
 #include "macro.hpp"
 #include "global_define.hpp"
 #include "enemy_bullet_manager.hpp"
+#include "se_manager.hpp"
 
 BossAttack::BossAttack() {
     using AttackPattern = BossAttack::AttackPattern;
     // 体力・制限時間・関数へのポインタをあわせてセットする
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_dummy });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_001 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_002 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_003 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_004 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_005 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_006 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_007 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_008 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_009 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_010 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_011 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_dummy });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_001 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_002 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_003 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_004 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_005 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_006 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_007 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_008 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_009 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_010 });
+    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_011 });
 }
 
 void BossAttack::attack(Boss* boss)
@@ -32,6 +33,9 @@ void BossAttack::attack(Boss* boss)
     (this->*_attack_pattern_list[pattern_id]._pattern)(boss);
 }
 
+void BossAttack::play_shot_se() {
+    SoundEffectManager::get_instance()->set_se(5);
+}
 
 std::array<int, 2> BossAttack::get_hp_and_time(int id) {
     return std::array<int, 2>{_attack_pattern_list[id]._hp, _attack_pattern_list[id]._time_limit};
@@ -90,6 +94,7 @@ void BossAttack::pattern_001(Boss* boss) {
                 info.acceleration = 0.0;
                 boss->push_bullet(info);
             }
+            play_shot_se();
         }
     }
 }
@@ -132,6 +137,7 @@ void BossAttack::pattern_002(Boss* boss) {
                     // se
                 }
             }
+            play_shot_se();
         }
     }
 }
@@ -163,6 +169,7 @@ void BossAttack::pattern_003(Boss* boss) {
                 // se
             }
         }
+        play_shot_se();
     }
     auto bullet_list = boss->get_bullet_iterator();
     for (auto& bullet : bullet_list) {
@@ -225,7 +232,7 @@ void BossAttack::pattern_004(Boss* boss) {
                 info.omega = GlobalValues::PI / 30.0;
                 boss->push_bullet(info);
             }
-            // se
+            play_shot_se();
         }
     }
 
@@ -264,7 +271,7 @@ void BossAttack::pattern_005(Boss* boss) {
                 boss->push_bullet(info);
             }
         }
-        // se
+        play_shot_se();
         angle_acc += GlobalValues::PI / 1080.0;
     }
     angle += angle_acc;
@@ -295,7 +302,7 @@ void BossAttack::pattern_006(Boss* boss) {
             boss->push_bullet(info);
         }
         angle_acc += GlobalValues::PI / 1080.0;
-        // se
+        play_shot_se();
     }
     angle -= angle_acc;
     if (angle < -GlobalValues::PI) {
@@ -334,7 +341,7 @@ void BossAttack::pattern_007(Boss* boss) {
             info.speed = 3.1;
             boss->push_bullet(info);
         }
-
+        play_shot_se();
     }
     auto bullet_list = boss->get_bullet_iterator();
     for (auto& bullet : bullet_list) {
@@ -411,7 +418,7 @@ void BossAttack::pattern_008(Boss* boss) {
                 info.fx_detail = 1;
                 boss->push_bullet(info);
             }
-            // se
+            play_shot_se();
         }
     }
 }
@@ -465,7 +472,7 @@ void BossAttack::pattern_009(Boss* boss) {
                 }
             }
         }
-        // se
+        play_shot_se();
     }
     init_angle += GlobalValues::PI / 75.0 * 1.5;
     auto bullet_list = boss->get_bullet_iterator();
@@ -503,7 +510,7 @@ void BossAttack::pattern_010(Boss* boss) {
                 //boss_shot.bullet[k].state = i == 0 ? 0 : 1;
             }
         }
-        // se
+        play_shot_se();
     }
     auto bullet_list = boss->get_bullet_iterator();
     for (auto& bullet : bullet_list) {
@@ -540,7 +547,7 @@ void BossAttack::pattern_011(Boss* boss) {
             info.fx_detail = 1;
             boss->push_bullet(info);
         }
-        // se
+        play_shot_se();
     }
     if (local_count % 4 == 0) {
         for (int i = 0; i < 2; ++i) {
@@ -557,7 +564,7 @@ void BossAttack::pattern_011(Boss* boss) {
                 boss->push_bullet(info);
             }
         }
-        // se
+        play_shot_se();
         angle_acc += GlobalValues::PI / 1080.0;
     }
     angle -= angle_acc;

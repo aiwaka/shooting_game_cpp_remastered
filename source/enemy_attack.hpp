@@ -18,6 +18,9 @@ private:
     using AttackFunc = void(EnemyAttack::*)(AbstractEnemy* enemy);
     std::vector<AttackFunc> _attack_pattern;
 
+    //! @brief 弾発射効果音を鳴らす
+    void play_shot_se();
+
     //! @brief 配列埋め用ダミー
     void attack_pattern_dummy(AbstractEnemy* enemy);
     void attack_pattern_00(AbstractEnemy* enemy);

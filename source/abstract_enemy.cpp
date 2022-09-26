@@ -4,6 +4,7 @@
 #include "abstract_enemy.hpp"
 #include "enemy_manager.hpp"
 #include "image_manager.hpp"
+#include "se_manager.hpp"
 
 
 AbstractEnemy::AbstractEnemy(const EnemyInfo& info, EnemyManager* manager) :
@@ -41,14 +42,13 @@ bool AbstractEnemy::update() {
             ++iter;
         }
         else {
-            // イテレータを用いてループして, updateがfalseになったものが取り除かれるように
             iter = _bullet_list.erase(iter);
         }
     }
     if (_hp <= 0) {
         _manager->set_destroy_effect(this->_pos, 0);
-        // TODO: ここでアイテム出現処理等
         _manager->spawn_items(this->_item_slot, this->_pos);
+        SoundEffectManager::get_instance()->set_se(0);
         return false;
     }
     _mover.move(this);

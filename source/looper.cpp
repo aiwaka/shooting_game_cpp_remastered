@@ -6,6 +6,7 @@
 #include "keyboard.hpp"
 #include "pad_input.hpp"
 #include "image_manager.hpp"
+#include "se_manager.hpp"
 
 Looper::Looper() {
     // アセットロード
@@ -26,6 +27,7 @@ bool Looper::loop() {
     PadInput::get_instance()->update();
     _scene_stack.top()->update();
     _scene_stack.top()->draw();
+    SoundEffectManager::get_instance()->play_se();
     _frm.draw();
     // このwaitにより一定時間間隔でupdateやdrawが実行されることになる.
     _frm.wait();

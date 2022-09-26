@@ -39,6 +39,7 @@ bool Player::update() {
     if (_bombing && _invincible_counter == 0) _bombing = false;
     if (_hp == 0) {
         // 死んだらカウンターを0にして状態を2にする
+        SoundEffectManager::get_instance()->set_se(2);
         _counter = 0;
         _invincible_counter = 180;
         _hp = _max_hp;
@@ -111,8 +112,8 @@ void Player::shot() {
         _invincible_counter = 170;
         auto bomb_eff = std::make_shared<BombEffect>(_pos);
         _game_scene->set_effect(bomb_eff);
-        se_mng_ins->play_se(8);
-        se_mng_ins->play_se(9);
+        se_mng_ins->set_se(7);
+        se_mng_ins->set_se(8);
         return;
     }
 
@@ -127,7 +128,7 @@ void Player::shot() {
                 _bullet_manager->push_bullet(_power, Vec2{ SHOT_POS_X[i], SHOT_POS_Y[i] } + this->_pos);
             }
         }
-        se_mng_ins->play_se(1);
+        se_mng_ins->set_se(1);
     }
 }
 

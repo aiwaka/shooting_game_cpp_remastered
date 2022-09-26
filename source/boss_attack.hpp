@@ -31,6 +31,8 @@ private:
     // 体力や制限時間も一緒に保持した配列を作成する.
     std::vector<AttackPattern> _attack_pattern_list;
 
+    void play_shot_se();
+
     //! @brief 配列埋め用ダミー
     void pattern_dummy(Boss* boss);
     void pattern_001(Boss* boss);
