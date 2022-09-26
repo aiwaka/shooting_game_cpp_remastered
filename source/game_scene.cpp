@@ -58,7 +58,10 @@ bool GameScene::update() {
     if (_player->get_lives_num() == -1) {
         // 終了、シーンチェンジ
         SceneParameter param;
-        _impl_scene_changed->on_scene_changed(AppScenes::Title, param, true);
+
+        param.set_param(ResultScene::param_tag_level, _level);
+        param.set_param(ResultScene::param_tag_score, _score);
+        _impl_scene_changed->on_scene_changed(AppScenes::Result, param, true);
         return true;
     }
     if (_enemy_manager->get_counter() == 100) {

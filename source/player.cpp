@@ -44,6 +44,7 @@ bool Player::update() {
         _hp = _max_hp;
         _state = 2;
         --_lives_num;
+        _bombs_num = 2;
     }
     if (_state == 2) { move_in_dead(); }
     else { move(); }
@@ -131,6 +132,7 @@ void Player::shot() {
     }
 }
 
+// €‚ñ‚Å•œ‹A’†‚Ì“®‚«§Œä
 void Player::move_in_dead() {
     if (_counter == 0) {
         _pos = Vec2{ static_cast<float>(GlobalValues::CENTER_X), static_cast<float>(GlobalValues::OUT_HEIGHT) * 0.8f + 60 };

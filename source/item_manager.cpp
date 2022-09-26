@@ -62,14 +62,27 @@ void ItemManager::collision_against_player() const {
         }
         // あたっていれば
         if (utils::sphere_collision(player_pos, item_pos, 10.0, item_size)) {
+            int before_hp = 0;
+            int after_hp = 0;
             // タイプで分岐して効果を及ぼす
             switch (item->get_type())
             {
             case 0: // hp小
+                // 回復前後でHPが変化していなかったらスコアをオマケする。大も同様
+                before_hp = _game_scene->get_player_info_for_board()[1];
                 _game_scene->modify_player_hp(5);
+                after_hp = _game_scene->get_player_info_for_board()[1];
+                if (before_hp == after_hp) {
+                    _game_scene->modify_score(50);
+                }
                 break;
             case 1: // hp大
+                before_hp = _game_scene->get_player_info_for_board()[1];
                 _game_scene->modify_player_hp(15);
+                after_hp = _game_scene->get_player_info_for_board()[1];
+                if (before_hp == after_hp) {
+                    _game_scene->modify_score(150);
+                }
                 break;
             case 2: // パワー
                 _game_scene->modify_player_power(10);

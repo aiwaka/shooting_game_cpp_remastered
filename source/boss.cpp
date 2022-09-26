@@ -52,7 +52,7 @@ bool Boss::update() {
             // ‚à‚¤UŒ‚‚ªc‚Á‚Ä‚¢‚È‚¯‚ê‚Î‰‰o“™‚µ‚Ä‚©‚çI—¹
             // ”wŒi‚ğ–ß‚µ‚ÄƒXƒRƒA‚ğ‰ÁZ‚µ‚ÄŒø‰Ê‰¹‚ğ–Â‚ç‚·
             if (_is_big_boss) _manager->set_normal_bg();
-            _manager->modify_score(100000);
+            _manager->modify_score(50000);
             SoundEffectManager::get_instance()->set_se(4);
             return false;
         }

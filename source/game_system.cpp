@@ -32,13 +32,13 @@ bool GameSystem::initialize() const {
     /*
     デバッグ用　コンソール出力
     */
-    FILE* dummy;
-    AllocConsole();
-    freopen_s(&dummy, "CONOUT$", "w", stdout);
+    //FILE* dummy;
+    //AllocConsole();
+    //freopen_s(&dummy, "CONOUT$", "w", stdout);
     // デバッグコンソールがアクティブウィンドウになるので
     // ゲーム本体のウィンドウをアクティブにする
-    SetForegroundWindow(GetMainWindowHandle());
-    /*ここまで*/
+    //SetForegroundWindow(GetMainWindowHandle());
+    /*デバッグ用コンソールウィンドウ設定 ここまで*/
 
     //裏画面処理を設定する
     SetDrawScreen(DX_SCREEN_BACK);
@@ -48,7 +48,7 @@ bool GameSystem::initialize() const {
 void GameSystem::finalize() const {
     DxLib_End();
     /*デバッグ*/
-    FreeConsole();
+    //FreeConsole();
 }
 
 void GameSystem::main() const {
