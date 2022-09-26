@@ -204,6 +204,9 @@
     <ClCompile Include="source\music_manager.cpp">
       <Filter>ソース ファイル\assets</Filter>
     </ClCompile>
+    <ClCompile Include="source\level_select_scene.cpp">
+      <Filter>ソース ファイル\scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -343,6 +346,9 @@
     </ClInclude>
     <ClInclude Include="source\music_manager.hpp">
       <Filter>ヘッダー ファイル\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="source\level_select_scene.hpp">
+      <Filter>ヘッダー ファイル\scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

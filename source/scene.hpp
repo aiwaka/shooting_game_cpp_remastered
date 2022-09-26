@@ -2,5 +2,7 @@
 
 enum AppScenes {
     Title,
-    Game
+    LevelSelect,
+    Game,
+    Staffroll,
 };

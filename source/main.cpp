@@ -1,7 +1,8 @@
 #include <DxLib.h>
 #include "game_system.hpp"
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+// _In_Ç∆Ç©ÇÕÉwÉbÉ_íçéﬂÇ∆Ç¢Ç§ÇÁÇµÇ¢. Ç±ÇÍÇ™Ç»Ç¢Ç∆åxçêÇ™èoÇÈ
+int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
     GameSystem system = GameSystem{};
     if (system.initialize()) {

@@ -25,7 +25,7 @@ public:
     GameScene(IOnSceneChangedListener* impl, const SceneParameter& param);
     virtual ~GameScene() = default;
 
-    void update() override;
+    bool update() override;
     void draw() const override;
 
     //! @brief ©‹@‚ÌˆÊ’u‚ğ–â‚¢‡‚í‚¹‚ç‚ê‚é‚æ‚¤‚É‚·‚é

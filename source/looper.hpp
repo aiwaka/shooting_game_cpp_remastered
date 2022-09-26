@@ -11,6 +11,7 @@ public:
     Looper();
     ~Looper() = default;
     bool loop();
+    void pop_scene() override;
     void on_scene_changed(const AppScenes scene, const SceneParameter& param, const bool clear_stack) override;
 
 private:

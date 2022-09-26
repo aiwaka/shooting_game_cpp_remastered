@@ -7,10 +7,10 @@
 #include "abstract_scene.hpp"
 #include "abstract_bg.hpp"
 
-class TitleScene : public AbstractScene {
+class LevelSelectScene : public AbstractScene {
 public:
-    TitleScene(IOnSceneChangedListener* impl, const SceneParameter& param);
-    virtual ~TitleScene() = default;
+    LevelSelectScene(IOnSceneChangedListener* impl, const SceneParameter& param);
+    virtual ~LevelSelectScene() = default;
 
     bool update() override;
     void draw() const override;

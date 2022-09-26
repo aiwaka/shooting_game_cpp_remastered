@@ -12,5 +12,6 @@ class IOnSceneChangedListener {
 public:
     IOnSceneChangedListener() = default;
     virtual ~IOnSceneChangedListener() = default;
+    virtual void pop_scene() = 0;
     virtual void on_scene_changed(const AppScenes scene, const SceneParameter& param, const bool stack_clear) = 0;
 };

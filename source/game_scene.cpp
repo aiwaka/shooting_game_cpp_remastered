@@ -1,4 +1,5 @@
 #include <DxLib.h>
+#include <algorithm>
 #include "game_scene.hpp"
 #include "display_mission_effect.hpp"
 #include "music_manager.hpp"
@@ -30,12 +31,12 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     _item_manager = std::make_shared<ItemManager>(this);
 }
 
-void GameScene::update() {
+bool GameScene::update() {
     if (_player->get_lives_num() == -1) {
         // 終了、シーンチェンジ
         SceneParameter param;
         _impl_scene_changed->on_scene_changed(AppScenes::Title, param, true);
-        return;
+        return true;
     }
     if (_enemy_manager->get_counter() == 100) {
         auto mission = std::make_shared<DisplayMissionEffect>();
@@ -45,19 +46,24 @@ void GameScene::update() {
         // 終了、シーンチェンジ
         SceneParameter param;
         _impl_scene_changed->on_scene_changed(AppScenes::Title, param, true);
-        return;
+        return true;
     }
 
+    // すべての処理がtrueな場合はtrueを返してループを続行
+    std::vector<bool> result_set = std::vector<bool>(0);
     // ここの処理順に気をつけないと1フレーム処理が遅れることがありそう
-    _background->update();
-    _player->update();
-    _enemy_bullet_manager->update();
-    _enemy_manager->update();
-    _boss_manager->update();
-    _player_bullet_manager->update();
-    _item_manager->update();
-    _effect_manager->update();
-    _board->update();
+    result_set.push_back(_background->update());
+    result_set.push_back(_player->update());
+    result_set.push_back(_enemy_bullet_manager->update());
+    result_set.push_back(_enemy_manager->update());
+    result_set.push_back(_boss_manager->update());
+    result_set.push_back(_player_bullet_manager->update());
+    result_set.push_back(_item_manager->update());
+    result_set.push_back(_effect_manager->update());
+    result_set.push_back(_board->update());
+
+    // すべてのTaskを継承したクラスのupdateの結果がtrueであればOK, さもなくばfalseが返りゲーム終了
+    return std::all_of(result_set.begin(), result_set.end(), [](bool b) {return b; });
     //++_counter;
 }
 

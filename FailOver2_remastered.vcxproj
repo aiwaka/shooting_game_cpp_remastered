@@ -50,6 +50,7 @@
     <ClCompile Include="source\item_manager.cpp" />
     <ClCompile Include="source\i_on_changed_listener.cpp" />
     <ClCompile Include="source\keyboard.cpp" />
+    <ClCompile Include="source\level_select_scene.cpp" />
     <ClCompile Include="source\looper.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\game_system.cpp" />
@@ -96,6 +97,7 @@
     <ClInclude Include="source\item_manager.hpp" />
     <ClInclude Include="source\i_on_changed_listener.hpp" />
     <ClInclude Include="source\keyboard.hpp" />
+    <ClInclude Include="source\level_select_scene.hpp" />
     <ClInclude Include="source\looper.hpp" />
     <ClInclude Include="source\macro.hpp" />
     <ClInclude Include="source\music_manager.hpp" />
