@@ -94,8 +94,6 @@ bool EnemyManager::update() {
             iter = _list.erase(iter);
         }
     }
-    clsDx();
-    printfDx("enemy_manager count : %d\n", _counter);
     if (!_game_scene->boss_exist()) {
         ++_counter;
     }
@@ -103,7 +101,9 @@ bool EnemyManager::update() {
 }
 
 void EnemyManager::draw() const {
-    DrawFormatString(0, 20, GetColor(255, 255, 255), "“G‚Ì” : %d", _list.size());
+    //clsDx();
+    //printfDx("enemy_manager count : %d\n", _counter);
+    //DrawFormatString(0, 20, GetColor(255, 255, 255), "“G‚Ì” : %d", _list.size());
     for (const auto enemy : _list) {
         enemy->draw();
     }

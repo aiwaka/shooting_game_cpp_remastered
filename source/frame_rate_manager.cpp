@@ -29,7 +29,7 @@ void FrameRateManager::draw() const {
     if (_fps == 0) {
         return;
     }
-    DrawFormatString(0, GlobalValues::SCREEN_HEIGHT - 30, GetColor(255, 255, 255), "%04.1ffps", _fps);
+    DrawFormatString(GlobalValues::SCREEN_WIDTH - 70, GlobalValues::SCREEN_HEIGHT - 20, GetColor(255, 255, 255), "%04.1ffps", _fps);
 }
 
 void FrameRateManager::regist() {

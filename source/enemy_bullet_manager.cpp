@@ -28,7 +28,7 @@ bool EnemyBulletManager::update() {
 }
 
 void EnemyBulletManager::draw() const {
-    DrawFormatString(0, 60, GetColor(255, 255, 255), "    “G’e‚Ì” : %u", _bullet_list.size());
+    //DrawFormatString(0, 60, GetColor(255, 255, 255), "    “G’e‚Ì” : %u", _bullet_list.size());
     for (const auto bullet : _bullet_list) {
         bullet->draw();
     }
