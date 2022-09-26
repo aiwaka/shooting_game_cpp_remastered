@@ -5,7 +5,7 @@ const std::uint16_t GlobalValues::SCREEN_HEIGHT = 480;
 
 const float GlobalValues::PI = 3.141592654f;
 
-const int GlobalValues::OUT_WIDTH = 416;
+const int GlobalValues::OUT_WIDTH = 448;
 const int GlobalValues::OUT_HEIGHT = 480;
 const int GlobalValues::IN_WIDTH = 384;
 const int GlobalValues::IN_HEIGHT = 448;
