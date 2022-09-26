@@ -46,6 +46,7 @@ void SoundEffectManager::app_load_sound(std::string filename, int target_num) {
 
 void  SoundEffectManager::set_se(int num) {
     if (num < 0 && _se_list.size() <= num) APP_SYSTEM_ERROR("SE”Ô†‚ª•s³‚Å‚·");
+    if (_se_list[num] == -1) APP_SYSTEM_ERROR("SE‚ª“Ç‚Ýž‚Ü‚ê‚Ä‚¢‚È‚¢”Ô†‚ª—p‚¢‚ç‚ê‚Ü‚µ‚½");
     _play_flag[num] = 1;
 }
 void  SoundEffectManager::play_se() {
