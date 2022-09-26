@@ -21,7 +21,7 @@ Player::Player(GameScene* scene, std::shared_ptr<PlayerBulletManager> manager, i
     _power(15),
     _hp(max_hp),
     _max_hp(max_hp),
-    _lives_num(0),
+    _lives_num(2),
     _bombs_num(2),
     _state(0),
     _invincible_counter(0),

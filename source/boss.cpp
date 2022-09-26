@@ -50,8 +50,9 @@ bool Boss::update() {
         _attack_pattern_id = -1;
         if (_attack_patterns.size() == 0) {
             // ‚à‚¤UŒ‚‚ªc‚Á‚Ä‚¢‚È‚¯‚ê‚Î‰‰o“™‚µ‚Ä‚©‚çI—¹
-            // TODO: ‰‰o
+            // ”wŒi‚ğ–ß‚µ‚ÄƒXƒRƒA‚ğ‰ÁZ‚µ‚ÄŒø‰Ê‰¹‚ğ–Â‚ç‚·
             if (_is_big_boss) _manager->set_normal_bg();
+            _manager->modify_score(100000);
             SoundEffectManager::get_instance()->set_se(4);
             return false;
         }

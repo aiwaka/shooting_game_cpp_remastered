@@ -30,6 +30,8 @@ public:
     void set_big_boss_bg();
     void set_normal_bg();
 
+    void modify_score(int delta);
+
     // //! @brief 敵撃破エフェクトをセット
     //void set_destroy_effect(Vec2 pos, int color);
     // //! @brief アイテムを出現させる

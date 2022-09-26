@@ -123,7 +123,9 @@ void BossManager::set_big_boss_bg() {
     // TODO: 本当は背景をスタックのような仕組みにした方がいいと思われる。
     _game_scene->set_bg(6);
 }
-void BossManager::set_normal_bg() { _game_scene->set_bg(_stage_bg_num); };
+void BossManager::set_normal_bg() { _game_scene->set_bg(_stage_bg_num); }
+
+void BossManager::modify_score(int delta) { _game_scene->modify_score(delta); }
 
 /*
 void BossManager::set_destroy_effect(Vec2 pos, int color) {
