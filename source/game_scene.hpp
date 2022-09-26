@@ -51,6 +51,7 @@ public:
     //! @brief ボス出現中か？
     bool boss_exist();
 
+    int get_level() const;
     int get_bg() const;
     //! @brief 背景を変更・登録する
     void set_bg(int type);
@@ -60,6 +61,7 @@ public:
     void spawn_items(std::array<int, 6>& items, Vec2 pos);
 private:
     int _stage;
+    int _level;
     // シーンにカウンタを用意すると色々煩雑になりそう
     //int _counter;
     // スコアはゲームシーンとして管理する
@@ -87,6 +89,7 @@ inline void GameScene::increment_player_life() { _player->increment_life(); }
 inline void GameScene::increment_player_bomb() { _player->increment_bomb(); }
 
 
+inline int GameScene::get_level() const { return _level; }
 inline int GameScene::get_bg() const { return _background->get_bg(); }
 inline void GameScene::set_bg(int type) { _background->set_bg(type); }
 inline int GameScene::get_stage() const { return _stage; }

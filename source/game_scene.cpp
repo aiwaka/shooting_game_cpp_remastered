@@ -2,6 +2,7 @@
 #include <algorithm>
 #include "game_scene.hpp"
 #include "display_mission_effect.hpp"
+#include "global_define.hpp"
 #include "music_manager.hpp"
 
 const char* GameScene::param_tag_stage = "param_tag_stage";
@@ -13,8 +14,29 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
 
     // 音楽を再生
     MusicManager::get_instance()->play_music(1);
-    // ステージを取得
+    // ステージとレベルを取得
     _stage = param.get_param(this->param_tag_stage);
+    _level = param.get_param(this->param_tag_level);
+    int player_max_hp = 0;
+    GlobalValues::Level game_level = static_cast<GlobalValues::Level>(_level);
+    switch (game_level)
+    {
+    case GlobalValues::Easy:
+        player_max_hp = 99;
+        break;
+    case GlobalValues::Normal:
+        player_max_hp = 60;
+        break;
+    case GlobalValues::Hard:
+        player_max_hp = 30;
+        break;
+    case GlobalValues::Inferno:
+        player_max_hp = 1;
+        break;
+    default:
+        break;
+    }
+
     // 背景番号を作る
     int bg_idx = _stage + 2;
 
@@ -27,7 +49,7 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
     _boss_manager = std::make_shared<BossManager>(this, _enemy_bullet_manager);
     _player_bullet_manager = std::make_shared<PlayerBulletManager>(this);
     _effect_manager = std::make_shared<EffectManager>(this);
-    _player = std::make_shared<Player>(this, _player_bullet_manager);
+    _player = std::make_shared<Player>(this, _player_bullet_manager, player_max_hp);
     _item_manager = std::make_shared<ItemManager>(this);
 }
 

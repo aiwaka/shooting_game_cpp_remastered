@@ -28,5 +28,6 @@ public:
         Easy,
         Normal,
         Hard,
+        Inferno,
     };
 };

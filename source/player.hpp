@@ -9,7 +9,7 @@ class PlayerBulletManager;
 
 class Player : public Task {
 public:
-    Player(GameScene* scene, std::shared_ptr<PlayerBulletManager> manager);
+    Player(GameScene* scene, std::shared_ptr<PlayerBulletManager> manager, int max_hp);
     virtual ~Player() = default;
     bool update() override;
     void draw() const override;

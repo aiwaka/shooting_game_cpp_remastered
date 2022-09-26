@@ -12,16 +12,15 @@
 
 namespace {
     constexpr float SPEED = 6.0f;
-    constexpr int PLAYER_MAX_HP = 99;
 }
 
-Player::Player(GameScene* scene, std::shared_ptr<PlayerBulletManager> manager) :
+Player::Player(GameScene* scene, std::shared_ptr<PlayerBulletManager> manager, int max_hp) :
     _pos(Vec2{ static_cast<float>(GlobalValues::CENTER_X), static_cast<float>(GlobalValues::OUT_HEIGHT) * 0.8f }),
     _counter(0),
     _move_dir(Vec2{}),
     _power(15),
-    _hp(PLAYER_MAX_HP),
-    _max_hp(PLAYER_MAX_HP),
+    _hp(max_hp),
+    _max_hp(max_hp),
     _lives_num(0),
     _bombs_num(2),
     _state(0),
