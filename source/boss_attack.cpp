@@ -9,18 +9,18 @@
 BossAttack::BossAttack() {
     using AttackPattern = BossAttack::AttackPattern;
     // 体力・制限時間・関数へのポインタをあわせてセットする
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_dummy });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_001 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_002 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_003 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_004 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_005 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_006 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_007 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_008 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_009 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_010 });
-    _attack_pattern_list.push_back(AttackPattern{ 20000, 3600, &BossAttack::pattern_011 });
+    _attack_pattern_list.push_back(AttackPattern{ 100, 3600, &BossAttack::pattern_dummy });
+    _attack_pattern_list.push_back(AttackPattern{ 10000, 3600, &BossAttack::pattern_001 });
+    _attack_pattern_list.push_back(AttackPattern{ 10000, 3600, &BossAttack::pattern_002 });
+    _attack_pattern_list.push_back(AttackPattern{ 10000, 3600, &BossAttack::pattern_003 });
+    _attack_pattern_list.push_back(AttackPattern{ 12000, 3600, &BossAttack::pattern_004 });
+    _attack_pattern_list.push_back(AttackPattern{ 18000, 3600, &BossAttack::pattern_005 });
+    _attack_pattern_list.push_back(AttackPattern{ 18000, 3600, &BossAttack::pattern_006 });
+    _attack_pattern_list.push_back(AttackPattern{ 18000, 3600, &BossAttack::pattern_007 });
+    _attack_pattern_list.push_back(AttackPattern{ 16000, 3600, &BossAttack::pattern_008 });
+    _attack_pattern_list.push_back(AttackPattern{ 18000, 3600, &BossAttack::pattern_009 });
+    _attack_pattern_list.push_back(AttackPattern{ 18000, 3600, &BossAttack::pattern_010 });
+    _attack_pattern_list.push_back(AttackPattern{ 15000, 3600, &BossAttack::pattern_011 });
 }
 
 void BossAttack::attack(Boss* boss)
