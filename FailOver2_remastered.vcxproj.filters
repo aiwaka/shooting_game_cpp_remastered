@@ -207,6 +207,9 @@
     <ClCompile Include="source\level_select_scene.cpp">
       <Filter>ソース ファイル\scenes</Filter>
     </ClCompile>
+    <ClCompile Include="source\result_scene.cpp">
+      <Filter>ソース ファイル\scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -348,6 +351,9 @@
       <Filter>ヘッダー ファイル\assets</Filter>
     </ClInclude>
     <ClInclude Include="source\level_select_scene.hpp">
+      <Filter>ヘッダー ファイル\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\result_scene.hpp">
       <Filter>ヘッダー ファイル\scenes</Filter>
     </ClInclude>
   </ItemGroup>

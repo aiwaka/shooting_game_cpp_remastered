@@ -39,8 +39,7 @@ bool LevelSelectScene::update() {
 
             param.set_param(GameScene::param_tag_stage, GetRand(2));
             param.set_param(GameScene::param_tag_level, _cursor_pos);
-            const bool stack_clear = true;
-            _impl_scene_changed->on_scene_changed(AppScenes::Game, param, stack_clear);
+            _impl_scene_changed->on_scene_changed(AppScenes::Game, param, true);
             return true;
         }
 

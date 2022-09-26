@@ -1,6 +1,7 @@
 #include <DxLib.h>
 #include <algorithm>
 #include "game_scene.hpp"
+#include "result_scene.hpp"
 #include "display_mission_effect.hpp"
 #include "global_define.hpp"
 #include "music_manager.hpp"
@@ -67,7 +68,10 @@ bool GameScene::update() {
     if (_enemy_manager->get_counter() == 3500) {
         // 終了、シーンチェンジ
         SceneParameter param;
-        _impl_scene_changed->on_scene_changed(AppScenes::Title, param, true);
+
+        param.set_param(ResultScene::param_tag_level, _level);
+        param.set_param(ResultScene::param_tag_score, _score);
+        _impl_scene_changed->on_scene_changed(AppScenes::Result, param, true);
         return true;
     }
 

@@ -59,6 +59,7 @@
     <ClCompile Include="source\player.cpp" />
     <ClCompile Include="source\player_bullet.cpp" />
     <ClCompile Include="source\player_bullet_manager.cpp" />
+    <ClCompile Include="source\result_scene.cpp" />
     <ClCompile Include="source\scene_parameter.cpp" />
     <ClCompile Include="source\se_manager.cpp" />
     <ClCompile Include="source\title_scene.cpp" />
@@ -105,6 +106,7 @@
     <ClInclude Include="source\player.hpp" />
     <ClInclude Include="source\player_bullet.hpp" />
     <ClInclude Include="source\player_bullet_manager.hpp" />
+    <ClInclude Include="source\result_scene.hpp" />
     <ClInclude Include="source\scene.hpp" />
     <ClInclude Include="source\scene_parameter.hpp" />
     <ClInclude Include="source\se_manager.hpp" />

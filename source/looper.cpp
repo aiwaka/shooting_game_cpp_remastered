@@ -9,6 +9,7 @@
 #include "title_scene.hpp"
 #include "level_select_scene.hpp"
 #include "game_scene.hpp"
+#include "result_scene.hpp"
 
 Looper::Looper() {
     // アセットロード
@@ -65,6 +66,9 @@ void Looper::on_scene_changed(const AppScenes scene, const SceneParameter& param
         break;
     case Game:
         _scene_stack.push(std::make_shared<GameScene>(this, param));
+        break;
+    case Result:
+        _scene_stack.push(std::make_shared<ResultScene>(this, param));
         break;
         //case Staffroll:
             //break;

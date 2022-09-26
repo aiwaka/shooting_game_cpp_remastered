@@ -9,8 +9,7 @@ FullScreenPicture::FullScreenPicture(int initial_type) {
 
 void FullScreenPicture::set_bg(int type) {
     _bg_type = type;
-    int idx = 0;
-    _handle = ImageManager::get_instance()->get_background()[idx];
+    _handle = ImageManager::get_instance()->get_background()[type];
 }
 
 bool FullScreenPicture::update() {
