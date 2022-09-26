@@ -28,6 +28,12 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const SceneParameter& param)
 }
 
 void GameScene::update() {
+    if (_player->get_lives_num() == -1) {
+        // 終了、シーンチェンジ
+        SceneParameter param;
+        _impl_scene_changed->on_scene_changed(AppScenes::Title, param, true);
+        return;
+    }
     if (_enemy_manager->get_counter() == 100) {
         auto mission = std::make_shared<DisplayMissionEffect>();
         _effect_manager->push_effect(mission);

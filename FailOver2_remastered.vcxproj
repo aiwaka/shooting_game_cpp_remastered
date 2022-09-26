@@ -58,6 +58,7 @@
     <ClCompile Include="source\player_bullet.cpp" />
     <ClCompile Include="source\player_bullet_manager.cpp" />
     <ClCompile Include="source\scene_parameter.cpp" />
+    <ClCompile Include="source\se_manager.cpp" />
     <ClCompile Include="source\title_scene.cpp" />
     <ClCompile Include="source\utils.cpp" />
   </ItemGroup>
@@ -96,12 +97,14 @@
     <ClInclude Include="source\keyboard.hpp" />
     <ClInclude Include="source\looper.hpp" />
     <ClInclude Include="source\macro.hpp" />
+    <ClInclude Include="source\music_manager.hpp" />
     <ClInclude Include="source\pad_input.hpp" />
     <ClInclude Include="source\player.hpp" />
     <ClInclude Include="source\player_bullet.hpp" />
     <ClInclude Include="source\player_bullet_manager.hpp" />
     <ClInclude Include="source\scene.hpp" />
     <ClInclude Include="source\scene_parameter.hpp" />
+    <ClInclude Include="source\se_manager.hpp" />
     <ClInclude Include="source\singleton.hpp" />
     <ClInclude Include="source\task.hpp" />
     <ClInclude Include="source\title_scene.hpp" />

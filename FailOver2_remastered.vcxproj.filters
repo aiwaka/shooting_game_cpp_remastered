@@ -198,6 +198,9 @@
     <ClCompile Include="source\boss_child.cpp">
       <Filter>ソース ファイル\components\boss</Filter>
     </ClCompile>
+    <ClCompile Include="source\se_manager.cpp">
+      <Filter>ソース ファイル\assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\game_system.hpp">
@@ -331,6 +334,12 @@
     </ClInclude>
     <ClInclude Include="source\boss_child.hpp">
       <Filter>ヘッダー ファイル\components\boss</Filter>
+    </ClInclude>
+    <ClInclude Include="source\se_manager.hpp">
+      <Filter>ヘッダー ファイル\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="source\music_manager.hpp">
+      <Filter>ヘッダー ファイル\assets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

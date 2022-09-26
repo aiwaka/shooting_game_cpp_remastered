@@ -7,6 +7,7 @@
 #include "game_scene.hpp"
 #include "bomb_effect.hpp"
 #include "image_manager.hpp"
+#include "se_manager.hpp"
 #include "utils.hpp"
 
 namespace {
@@ -21,7 +22,7 @@ Player::Player(GameScene* scene, std::shared_ptr<PlayerBulletManager> manager) :
     _power(15),
     _hp(PLAYER_MAX_HP),
     _max_hp(PLAYER_MAX_HP),
-    _lives_num(2),
+    _lives_num(0),
     _bombs_num(2),
     _state(0),
     _invincible_counter(0),
@@ -32,7 +33,7 @@ Player::Player(GameScene* scene, std::shared_ptr<PlayerBulletManager> manager) :
 }
 
 bool Player::update() {
-    ++_counter;
+    // 残機0でhpが0になったことはゲームシーンが検知してシーン移動を行う
     // 無敵カウンタが有効なら減らす
     if (_invincible_counter > 0) --_invincible_counter;
     if (_bombing && _invincible_counter == 0) _bombing = false;
@@ -44,13 +45,10 @@ bool Player::update() {
         _state = 2;
         --_lives_num;
     }
-    if (_lives_num == 0) {
-        // ここでゲームオーバー処理
-        printfDx("gameover\n");
-    }
     if (_state == 2) { move_in_dead(); }
     else { move(); }
     shot();
+    ++_counter;
     return true;
 }
 
@@ -105,6 +103,7 @@ void Player::shot() {
     if (_state == 2) return;
 
     auto pad_ins = PadInput::get_instance();
+    auto se_mng_ins = SoundEffectManager::get_instance();
     // 先にボムを判定
     if (!_bombing && pad_ins->get(Bomb) == 1 && _bombs_num > 0) {
         --_bombs_num;
@@ -112,6 +111,8 @@ void Player::shot() {
         _invincible_counter = 170;
         auto bomb_eff = std::make_shared<BombEffect>(_pos);
         _game_scene->set_effect(bomb_eff);
+        se_mng_ins->play_se(8);
+        se_mng_ins->play_se(9);
         return;
     }
 
@@ -124,9 +125,9 @@ void Player::shot() {
             }
             else {
                 _bullet_manager->push_bullet(_power, Vec2{ SHOT_POS_X[i], SHOT_POS_Y[i] } + this->_pos);
-
             }
         }
+        se_mng_ins->play_se(1);
     }
 }
 
