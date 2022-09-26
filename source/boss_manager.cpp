@@ -59,24 +59,59 @@ Vec2 BossManager::get_player_pos() const {
 }
 
 void BossManager::register_boss() {
-    // 敵管理クラスのカウントでボスを登録する
-    // 楽だから
+    // 敵管理クラスのカウントでボスを登録する（楽だから）
+    // 中ボス
     if (_game_scene->get_enemy_manager_counter() == 2000 && !this->boss_exist()) {
+        int stage_num = _game_scene->get_stage();
         auto attack_queue = std::queue<int>{};
-        // 攻撃パターン番号をキューに詰める
-        attack_queue.push(11);
-        attack_queue.push(10);
-        attack_queue.push(9);
-        attack_queue.push(8);
-        attack_queue.push(7);
-        attack_queue.push(5);
-        attack_queue.push(4);
-        attack_queue.push(3);
-        attack_queue.push(2);
-        attack_queue.push(1);
+        switch (stage_num)
+        {
+        case 0:
+            attack_queue.push(1);
+            attack_queue.push(4);
+            break;
+        case 1:
+            attack_queue.push(2);
+            attack_queue.push(4);
+            break;
+        case 2:
+            attack_queue.push(3);
+            attack_queue.push(4);
+            break;
+        default:
+            break;
+        }
         auto boss1 = std::make_shared<Boss>(attack_queue, false, this);
         _list.push_back(boss1);
     }
+    // 大ボス
+    if (_game_scene->get_enemy_manager_counter() == 3200 && !this->boss_exist()) {
+        int stage_num = _game_scene->get_stage();
+        auto attack_queue = std::queue<int>{};
+        switch (stage_num)
+        {
+        case 0:
+            attack_queue.push(5);
+            attack_queue.push(8);
+            attack_queue.push(9);
+            break;
+        case 1:
+            attack_queue.push(6);
+            attack_queue.push(8);
+            attack_queue.push(10);
+            break;
+        case 2:
+            attack_queue.push(7);
+            attack_queue.push(8);
+            attack_queue.push(11);
+            break;
+        default:
+            break;
+        }
+        auto boss2 = std::make_shared<Boss>(attack_queue, true, this);
+        _list.push_back(boss2);
+    }
+
 }
 
 /*

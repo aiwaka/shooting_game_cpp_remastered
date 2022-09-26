@@ -38,6 +38,7 @@ private:
     void pattern_003(Boss* boss);
     void pattern_004(Boss* boss);
     void pattern_005(Boss* boss);
+    void pattern_006(Boss* boss);
     void pattern_007(Boss* boss);
     void pattern_008(Boss* boss);
     void pattern_009(Boss* boss);
@@ -50,5 +51,5 @@ memo
 bg1: 6, 9, 7, 5, 15
 bg2: 12, 9, 11, 5, 10
 bg3: 13, 9, 7, 5, 14
-6->1, 12->2, 13->3, 9->4, 7->5, dummy 11->7, 5->8, 15->9, 10->10, 14->11, �ƕύX
+6->1, 12->2, 13->3, 9->4, 7->5, dummy->6, 11->7, 5->8, 15->9, 10->10, 14->11, �ƕύX
 */

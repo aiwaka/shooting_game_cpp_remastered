@@ -24,6 +24,7 @@ public:
 
     void set_pos(Vec2 pos);
     void set_speed(float speed);
+    void set_acc(float acc);
     void set_omega(float omega);
     void set_fx(int num);
 
@@ -62,6 +63,7 @@ inline void EnemyBullet::set_delete_flag() { _delete_flag = true; }
 inline int EnemyBullet::get_damage() const { return _damage; }
 inline void EnemyBullet::set_pos(Vec2 pos) { _pos = pos; }
 inline void EnemyBullet::set_speed(float speed) { _speed = speed; }
+inline void EnemyBullet::set_acc(float acc) { _acceleration = acc; }
 inline void EnemyBullet::set_omega(float omega) { _omega = omega; }
 inline void EnemyBullet::set_fx(int num) { _fx_detail = num; }
 inline int EnemyBullet::get_color() const { return _color; }

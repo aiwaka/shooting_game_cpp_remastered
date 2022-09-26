@@ -14,7 +14,7 @@ BossAttack::BossAttack() {
     _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_003 });
     _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_004 });
     _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_005 });
-    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_dummy }); // ‚ ‚Æ‚Å’Ç‰Á‚·‚é‚©‚à‚µ‚ê‚È‚¢‚Ì‚ÅŒ‡”Ô
+    _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_006 });
     _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_007 });
     _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_008 });
     _attack_pattern_list.push_back(AttackPattern{ 1000, 3600, &BossAttack::pattern_009 });
@@ -242,7 +242,6 @@ void BossAttack::pattern_005(Boss* boss) {
     int count = boss->get_counter();
     int local_count = count % 320; // 320ƒtƒŒ[ƒ€ŽüŠú
     Vec2 boss_pos = boss->get_pos();
-    //static double angle, aangle, base_angle;
     static float base_angle = 0.0; // Šî–{‚Ì”­ŽËŠp“x
     static float angle = 0.0; // Šî–{‚Ì”­ŽËŠp“x‚©‚ç‚Ì‰ñ“]Šp“x
     static float angle_acc = 0.0; // ‰ñ“]Šp“x‰ÁŽZ‚Ì‰ÁŽZ—Ê. ‚±‚ê‚ð‘‰Á‚³‚¹‚é
@@ -270,6 +269,48 @@ void BossAttack::pattern_005(Boss* boss) {
     }
     angle += angle_acc;
 }
+
+// ‹t‰Á‘¬ƒƒCƒ“ƒ_[
+void BossAttack::pattern_006(Boss* boss) {
+    int count = boss->get_counter();
+    Vec2 boss_pos = boss->get_pos();
+    static float angle, angle_acc;
+    if (count == 0) {
+        angle = -GlobalValues::PI;
+        angle_acc = 0.0;
+    }
+    if (count % 2 == 0) {
+        for (int i = 0; i < 5; ++i) {
+            EnemyBulletInfo info;
+            info.bullet_type = 1;
+            info.color = 5;
+            info.damage = 3;
+            info.x = boss_pos.x;
+            info.y = boss_pos.y;
+            info.endure_count = 150;
+            info.angle = angle + GlobalValues::PI * 2.0 * static_cast<float>(i) / 5.0;
+            info.speed = 4.0;
+            info.fx_detail = 1;
+            info.acceleration = -0.07;
+            boss->push_bullet(info);
+        }
+        angle_acc += GlobalValues::PI / 1080.0;
+        // se
+    }
+    angle -= angle_acc;
+    if (angle < -GlobalValues::PI) {
+        angle += GlobalValues::PI;
+    }
+    auto bullet_list = boss->get_bullet_iterator();
+    for (auto& bullet : bullet_list) {
+        if (bullet->get_counter() == 120) {
+            bullet->set_acc(0.0);
+            bullet->set_fx(0.0);
+        }
+    }
+}
+
+
 
 // ‰Ô‰Î
 void BossAttack::pattern_007(Boss* boss) {
@@ -524,45 +565,3 @@ void BossAttack::pattern_011(Boss* boss) {
         angle += GlobalValues::PI;
     }
 }
-
-/*
-
-void boss_shot_bullet008() {
-    int i, k, t = boss_shot.cnt;
-    static double angle, aangle;
-    if (t == 0) {
-        angle = -PI2;
-        aangle = 0;
-    }
-    if (t % 2 == 0) {
-        for (i = 0; i < 5; i++) {
-            if ((k = search_boss_shot()) != -1) {
-                boss_shot.bullet[k].flag = 1;
-                boss_shot.bullet[k].col = 5;
-                boss_shot.bullet[k].x = boss.x;
-                boss_shot.bullet[k].y = boss.y;
-                boss_shot.bullet[k].knd = 1;
-                boss_shot.bullet[k].angle = angle + PI2 / 5 * i;
-                boss_shot.bullet[k].cnt = 0;
-                boss_shot.bullet[k].spd = 4;
-            }
-        }
-        se.SetSEFlag(10);
-        aangle += PI2 / 2160;
-    }
-    angle -= aangle;
-    if (angle < -PI2) {
-        angle += PI2;
-    }
-    for (i = 0; i < BOSS_BULLET_MAX; i++) {
-        if (boss_shot.bullet[i].flag == 1 && boss_shot.bullet[i].cnt < 120) {
-            boss_shot.bullet[i].spd -= 0.07;
-        }
-        if (boss_shot.bullet[i].flag == 1 && boss_shot.bullet[i].cnt == 120) {
-            boss_shot.bullet[i].knd = 2;
-            boss_shot.bullet[i].col = 1;
-        }
-    }
-}
-
-}*/

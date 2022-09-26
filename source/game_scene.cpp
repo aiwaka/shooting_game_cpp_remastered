@@ -32,6 +32,13 @@ void GameScene::update() {
         auto mission = std::make_shared<DisplayMissionEffect>();
         _effect_manager->push_effect(mission);
     }
+    if (_enemy_manager->get_counter() == 3500) {
+        // 終了、シーンチェンジ
+        SceneParameter param;
+        _impl_scene_changed->on_scene_changed(AppScenes::Title, param, true);
+        return;
+    }
+
     // ここの処理順に気をつけないと1フレーム処理が遅れることがありそう
     _background->update();
     _player->update();

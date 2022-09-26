@@ -44,6 +44,8 @@ public:
     void increment_player_life();
     void increment_player_bomb();
 
+    int get_stage() const;
+
     //! @brief 敵管理クラスのカウンタを取得する
     int get_enemy_manager_counter() const;
     //! @brief ボス出現中か？
@@ -80,5 +82,8 @@ inline void GameScene::modify_player_hp(int delta) { _player->modify_hp(delta); 
 inline void GameScene::modify_player_power(int delta) { _player->modify_power(delta); }
 inline void GameScene::increment_player_life() { _player->increment_life(); }
 inline void GameScene::increment_player_bomb() { _player->increment_bomb(); }
+
+
+inline int GameScene::get_stage() const { return _stage; }
 
 inline bool GameScene::boss_exist() { return _boss_manager->boss_exist(); }
